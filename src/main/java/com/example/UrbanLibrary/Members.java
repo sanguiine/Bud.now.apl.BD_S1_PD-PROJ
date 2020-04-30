@@ -1,65 +1,66 @@
 package com.example.UrbanLibrary;
 
-
 import javax.persistence.*;
 import java.util.Date;
-
 
 @Entity
 @Table(name = "Members")
 public class Members {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "MemberId", nullable = false, unique = true)
-    private long member_id;
+    @Column(name = "memberID", nullable = false, unique = true)
+    private long memberID;
 
-    @Column(name = "FirstName", nullable = false)
-    private String first_name;
-    @Column(name = "LastName", nullable = false)
-    private String last_name;
-    @Column(name = "BirthDate", nullable = false)
-    private Date birth_date;
-    @Column(name = "City")
+    @Column(name = "firstName", nullable = false)
+    private String firstNname;
+    @Column(name = "lastName", nullable = false)
+    private String lastName;
+    @Column(name = "birthDate", nullable = false)
+    private Date birthDate;
+    @Column(name = "city")
     private String city;
-    @Column(name = "ZipCode")
-    private String zip_code;
-    @Column(name = "Street")
-    private String street;
-    @Column(name = "BuildingNumber")
-    private String building_number;
-    @Column(name = "PhoneNumber")
-    private String phone_number;
-    @Column(name = "Email", nullable = false)
+    @Column(name = "zipCode")
+    private String zipCode;
+    @Column(name = "address")
+    private String address;
+    @Column(name = "phoneNumber")
+    private String phoneNumber;
+    @Column(name = "email", nullable = false)
     private String email;
-    @Column(name = "Password", nullable = false)
+    @Column(name = "password", nullable = false)
     private String password;
 
-
-    public long getMember_id() {
-        return member_id;
+    public long getMemberID() {
+        return memberID;
     }
 
-    public void setMember_id(long member_id) {
-        this.member_id = member_id;
+    public void setMemberID(long memberID) {
+        this.memberID = memberID;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstNname() {
+        return firstNname;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstNname(String firstNname) {
+        this.firstNname = firstNname;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
+    }
 
     public String getCity() {
         return city;
@@ -69,36 +70,28 @@ public class Members {
         this.city = city;
     }
 
-    public String getZip_code() {
-        return zip_code;
+    public String getZipCode() {
+        return zipCode;
     }
 
-    public void setZip_code(String zip_code) {
-        this.zip_code = zip_code;
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
     }
 
-    public String getStreet() {
-        return street;
+    public String getAddress() {
+        return address;
     }
 
-    public void setStreet(String street) {
-        this.street = street;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getBuilding_number() {
-        return building_number;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setBuilding_number(String building_number) {
-        this.building_number = building_number;
-    }
-
-    public String getPhone_number() {
-        return phone_number;
-    }
-
-    public void setPhone_number(String phone_number) {
-        this.phone_number = phone_number;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getEmail() {
@@ -120,25 +113,16 @@ public class Members {
     @Override
     public String toString() {
         return "Members{" +
-                "member_id=" + member_id +
-                ", first_name='" + first_name + '\'' +
-                ", last_name='" + last_name + '\'' +
-                ", birth_date=" + birth_date +
+                "memberID=" + memberID +
+                ", firstNname='" + firstNname + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birthDate=" + birthDate +
                 ", city='" + city + '\'' +
-                ", zip_code='" + zip_code + '\'' +
-                ", street='" + street + '\'' +
-                ", building_number='" + building_number + '\'' +
-                ", phone_number='" + phone_number + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                ", address='" + address + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';
-    }
-
-    public Date getBirth_date() {
-        return birth_date;
-    }
-
-    public void setBirth_date(Date birth_date) {
-        this.birth_date = birth_date;
     }
 }
