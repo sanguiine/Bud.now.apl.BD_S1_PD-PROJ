@@ -2,8 +2,14 @@ package com.example.UrbanLibrary;
 
 import javax.persistence.*;
 
+@Entity
 @Table(name = "ReadByMember")
 public class ReadByMember {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "readByMemberID", nullable = false, unique = true)
+    private long readByMemberID;
+
     //klucz obcy z Books
     @Column(name = "bookID", nullable = false)
     private long bookID;
@@ -12,6 +18,14 @@ public class ReadByMember {
     private long memberID;
     @Column(name = "rate")
     private int rate;
+
+    public long getReadByMemberID() {
+        return readByMemberID;
+    }
+
+    public void setReadByMemberID(long readByMemberID) {
+        this.readByMemberID = readByMemberID;
+    }
 
     public long getBookID() {
         return bookID;
@@ -40,7 +54,8 @@ public class ReadByMember {
     @Override
     public String toString() {
         return "ReadByMember{" +
-                "bookID=" + bookID +
+                "readByMemberID=" + readByMemberID +
+                ", bookID=" + bookID +
                 ", memberID=" + memberID +
                 ", rate=" + rate +
                 '}';
