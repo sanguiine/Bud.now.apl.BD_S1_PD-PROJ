@@ -11,12 +11,14 @@ public class Loans {
     @Column(name = "loanID", nullable = false, unique = true)
     private long loanID;
 
-    //klucz obcy z BooksInStock
-    @Column(name = "stockID", nullable = false)
-    private long stockID;
+    //klucz obcy z Books
+    @OneToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="bookID")
+    private Books book;
     //klucz obcy z Members
-    @Column(name = "memberID", nullable = false)
-    private long memberID;
+    @ManyToOne
+    @JoinColumn(name = "memberID")
+    private Members member;
     @Column(name = "dateLoaned", nullable = false)
     private Date dateLoaned;
     @Column(name = "dateReturned")
@@ -30,20 +32,20 @@ public class Loans {
         this.loanID = loanID;
     }
 
-    public long getStockID() {
-        return stockID;
+    public Books getBook() {
+        return book;
     }
 
-    public void setStockID(long stockID) {
-        this.stockID = stockID;
+    public void setBook(Books book) {
+        this.book = book;
     }
 
-    public long getMemberID() {
-        return memberID;
+    public Members getMember() {
+        return member;
     }
 
-    public void setMemberID(long memberID) {
-        this.memberID = memberID;
+    public void setMember(Members member) {
+        this.member = member;
     }
 
     public Date getDateLoaned() {
@@ -66,8 +68,8 @@ public class Loans {
     public String toString() {
         return "Loans{" +
                 "loanID=" + loanID +
-                ", stockID=" + stockID +
-                ", memberID=" + memberID +
+                ", stockID=" + book +
+                ", memberID=" + member +
                 ", dateLoaned=" + dateLoaned +
                 ", dateReturned=" + dateReturned +
                 '}';

@@ -3,6 +3,7 @@ package com.example.UrbanLibrary;
 import javax.persistence.*;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Books")
@@ -22,6 +23,25 @@ public class Books {
     private String description;
     @Column(name = "date")
     private Date date;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, orphanRemoval = true, mappedBy = "book")
+    private List<ReadByMember> booksReadByMember;
+
+    @ManyToMany
+    @JoinTable(
+            name="BookCategories",
+            joinColumns=@JoinColumn(name="bookID", referencedColumnName="bookID"),
+            inverseJoinColumns=@JoinColumn(name="categoryID", referencedColumnName="categoryID")
+    )
+    private List<Categories> categories;
+
+    @ManyToMany
+    @JoinTable(
+            name="BookAuthors",
+            joinColumns=@JoinColumn(name="bookID", referencedColumnName="bookID"),
+            inverseJoinColumns=@JoinColumn(name="authorID", referencedColumnName="authorID")
+    )
+    private List<Authors> authors;
 
     public long getBookID() {
         return bookID;
@@ -61,6 +81,30 @@ public class Books {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public List<ReadByMember> getBooksReadByMember() {
+        return booksReadByMember;
+    }
+
+    public void setBooksReadByMember(List<ReadByMember> booksReadByMember) {
+        this.booksReadByMember = booksReadByMember;
+    }
+
+    public List<Categories> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Categories> categories) {
+        this.categories = categories;
+    }
+
+    public List<Authors> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(List<Authors> authors) {
+        this.authors = authors;
     }
 
     @Override

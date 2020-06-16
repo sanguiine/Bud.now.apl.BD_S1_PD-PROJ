@@ -2,6 +2,7 @@ package com.example.UrbanLibrary;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Members")
@@ -29,6 +30,14 @@ public class Members {
     private String email;
     @Column(name = "password", nullable = false)
     private String password;
+    @Column(name = "role")
+    private String role;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, orphanRemoval = true, mappedBy = "member")
+    private List<ReadByMember> readByMemberList;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, orphanRemoval = true, mappedBy = "member")
+    private List<Loans> loansList;
 
     public long getMemberID() {
         return memberID;
@@ -108,6 +117,30 @@ public class Members {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<ReadByMember> getReadByMemberList() {
+        return readByMemberList;
+    }
+
+    public void setReadByMemberList(List<ReadByMember> readByMemberList) {
+        this.readByMemberList = readByMemberList;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public List<Loans> getLoansList() {
+        return loansList;
+    }
+
+    public void setLoansList(List<Loans> loansList) {
+        this.loansList = loansList;
     }
 
     @Override

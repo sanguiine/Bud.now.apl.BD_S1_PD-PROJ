@@ -11,11 +11,13 @@ public class ReadByMember {
     private long readByMemberID;
 
     //klucz obcy z Books
-    @Column(name = "bookID", nullable = false)
-    private long bookID;
+    @ManyToOne
+    @JoinColumn(name = "bookID")
+    private Books book;
     //klucz obcy z Members
-    @Column(name = "memberID", nullable = false)
-    private long memberID;
+    @ManyToOne
+    @JoinColumn(name = "memberID")
+    private Members member;
     @Column(name = "rate")
     private int rate;
 
@@ -27,20 +29,20 @@ public class ReadByMember {
         this.readByMemberID = readByMemberID;
     }
 
-    public long getBookID() {
-        return bookID;
+    public Books getBook() {
+        return book;
     }
 
-    public void setBookID(long bookID) {
-        this.bookID = bookID;
+    public void setBook(Books book) {
+        this.book = book;
     }
 
-    public long getMemberID() {
-        return memberID;
+    public Members getMember() {
+        return member;
     }
 
-    public void setMemberID(long memberID) {
-        this.memberID = memberID;
+    public void setMember(Members member) {
+        this.member = member;
     }
 
     public int getRate() {
@@ -55,8 +57,8 @@ public class ReadByMember {
     public String toString() {
         return "ReadByMember{" +
                 "readByMemberID=" + readByMemberID +
-                ", bookID=" + bookID +
-                ", memberID=" + memberID +
+                ", bookID=" + book +
+                ", member=" + member +
                 ", rate=" + rate +
                 '}';
     }
