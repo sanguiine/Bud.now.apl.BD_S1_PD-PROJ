@@ -1,4 +1,4 @@
-package com.example.UrbanLibrary;
+package com.example.UrbanLibrary.encje;
 
 import javax.persistence.*;
 import java.util.Date;
