@@ -1,6 +1,6 @@
-package com.example.UrbanLibrary.repositories;
+package com.example.UrbanLibrary.dao.entity.repositories;
 
-import com.example.UrbanLibrary.encje.Books;
+import com.example.UrbanLibrary.dao.entity.Books;
 import org.springframework.data.repository.CrudRepository;
 
 public interface BooksRepository extends CrudRepository<Books, Long> {

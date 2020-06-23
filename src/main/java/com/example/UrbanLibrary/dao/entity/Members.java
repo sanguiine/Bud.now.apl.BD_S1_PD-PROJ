@@ -1,7 +1,7 @@
-package com.example.UrbanLibrary.encje;
+package com.example.UrbanLibrary.dao.entity;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -17,7 +17,7 @@ public class Members {
     @Column(name = "lastName", nullable = false)
     private String lastName;
     @Column(name = "birthDate", nullable = false)
-    private Date birthDate;
+    private LocalDate birthDate;
     @Column(name = "city")
     private String city;
     @Column(name = "zipCode")
@@ -33,11 +33,33 @@ public class Members {
     @Column(name = "role")
     private String role;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, orphanRemoval = true, mappedBy = "member")
+    @OneToMany(mappedBy = "member")
     private List<ReadByMember> readByMemberList;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, orphanRemoval = true, mappedBy = "member")
     private List<Loans> loansList;
+
+    public Members()
+    {
+
+    }
+
+    public Members(String firstName, String lastName, LocalDate birthDay, String city, String zipCode,
+                   String address, String phoneNumber, String email, String password, String role)
+    {
+        this.firstNname = firstName;
+        this.lastName = lastName;
+        this.birthDate = birthDay;
+        this.city = city;
+        this.zipCode = zipCode;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
+
+
 
     public long getMemberID() {
         return memberID;
@@ -63,11 +85,11 @@ public class Members {
         this.lastName = lastName;
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 

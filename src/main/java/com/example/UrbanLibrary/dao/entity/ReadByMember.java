@@ -1,4 +1,4 @@
-package com.example.UrbanLibrary.encje;
+package com.example.UrbanLibrary.dao.entity;
 
 import javax.persistence.*;
 
@@ -11,11 +11,11 @@ public class ReadByMember {
     private long readByMemberID;
 
     //klucz obcy z Books
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "bookID")
     private Books book;
     //klucz obcy z Members
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "memberID")
     private Members member;
     @Column(name = "rate")

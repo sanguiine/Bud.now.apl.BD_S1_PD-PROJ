@@ -1,6 +1,7 @@
-package com.example.UrbanLibrary.encje;
+package com.example.UrbanLibrary.dao.entity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -22,9 +23,9 @@ public class Books {
     @Column(name = "description")
     private String description;
     @Column(name = "date")
-    private Date date;
+    private LocalDate date;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, orphanRemoval = true, mappedBy = "book")
+    @OneToMany(mappedBy = "book")
     private List<ReadByMember> booksReadByMember;
 
     @ManyToMany
@@ -42,6 +43,21 @@ public class Books {
             inverseJoinColumns=@JoinColumn(name="authorID", referencedColumnName="authorID")
     )
     private List<Authors> authors;
+
+    public Books()
+    {
+
+    }
+    public Books(String title, String description, LocalDate date, List<Categories> categories, List<Authors> authors)
+    {
+        this.title = title;
+        this.description = description;
+        this.date = date;
+        this.categories = categories;
+        this.authors = authors;
+    }
+
+
 
     public long getBookID() {
         return bookID;
@@ -75,11 +91,11 @@ public class Books {
         this.description = description;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

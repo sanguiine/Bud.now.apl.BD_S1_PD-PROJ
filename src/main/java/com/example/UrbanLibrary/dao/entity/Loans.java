@@ -1,6 +1,7 @@
-package com.example.UrbanLibrary.encje;
+package com.example.UrbanLibrary.dao.entity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -20,9 +21,21 @@ public class Loans {
     @JoinColumn(name = "memberID")
     private Members member;
     @Column(name = "dateLoaned", nullable = false)
-    private Date dateLoaned;
+    private LocalDate dateLoaned;
     @Column(name = "dateReturned")
-    private Date dateReturned;
+    private LocalDate dateReturned;
+
+    public Loans()
+    {
+
+    }
+    public Loans(Books book, Members member, LocalDate dateLoaned, LocalDate dateReturned)
+    {
+        this.book = book;
+        this.member = member;
+        this.dateLoaned = dateLoaned;
+        this.dateReturned = dateReturned;
+    }
 
     public long getLoanID() {
         return loanID;
@@ -48,19 +61,19 @@ public class Loans {
         this.member = member;
     }
 
-    public Date getDateLoaned() {
+    public LocalDate getDateLoaned() {
         return dateLoaned;
     }
 
-    public void setDateLoaned(Date dateLoaned) {
+    public void setDateLoaned(LocalDate dateLoaned) {
         this.dateLoaned = dateLoaned;
     }
 
-    public Date getDateReturned() {
+    public LocalDate getDateReturned() {
         return dateReturned;
     }
 
-    public void setDateReturned(Date dateReturned) {
+    public void setDateReturned(LocalDate dateReturned) {
         this.dateReturned = dateReturned;
     }
 

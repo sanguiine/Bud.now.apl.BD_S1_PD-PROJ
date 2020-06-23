@@ -1,4 +1,4 @@
-package com.example.UrbanLibrary.encje;
+package com.example.UrbanLibrary.dao.entity;
 
 import javax.persistence.*;
 
@@ -12,6 +12,12 @@ public class Categories {
 
     @Column(name = "name", nullable = false)
     private String name;
+
+    public Categories(){}
+    public Categories(String name)
+    {
+        this.name = name;
+    }
 
     public long getCategoryID() {
         return categoryID;

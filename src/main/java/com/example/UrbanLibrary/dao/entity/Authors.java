@@ -1,4 +1,4 @@
-package com.example.UrbanLibrary.encje;
+package com.example.UrbanLibrary.dao.entity;
 
 import javax.persistence.*;
 
@@ -14,6 +14,18 @@ public class Authors {
     private String firstName;
     @Column(name = "lastName", nullable = false)
     private String lastName;
+
+    public Authors()
+    {
+
+    }
+
+    public Authors(String firstName, String lastName)
+    {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
 
     public long getAuthorID() {
         return authorID;
