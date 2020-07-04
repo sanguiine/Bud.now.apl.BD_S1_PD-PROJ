@@ -3,7 +3,6 @@ package com.example.UrbanLibrary.dao.entity;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -25,6 +24,9 @@ public class Books {
     @Column(name = "date")
     private LocalDate date;
 
+    @Column(name = "available")
+    private boolean isAvailable;
+
     @OneToMany(mappedBy = "book")
     private List<ReadByMember> booksReadByMember;
 
@@ -44,17 +46,28 @@ public class Books {
     )
     private List<Authors> authors;
 
+    @ManyToMany
+    @JoinTable(
+            name="Reservations",
+            joinColumns=@JoinColumn(name="bookID", referencedColumnName="bookID"),
+            inverseJoinColumns=@JoinColumn(name="reservationID", referencedColumnName="reservationID")
+    )
+    private List<ReservationDetails> reservations;
+
+
     public Books()
     {
 
     }
-    public Books(String title, String description, LocalDate date, List<Categories> categories, List<Authors> authors)
+    public Books(String title, String description, LocalDate date, Boolean isAvailable, List<Categories> categories, List<Authors> authors, List<ReservationDetails> reservations)
     {
         this.title = title;
         this.description = description;
         this.date = date;
+        this.isAvailable = isAvailable;
         this.categories = categories;
         this.authors = authors;
+        this.reservations = reservations;
     }
 
 
@@ -99,6 +112,14 @@ public class Books {
         this.date = date;
     }
 
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void setAvailable(boolean available) {
+        isAvailable = available;
+    }
+
     public List<ReadByMember> getBooksReadByMember() {
         return booksReadByMember;
     }
@@ -121,6 +142,14 @@ public class Books {
 
     public void setAuthors(List<Authors> authors) {
         this.authors = authors;
+    }
+
+    public List<ReservationDetails> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<ReservationDetails> reservations) {
+        this.reservations = reservations;
     }
 
     @Override
