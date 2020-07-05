@@ -25,49 +25,47 @@ import { ThankyouComponent } from './components/site/thankyou/thankyou.component
 
 import { RouterModule, Routes } from '@angular/router';
 
+import { FormsModule } from "@angular/forms";
+
+import { AuthGaurdService } from './service/auth-gaurd.service';
+
 const appRoutes: Routes = [
 
-{ path: 'about', component: AboutComponent },
+{ path: 'about', component: AboutComponent},
 
-{ path: 'account', component: AccountComponent},
+{ path: 'account', component: AccountComponent, canActivate:[AuthGaurdService]},
 
-{ path: 'cart', component : CartComponent},
+{ path: 'cart', component : CartComponent, canActivate:[AuthGaurdService]},
 
-{ path: 'checkout', component : CheckoutComponent},
+{ path: 'checkout', component : CheckoutComponent, canActivate:[AuthGaurdService]},
 
 { path: 'contact', component : ContactComponent},
 
-{ path: 'edit', component : EditComponent},
+{ path: 'edit', component : EditComponent, canActivate:[AuthGaurdService]},
 
 { path: 'index', component : IndexComponent},
 
-{ path: 'loan', component : LoanComponent},
+{ path: 'loan', component : LoanComponent, canActivate:[AuthGaurdService]},
 
 { path: 'login', component : LoginComponent},
 
 { path: 'logout', component : LogoutComponent},
 
-{ path: 'read', component : ReadComponent},
+{ path: 'read', component : ReadComponent, canActivate:[AuthGaurdService]},
 
 { path: 'register', component : RegisterComponent},
 
-{ path: 'reservation', component : ReservationComponent},
+{ path: 'reservation', component : ReservationComponent, canActivate:[AuthGaurdService]},
 
 { path: 'shop', component : ShopComponent},
 
-{ path: 'shop-single', component : ShopSingleComponent},
+{ path: 'shop-single', component : ShopSingleComponent, canActivate:[AuthGaurdService]},
 
 { path: 'success', component : SuccessComponent},
 
 { path: 'thankyou', component : ThankyouComponent},
 
-{ path: '',
-
-redirectTo:'/index',
-
-pathMatch:'full'
-
-}
+{ path: '', redirectTo:'/index',  pathMatch:'full', canActivate:[AuthGaurdService]}
 
 ];
 
@@ -97,6 +95,7 @@ pathMatch:'full'
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],
