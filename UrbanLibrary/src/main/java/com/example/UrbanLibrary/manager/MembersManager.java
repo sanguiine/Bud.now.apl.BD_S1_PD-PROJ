@@ -1,18 +1,11 @@
 package com.example.UrbanLibrary.manager;
 
-import com.example.UrbanLibrary.dao.entity.*;
-import com.example.UrbanLibrary.dao.entity.repositories.*;
+import com.example.UrbanLibrary.dao.entity.Members;
+import com.example.UrbanLibrary.dao.entity.repositories.MembersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -26,7 +19,6 @@ public class MembersManager {
         this.membersRepository = membersRepository;
     }
 
-    @EventListener(ApplicationReadyEvent.class)
     public void fillDbMembers(){
         save(new Members("Anna","Kowalska", LocalDate.of(1995,10,5), "Warszawa", "01-934",
                 "Opalin 5", "602595325", "anna1@gmail.com", "1234", "user"));

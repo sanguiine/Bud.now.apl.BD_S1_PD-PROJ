@@ -29,6 +29,8 @@ import { FormsModule } from "@angular/forms";
 
 import { AuthGaurdService } from './service/auth-gaurd.service';
 
+import { HttpClientModule } from '@angular/common/http';
+
 const appRoutes: Routes = [
 
 { path: 'about', component: AboutComponent},
@@ -96,7 +98,8 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

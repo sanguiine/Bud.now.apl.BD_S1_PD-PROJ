@@ -19,6 +19,8 @@ public class Books {
     @Basic(fetch = FetchType.LAZY)
     @Column(name = "cover")
     private byte[] cover;
+    @Column(name = "imgName")
+    private String imgName;
     @Column(name = "description")
     private String description;
     @Column(name = "date")
@@ -59,11 +61,12 @@ public class Books {
     {
 
     }
-    public Books(String title, String description, LocalDate date, Boolean isAvailable, List<Categories> categories, List<Authors> authors, List<ReservationDetails> reservations)
+    public Books(String title, String description, LocalDate date,String imgName, Boolean isAvailable, List<Categories> categories, List<Authors> authors, List<ReservationDetails> reservations)
     {
         this.title = title;
         this.description = description;
         this.date = date;
+        this.imgName = imgName;
         this.isAvailable = isAvailable;
         this.categories = categories;
         this.authors = authors;
@@ -94,6 +97,14 @@ public class Books {
 
     public void setCover(byte[] cover) {
         this.cover = cover;
+    }
+
+    public String getImgName() {
+        return imgName;
+    }
+
+    public void setImgName(String imgName) {
+        this.imgName = imgName;
     }
 
     public String getDescription() {

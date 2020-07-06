@@ -22,6 +22,7 @@ import { ShopSingleComponent } from './components/site/shop-single/shop-single.c
 import { SuccessComponent } from './components/site/success/success.component';
 import { ThankyouComponent } from './components/site/thankyou/thankyou.component';
 
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   { path: '', component: IndexComponent, canActivate:[AuthGaurdService]},
@@ -45,7 +46,10 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes),
+    HttpClientModule
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -3,8 +3,6 @@ package com.example.UrbanLibrary.manager;
 import com.example.UrbanLibrary.dao.entity.ReadByMember;
 import com.example.UrbanLibrary.dao.entity.repositories.ReadByMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -20,7 +18,6 @@ public class ReadByMemberManager {
         this.readByMemberRepository = readByMemberRepository;
     }
 
-    @EventListener(ApplicationReadyEvent.class)
     public void fillDb()
     {
     }
