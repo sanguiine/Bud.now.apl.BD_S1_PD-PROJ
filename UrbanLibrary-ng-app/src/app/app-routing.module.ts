@@ -40,7 +40,7 @@ const routes: Routes = [
   { path: 'register', component : RegisterComponent},
   { path: 'reservation', component : ReservationComponent, canActivate:[AuthGaurdService]},
   { path: 'shop', component : ShopComponent},
-  { path: 'shop-single', component : ShopSingleComponent, canActivate:[AuthGaurdService]},
+  { path: 'shop-single/:1', component : ShopSingleComponent, canActivate:[AuthGaurdService]},
   { path: 'success', component : SuccessComponent},
   { path: 'thankyou', component : ThankyouComponent}
 ];

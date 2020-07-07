@@ -10,13 +10,13 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6">
-            <img src="assets/images/cloth_1.jpg" alt="Image" class="img-fluid">
+            <img src="assets/images/{{selectedBook.imgName}}" alt="Image" class="img-fluid">
           </div>
           <div class="col-md-6">
-            <h2 class="text-black">Tytuł książki</h2>
-            <p>Autor książki</p>
-			<p>Data wydania: 10.03.1990</p>
-            <p class="mb-4">Opis książki ex numquam veritatis debitis minima quo error quam eos dolorum quidem perferendis. Quos repellat dignissimos minus, eveniet nam voluptatibus molestias omnis reiciendis perspiciatis illum hic magni iste, velit aperiam quis.</p>
+            <h2 class="text-black">{{selectedBook.title}}</h2>
+            <p>{{selectedBook.authors}}</p>
+			<p>Data wydania: {{selectedBook.date}}</p>
+            <p class="mb-4">{{selectedBook.description}}</p>
 			<p><strong class="text-primary h6">Dostępnych sztuk: 1</strong></p>
 			
 		   <br>

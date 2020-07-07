@@ -28,15 +28,16 @@
             </div>
             <div class="row mb-5">
 
-              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up" *ngFor="let book of books">
+              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up" *ngFor="let book of books; let i = index">
                 <div class="block-4 text-center border">
                   <figure class="block-4-image">
-                    <a routerLink="/shop-single" href="shop-single.html"><img src="assets/images/cloth_1.jpg" alt="Image placeholder" class="img-fluid"></a>
+                    <a (click)="selectBook(book)" [routerLink]="['shop-single', i+1]" href="shop-single.html"><img src="assets/images/{{book.imgName}}" alt="Image placeholder" class="img-fluid"></a>
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a routerLink="/shop-single" href="shop-single.html"></a>{{book.title}}</h3>
-                    <p class="mb-0">{{book.authors}}</p>
-                    <p class="text-primary font-weight-bold">{{book.isAvailable}}</p>
+                    <p class="mb-0">Autor</p>
+                    <p *ngIf="book.isAvailable" class="text-primary font-weight-bold">Dostępna</p>
+                    <p *ngIf="!book.isAvailable" class="text-primary font-weight-bold">Niedostępna</p>
                   </div>
                 </div>
               </div>

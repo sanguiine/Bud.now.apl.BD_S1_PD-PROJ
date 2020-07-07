@@ -61,7 +61,7 @@ const appRoutes: Routes = [
 
 { path: 'shop', component : ShopComponent},
 
-{ path: 'shop-single', component : ShopSingleComponent, canActivate:[AuthGaurdService]},
+{ path: 'shop/shop-single/:id', component : ShopSingleComponent, canActivate:[AuthGaurdService]},
 
 { path: 'success', component : SuccessComponent},
 

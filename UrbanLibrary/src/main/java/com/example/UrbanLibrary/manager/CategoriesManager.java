@@ -5,6 +5,7 @@ import com.example.UrbanLibrary.dao.entity.repositories.CategoriesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -20,6 +21,7 @@ public class CategoriesManager {
     }
 
     @EventListener(ApplicationReadyEvent.class)
+    @Order(1)
     public void fillDbMembers(){
         save(new Categories("Powieść historyczna"));
         save(new Categories("Powieść społeczno-obyczajowa"));

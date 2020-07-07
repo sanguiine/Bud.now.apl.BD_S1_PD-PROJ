@@ -8,6 +8,7 @@ import com.example.UrbanLibrary.dao.entity.repositories.ReadByMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
 import javax.imageio.ImageIO;
@@ -16,6 +17,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.Optional;
 
 
@@ -37,22 +39,21 @@ public class BooksManager {
     }
 
     @EventListener(ApplicationReadyEvent.class)
+    @Order(3)
     public void fillDb() throws IOException {
         //save(new Books("Potop", "Bardzo fajna książka", LocalDate.of(1959,11,11), imageFileToByte("cloth_1.jpg"), true,
         //        Arrays.asList(categoriesRepository.findById(1l).get()), Arrays.asList(authorsRepository.findById(2l).get()), null));
-        save(new Books("Potop", "Bardzo fajna książka", LocalDate.of(1959,11,11), "cloth_1.jpg", true,
-                null,null, null));
-        save(new Books("Ogniem i mieczem", "Bardzo fajna książka", LocalDate.of(1959,11,11), "cloth_2.jpg", true,
-                null,null, null));
+        save(new Books("Potop", "Bardzo fajna książka", LocalDate.of(1959,11,11), "cloth_2.jpg", true,
+                Arrays.asList(categoriesRepository.findById(1l).get()),Arrays.asList(authorsRepository.findById(2l).get()), null));
+        save(new Books("Ogniem i mieczem", "Bardzo fajna książka", LocalDate.of(1959,11,11), "cloth_1.jpg", true,
+                Arrays.asList(categoriesRepository.findById(1l).get()),Arrays.asList(authorsRepository.findById(2l).get()), null));
         save(new Books("Lalka", "Bardzo fajna książka", LocalDate.of(1959,11,11), "cloth_3.jpg", true,
-                null,null, null));
+                Arrays.asList(categoriesRepository.findById(2l).get()),Arrays.asList(authorsRepository.findById(4l).get()), null));
         save(new Books("Proces", "Bardzo fajna książka", LocalDate.of(1959,11,11), "shoe_1.jpg", true,
-                null,null, null));
+                Arrays.asList(categoriesRepository.findById(2l).get()),Arrays.asList(authorsRepository.findById(5l).get()), null));
     }
 
-    public Books save(Books book){
-        return booksRepository.save(book);
-    }
+    public Books save(Books book){ return booksRepository.save(book); }
 
     public Optional<Books> findById(Long id){
         return booksRepository.findById(id);
