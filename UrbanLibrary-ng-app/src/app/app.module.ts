@@ -30,10 +30,32 @@ import { FormsModule } from "@angular/forms";
 import { AuthGaurdService } from './service/auth-gaurd.service';
 
 import { HttpClientModule } from '@angular/common/http';
+import { SidemenuComponent } from './components/layout/sidemenu/sidemenu.component';
+import { AdminComponent } from './components/site/admin/admin.component';
+import { AdminbooksComponent } from './components/site/adminbooks/adminbooks.component';
+import { AdmingenresComponent } from './components/site/admingenres/admingenres.component';
+import { AdminloansComponent } from './components/site/adminloans/adminloans.component';
+import { AdminreservationsComponent } from './components/site/adminreservations/adminreservations.component';
+import { AdminusersComponent } from './components/site/adminusers/adminusers.component';
+import { AdminwritersComponent } from './components/site/adminwriters/adminwriters.component';
 
 const appRoutes: Routes = [
 
 { path: 'about', component: AboutComponent},
+
+{ path: 'admin', component: AdminComponent},
+
+{ path: 'adminloans', component: AdminloansComponent},
+
+{ path: 'adminreservations', component: AdminreservationsComponent},
+
+{ path: 'adminusers', component: AdminusersComponent},
+
+{ path: 'adminbooks', component: AdminbooksComponent},
+
+{ path: 'admingenres', component: AdmingenresComponent},
+
+{ path: 'adminwriters', component: AdminwritersComponent},
 
 { path: 'account', component: AccountComponent, canActivate:[AuthGaurdService]},
 
@@ -93,7 +115,15 @@ const appRoutes: Routes = [
     ShopComponent,
     ShopSingleComponent,
     SuccessComponent,
-    ThankyouComponent
+    ThankyouComponent,
+    SidemenuComponent,
+    AdminComponent,
+    AdminbooksComponent,
+    AdmingenresComponent,
+    AdminloansComponent,
+    AdminreservationsComponent,
+    AdminusersComponent,
+    AdminwritersComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

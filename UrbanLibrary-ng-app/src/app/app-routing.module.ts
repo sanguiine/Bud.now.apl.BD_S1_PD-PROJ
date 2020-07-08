@@ -21,12 +21,27 @@ import { ShopComponent } from './components/site/shop/shop.component';
 import { ShopSingleComponent } from './components/site/shop-single/shop-single.component';
 import { SuccessComponent } from './components/site/success/success.component';
 import { ThankyouComponent } from './components/site/thankyou/thankyou.component';
+import { AdminComponent } from './components/site/admin/admin.component';
+import { SidemenuComponent } from './components/layout/sidemenu/sidemenu.component';
+import { AdminbooksComponent } from './components/site/adminbooks/adminbooks.component';
+import { AdmingenresComponent } from './components/site/admingenres/admingenres.component';
+import { AdminloansComponent } from './components/site/adminloans/adminloans.component';
+import { AdminreservationsComponent } from './components/site/adminreservations/adminreservations.component';
+import { AdminusersComponent } from './components/site/adminusers/adminusers.component';
+import { AdminwritersComponent } from './components/site/adminwriters/adminwriters.component';
 
 import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   { path: '', component: IndexComponent, canActivate:[AuthGaurdService]},
   { path: 'about', component: AboutComponent},
+  { path: 'admin', component: AdminComponent},
+  { path: 'adminloans', component: AdminloansComponent},
+  { path: 'adminreservations', component: AdminreservationsComponent},
+  { path: 'adminusers', component: AdminusersComponent},
+  { path: 'adminbooks', component: AdminbooksComponent},
+  { path: 'admingenres', component: AdmingenresComponent},
+  { path: 'adminwriters', component: AdminwritersComponent},
   { path: 'account', component: AccountComponent, canActivate:[AuthGaurdService]},
   { path: 'cart', component : CartComponent, canActivate:[AuthGaurdService]},
   { path: 'checkout', component : CheckoutComponent, canActivate:[AuthGaurdService]},
