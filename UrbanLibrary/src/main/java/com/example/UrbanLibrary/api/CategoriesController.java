@@ -1,13 +1,13 @@
 package com.example.UrbanLibrary.api;
 
 import com.example.UrbanLibrary.dao.entity.Categories;
-import com.example.UrbanLibrary.dao.entity.Members;
 import com.example.UrbanLibrary.manager.CategoriesManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
+@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*", exposedHeaders = "Authorization")
 @RestController
 @RequestMapping("/api/categories")
 public class CategoriesController {

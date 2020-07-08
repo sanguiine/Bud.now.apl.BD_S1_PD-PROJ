@@ -66,8 +66,7 @@ public class BooksManager {
     public void deleteById(Long id){
         booksRepository.deleteById(id);
     }
-
-
+    
     public byte[] imageFileToByte(String imagePath) throws IOException {
         BufferedImage bImage = ImageIO.read(new File("H:\\Studnia\\JAVA PROJECT\\UrbanLibrary\\src\\main\\resources\\img\\" + imagePath));
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
