@@ -25,11 +25,13 @@ import { ThankyouComponent } from './components/site/thankyou/thankyou.component
 
 import { RouterModule, Routes } from '@angular/router';
 
-import { FormsModule } from "@angular/forms";
+import { FormsModule, FormControl, NgModel} from "@angular/forms";
 
 import { AuthGaurdService } from './service/auth-gaurd.service';
 
 import { HttpClientModule } from '@angular/common/http';
+import { MyFilterPipePipe } from './shared/pipes/my-filter-pipe.pipe';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { SidemenuComponent } from './components/layout/sidemenu/sidemenu.component';
 import { AdminComponent } from './components/site/admin/admin.component';
 import { AdminbooksComponent } from './components/site/adminbooks/adminbooks.component';
@@ -124,14 +126,19 @@ const appRoutes: Routes = [
     AdminreservationsComponent,
     AdminusersComponent,
     AdminwritersComponent
+    ThankyouComponent,
+    MyFilterPipePipe,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     FormsModule,
     RouterModule.forRoot(appRoutes),
-    HttpClientModule
+    HttpClientModule,
+    MatAutocompleteModule,
+    FormControl,
+    NgModel
   ],
-  providers: [],
+  providers: [MyFilterPipePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,7 +6,12 @@
         <div class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
           <form action="" class="site-block-top-search">
             <span class="icon icon-search2"></span>
-            <input type="text" class="form-control border-0" placeholder="Szukaj książki">
+            <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto" class="form-control border-0" placeholder="Szukaj książki">
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+              <mat-option *ngFor="let book of filteredOptions | async" [value]="option">
+                {{book.title}}
+              </mat-option>
+            </mat-autocomplete>
           </form>
         </div>
 

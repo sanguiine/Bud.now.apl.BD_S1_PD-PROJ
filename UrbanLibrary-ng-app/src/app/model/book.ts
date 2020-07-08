@@ -1,3 +1,6 @@
+import { Author } from "./author";
+import { Category } from "./category";
+
 export interface Book {
     bookID:number;
     title:string;
@@ -6,8 +9,8 @@ export interface Book {
     description: string;
     date:Date;
     booksReadByMember: string[];
-    categories:string[];
-    authors:string[];
+    categories: Category[];
+    authors: Author[];
     reservations:string[];
-    isAvailable:boolean;
+    isAvailable:Boolean;
 }
