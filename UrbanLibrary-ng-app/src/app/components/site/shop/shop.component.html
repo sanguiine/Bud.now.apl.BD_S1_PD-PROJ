@@ -7,45 +7,49 @@
       </div>
     </div>
 
-    <div class="site-section">
-      <div class="container">
+<div class="site-section">
+  <div class="container">
 
+    <div class="row mb-5">
+      <div class="col-md-9 order-2">
+
+        <div class="row">
+          <div class="col-md-12 mb-5">
+            <div class="float-md-left mb-4">
+              <h2 class="text-black h5">Wyniki</h2>
+            </div>
+            <div class="d-flex">
+              <div class="dropdown mr-1 ml-md-auto">
+                <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuReference"
+                  data-toggle="dropdown">Sortuj</button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+                  <a routerLink="shop" class="dropdown-item" href="#">wg nazwy rosnąco</a>
+                  <a routerLink="shop" class="dropdown-item" href="#">wg nazwy malejąco</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="row mb-5">
-          <div class="col-md-9 order-2">
 
-            <div class="row">
-              <div class="col-md-12 mb-5">
-                <div class="float-md-left mb-4"><h2 class="text-black h5">Wyniki</h2></div>
-                <div class="d-flex">
-                  <div class="dropdown mr-1 ml-md-auto">
-                    <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuReference" data-toggle="dropdown">Sortuj</button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
-                      <a routerLink="shop" class="dropdown-item" href="#">wg nazwy rosnąco</a>
-                      <a routerLink="shop" class="dropdown-item" href="#">wg nazwy malejąco</a>
-                    </div>
-                  </div>
-                </div>
+          <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up" *ngFor="let book of books | myFilterPipe:searchTextAuthor; let i = index">
+            <div class="block-4 text-center border">
+              <figure class="block-4-image">
+                <a (click)="selectBook(book)" [routerLink]="['shop-single', i+1]" href="shop-single.html"><img
+                    src="assets/images/{{book.imgName}}" alt="Image placeholder" class="img-fluid"></a>
+              </figure>
+              <div class="block-4-text p-4">
+                <h3><a routerLink="/shop-single" href="shop-single.html"></a>{{book.title}}</h3>
+                <p class="mb-0">{{book.authors[0].firstName + " " + book.authors[0].lastName}}</p>
+                <p *ngIf="book.isAvailable" class="text-primary font-weight-bold">Dostępna</p>
+                <p *ngIf="!book.isAvailable" class="text-primary font-weight-bold">Niedostępna</p>
               </div>
             </div>
-            <div class="row mb-5">
-
-              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up" *ngFor="let book of books; let i = index">
-                <div class="block-4 text-center border">
-                  <figure class="block-4-image">
-                    <a (click)="selectBook(book)" [routerLink]="['shop-single', i+1]" href="shop-single.html"><img src="assets/images/{{book.imgName}}" alt="Image placeholder" class="img-fluid"></a>
-                  </figure>
-                  <div class="block-4-text p-4">
-                    <h3><a routerLink="/shop-single" href="shop-single.html"></a>{{book.title}}</h3>
-                    <p class="mb-0">Autor</p>
-                    <p *ngIf="book.isAvailable" class="text-primary font-weight-bold">Dostępna</p>
-                    <p *ngIf="!book.isAvailable" class="text-primary font-weight-bold">Niedostępna</p>
-                  </div>
-                </div>
-              </div>
+          </div>
 
 
-            </div>
-            <div class="row" data-aos="fade-up">
+        </div>
+        <!-- <div class="row" data-aos="fade-up">
               <div class="col-md-12 text-center">
                 <div class="site-block-27">
                   <ul>
@@ -59,30 +63,29 @@
                   </ul>
                 </div>
               </div>
-            </div>
-          </div>
+            </div> -->
+      </div>
 
-          <div class="col-md-3 order-1 mb-5 mb-md-0">
-            <div class="border p-4 rounded mb-4">
-              <h3 class="mb-3 h6 text-uppercase text-black d-block">Kategorie</h3>
-              <ul class="list-unstyled mb-0">
-                <li class="mb-1"><a routerLink="shop" href="#" class="d-flex"><span>Kryminał</span> <span class="text-black ml-auto">(2,220)</span></a></li>
-                <li class="mb-1"><a routerLink="shop" href="#" class="d-flex"><span>Fantastyka</span> <span class="text-black ml-auto">(2,550)</span></a></li>
-                <li class="mb-1"><a routerLink="shop" href="#" class="d-flex"><span>Thriller</span> <span class="text-black ml-auto">(2,124)</span></a></li>
-              </ul>
-            </div>
-
-            <div class="border p-4 rounded mb-4 text-center">
-                <h3 class="mb-3 h6 text-uppercase text-black d-block">Autor</h3>
-				  <form action="" class="site-block-top-search">
-					<span class="icon icon-search2"></span>
-					<input id="autor" type="text" class="form-control border-0" placeholder="Podaj autora">
-				  </form>
-				  <br>
-				  <a class="btn btn-sm btn-secondary" onclick="">Szukaj</a>
-            </div>
-          </div>
+      <div class="col-md-3 order-1 mb-5 mb-md-0">
+        <div class="border p-4 rounded mb-4">
+          <h3 class="mb-3 h6 text-uppercase text-black d-block">Kategorie</h3>
+          <ul class="list-unstyled mb-0">
+            <li *ngFor="let category of categories" class="mb-1"><a routerLink="shop" href="#" class="d-flex"><span>{{category.name}}</span>
+              </a></li>
+          </ul>
         </div>
+
+        <div class="border p-4 rounded mb-4 text-center">
+          <h3 class="mb-3 h6 text-uppercase text-black d-block">Autor</h3>
+          <form action="" class="site-block-top-search">
+            <span class="icon icon-search2"></span>
+            <input id="autor" type="text" class="form-control border-0" [(ngModel)]="searchTextAuthor" name="something" placeholder="Podaj autora">
+          </form>
+          <br>
+          <a class="btn btn-sm btn-secondary" onclick="">Szukaj</a>
+        </div>
+      </div>
+    </div>
 
       </div>
     </div>

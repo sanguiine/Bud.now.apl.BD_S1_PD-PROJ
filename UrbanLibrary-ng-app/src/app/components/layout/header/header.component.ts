@@ -6,6 +6,7 @@ import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -14,6 +15,7 @@ import {map, startWith} from 'rxjs/operators';
 export class HeaderComponent implements OnInit {
   myControl = new FormControl();
   books: Book[] = [];
+  
   filteredOptions: Observable<Book[]>;
   constructor(public loginService:AuthenticationService, private apiService: ApiService ) { }
 
@@ -38,7 +40,7 @@ export class HeaderComponent implements OnInit {
   }
 
   public getAllBooks(){
-    this.apiService.getAllNotebooks().subscribe(
+    this.apiService.getAllBooks().subscribe(
       res => {
         this.books = res;
       },
