@@ -1,0 +1,84 @@
+
+    <div class="overlay"></div>
+
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+                <a href="javascript:void(0);" class="bars"></a>
+                <a class="navbar-brand" routerLink="/admin" href="admin.html">Panel administratora</a>
+            </div>
+        </div>
+    </nav>
+
+    <section>
+        <aside id="leftsidebar" class="sidebar">
+            <div class="user-info">
+                <div class="image">
+                    <img src="assets/images/user.png" width="48" height="48" alt="User" />
+                </div>
+                <div class="info-container">
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Imię Nazwisko</div>
+                    <div class="email">email@example.com</div>
+                </div>
+            </div>
+            <div class="menu">
+                <ul class="list">
+                    <li class="header">NAWIGACJA</li>
+                    <li class="active">
+                        <a routerLink="/admin" href="admin.html">
+                            <i class="material-icons">home</i>
+                            <span>Strona startowa</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/adminloans" href="adminloans.html">
+                            <i class="material-icons">collections_bookmark</i>
+                            <span>Wypożyczenia</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/adminreservations" href="adminreservations.html">
+                            <i class="material-icons">flag</i>
+                            <span>Rezerwacje</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/adminusers" href="adminusers.html">
+                            <i class="material-icons">group</i>
+                            <span>Użytkownicy</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/adminbooks" href="adminbooks.html">
+                            <i class="material-icons">library_books</i>
+                            <span>Książki</span>
+                        </a>
+                    </li>
+					<li>
+                        <a routerLink="/admingenres" href="admingenres.html">
+                            <i class="material-icons">sort</i>
+                            <span>Gatunki</span>
+                        </a>
+                    </li>
+					<li>
+                        <a routerLink="/adminwriters" href="adminwriters.html">
+                            <i class="material-icons">format_quote</i>
+                            <span>Autorzy</span>
+                        </a>
+                    </li>
+					<li>
+                        <a routerLink="/logout" href="logout.html">
+                            <i class="material-icons">input</i>
+                            <span>Wyloguj</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="legal">
+                <div class="copyright">
+                    Copyright &copy; All rights reserved
+				</div>
+          </div>
+        </aside>
+    </section>

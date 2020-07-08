@@ -1,0 +1,325 @@
+<body class="theme-black">
+	<app-sidemenu></app-sidemenu>
+	<section class="content">
+        <div class="container-fluid">
+            <div class="block-header">
+                <h2>
+                    KSIĄŻKI
+                </h2>
+            </div>
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                Szukaj książek
+                            </h2>
+                        </div>
+                        <div class="body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                    <thead>
+                                        <tr>
+											<th>ID książki</th>
+											<th>Data wydania</th>
+											<th>Tytuł</th>
+                                            <th>Autorzy</th>
+                                            <th>Gatunki</th>
+                                            <th>Akcje</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+											<td>1-1-2020</td>
+											<td>fsafsa</td>
+                                            <td>khkghk, dsa</td>
+                                            <td>fsa, fsaf, fsafs</td>
+                                            <td><button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
+											<button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button>
+											</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+											<td>1-1-2020</td>
+											<td>fsafsa</td>
+                                            <td>khkghk, dsa</td>
+                                            <td>fsa, fsaf, fsafs</td>
+                                            <td><button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
+											<button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button>
+											</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+											<td>1-1-2020</td>
+											<td>fsafsa</td>
+                                            <td>khkghk, dsa</td>
+                                            <td>fsa, fsaf, fsafs</td>
+                                            <td><button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
+											<button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button>
+											</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+											<td>1-1-2020</td>
+											<td>fsafsa</td>
+                                            <td>khkghk, dsa</td>
+                                            <td>fsa, fsaf, fsafs</td>
+                                            <td><button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
+											<button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button>
+											</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+											<td>1-1-2020</td>
+											<td>fsafsa</td>
+                                            <td>khkghk, dsa</td>
+                                            <td>fsa, fsaf, fsafs</td>
+                                            <td><button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
+											<button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button>
+											</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+											<td>1-1-2020</td>
+											<td>fsafsa</td>
+                                            <td>khkghk, dsa</td>
+                                            <td>fsa, fsaf, fsafs</td>
+                                            <td><button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
+											<button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button>
+											</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                Edytuj książkę
+                            </h2>
+                        </div>
+                        <div class="body">
+                            <form id="form_validation" method="POST">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+										<label>ID książki</label>
+                                        <input type="number" class="form-control" name="id" required disabled>
+                                    </div>
+                                </div>
+								<div class="form-group form-float">
+									<div class="form-line">
+										<label>Data wydania</label>
+                                        <input type="date" class="form-control" name="date" required>
+                                    </div>
+                                </div>
+								<div class="form-group form-float">
+                                    <div class="form-line">
+										<label>Tytuł</label>
+                                        <input type="text" class="form-control" name="title" required>
+                                    </div>
+                                </div>
+								<div class="form-group form-float">
+                                    <div class="form-line">
+										<label>Opis</label>
+										<textarea rows="3" class="form-control no-resize" placeholder="..." required></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+										<label>Okładka</label>
+										<input type="file" id="myFile" name="filename">
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary waves-effect" type="submit">Edytuj</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                Dodaj książkę
+                            </h2>
+                        </div>
+                        <div class="body">
+                            <form id="form_validation" method="POST">
+								<div class="form-group form-float">
+									<div class="form-line">
+										<label>Data wydania</label>
+                                        <input type="date" class="form-control" name="date" required>
+                                    </div>
+                                </div>
+								<div class="form-group form-float">
+                                    <div class="form-line">
+										<label>Tytuł</label>
+                                        <input type="text" class="form-control" name="title" required>
+                                    </div>
+                                </div>
+								<div class="form-group form-float">
+                                    <div class="form-line">
+										<label>Opis</label>
+										<textarea rows="3" class="form-control no-resize" placeholder="..." required></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+										<label>Okładka</label>
+										<input type="file" id="myFile" name="filename">
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary waves-effect" type="submit">Dodaj</button>
+								<div class="form-line">
+									<br><br><br><br>
+								</div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			
+			<div class="row clearfix">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                Dodaj gatunki
+                            </h2>
+                        </div>
+                        <div class="body">
+                            <form id="form_validation" method="POST">
+								<div class="form-group">
+								  <label for="sel1">Wybierz książkę</label>
+								  <select class="form-control" id="sel1" required>
+									<option>fsaf</option>
+									<option>afs</option>
+									<option>fsaf</option>
+									<option>fsa</option>
+								  </select>
+								</div>
+								<div class="form-group">
+								  <label for="sel2">Wybierz gatunki</label>
+								  <select class="form-control" id="sel2" multiple required>
+									<option>fsaf</option>
+									<option>fsafsa</option>
+									<option>fsafas</option>
+									<option>gdds</option>
+								  </select>
+								</div>
+                                <button class="btn btn-primary waves-effect" type="submit">Dodaj</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+				
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                Usuń gatunki
+                            </h2>
+                        </div>
+                        <div class="body">
+                            <form id="form_validation" method="POST">
+								<div class="form-group">
+								  <label for="sel1">Wybierz książkę</label>
+								  <select class="form-control" id="sel1" required>
+									<option>fsaf</option>
+									<option>afs</option>
+									<option>fsaf</option>
+									<option>fsa</option>
+								  </select>
+								</div>
+								<div class="form-group">
+								  <label for="sel2">Wybierz gatunki</label>
+								  <select class="form-control" id="sel2" multiple required>
+									<option>fsaf</option>
+									<option>fsafsa</option>
+									<option>fsafas</option>
+									<option>gdds</option>
+								  </select>
+								</div>
+                                <button class="btn btn-primary waves-effect" type="submit">Usuń</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+			</div>
+			
+			<div class="row clearfix">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                Dodaj autorów
+                            </h2>
+                        </div>
+                        <div class="body">
+                            <form id="form_validation" method="POST">
+								<div class="form-group">
+								  <label for="sel1">Wybierz książkę</label>
+								  <select class="form-control" id="sel1" required>
+									<option>fsaf</option>
+									<option>afs</option>
+									<option>fsaf</option>
+									<option>fsa</option>
+								  </select>
+								</div>
+								<div class="form-group">
+								  <label for="sel2">Wybierz autorów</label>
+								  <select class="form-control" id="sel2" multiple required>
+									<option>fsaf</option>
+									<option>fsafsa</option>
+									<option>fsafas</option>
+									<option>gdds</option>
+								  </select>
+								</div>
+                                <button class="btn btn-primary waves-effect" type="submit">Dodaj</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+				
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                Usuń autorów
+                            </h2>
+                        </div>
+                        <div class="body">
+                            <form id="form_validation" method="POST">
+								<div class="form-group">
+								  <label for="sel1">Wybierz książkę</label>
+								  <select class="form-control" id="sel1" required>
+									<option>fsaf</option>
+									<option>afs</option>
+									<option>fsaf</option>
+									<option>fsa</option>
+								  </select>
+								</div>
+								<div class="form-group">
+								  <label for="sel2">Wybierz autorów</label>
+								  <select class="form-control" id="sel2" multiple required>
+									<option>fsaf</option>
+									<option>fsafsa</option>
+									<option>fsafas</option>
+									<option>gdds</option>
+								  </select>
+								</div>
+                                <button class="btn btn-primary waves-effect" type="submit">Usuń</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+			</div>
+		</div>
+    </section>
+</body>
