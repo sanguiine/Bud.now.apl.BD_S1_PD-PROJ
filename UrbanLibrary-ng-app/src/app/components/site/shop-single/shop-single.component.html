@@ -14,9 +14,10 @@
           </div>
           <div class="col-md-6">
             <h2 class="text-black">{{selectedBook.title}}</h2>
-            <p>{{selectedBook.authors}}</p>
-			<p>Data wydania: {{selectedBook.date}}</p>
-            <p class="mb-4">{{selectedBook.description}}</p>
+            <p *ngFor="let author of bookAuthors ">{{author.firstName.concat(" ", author.lastName)}}</p>
+            <p *ngFor="let category of bookCategories ">{{category.name}}</p>
+			      <p>Data wydania: {{selectedBook.date}}</p>
+            <p class="mb-4">Opis: {{selectedBook.description}}</p>
 			<p><strong class="text-primary h6">Dostępnych sztuk: 1</strong></p>
 			
 		   <br>
