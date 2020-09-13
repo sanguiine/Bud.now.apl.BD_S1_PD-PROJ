@@ -1,11 +1,11 @@
-<app-header></app-header>
-    <div class="bg-light py-3">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 mb-0"><a href="index.html">Strona główna</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Katalog</strong></div>
-        </div>
-      </div>
+<div class="bg-light py-3">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 mb-0"><a href="index.html">Strona główna</a> <span class="mx-2 mb-0">/</span> <strong
+          class="text-black">Katalog</strong></div>
     </div>
+  </div>
+</div>
 
 <div class="site-section">
   <div class="container">
@@ -41,8 +41,8 @@
               <div class="block-4-text p-4">
                 <h3><a routerLink="/shop-single" href="shop-single.html"></a>{{book.title}}</h3>
                 <p class="mb-0">{{book.authors[0].firstName + " " + book.authors[0].lastName}}</p>
-                <p *ngIf="book.isAvailable" class="text-primary font-weight-bold">Dostępna</p>
-                <p *ngIf="!book.isAvailable" class="text-primary font-weight-bold">Niedostępna</p>
+                <p *ngIf="!book.isAvailable" class="text-primary font-weight-bold">Dostępna</p>
+                <p *ngIf="book.isAvailable" class="text-primary font-weight-bold">Niedostępna</p>
               </div>
             </div>
           </div>
@@ -70,7 +70,7 @@
         <div class="border p-4 rounded mb-4">
           <h3 class="mb-3 h6 text-uppercase text-black d-block">Kategorie</h3>
           <ul class="list-unstyled mb-0">
-            <li *ngFor="let category of categories" class="mb-1"><a routerLink="shop" href="#" class="d-flex"><span>{{category.name}}</span>
+            <li *ngFor="let category of categories" class="mb-1"><a routerLink="shop" href="#" class="d-flex"><span>{{category.name}}</span> 
               </a></li>
           </ul>
         </div>
@@ -82,11 +82,9 @@
             <input id="autor" type="text" class="form-control border-0" [(ngModel)]="searchTextAuthor" name="something" placeholder="Podaj autora">
           </form>
           <br>
-          <a class="btn btn-sm btn-secondary" onclick="">Szukaj</a>
         </div>
       </div>
     </div>
 
-      </div>
-    </div>
-	<app-footer></app-footer>
+  </div>
+</div>

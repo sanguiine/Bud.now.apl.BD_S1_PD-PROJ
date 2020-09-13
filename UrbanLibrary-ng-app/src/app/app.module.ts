@@ -31,6 +31,9 @@ import { AuthGaurdService } from './service/auth-gaurd.service';
 
 import { HttpClientModule } from '@angular/common/http';
 import { MyFilterPipePipe } from './shared/pipes/my-filter-pipe.pipe';
+import { ClickOutsideDirective } from './shared/dropdown.directive';
+import { SearchFilterPipe } from './shared/filter-pipe';
+
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatInputModule} from '@angular/material/input';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
@@ -60,33 +63,11 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { SidemenuComponent } from './components/layout/sidemenu/sidemenu.component';
-import { AdminComponent } from './components/site/admin/admin.component';
-import { AdminbooksComponent } from './components/site/adminbooks/adminbooks.component';
-import { AdmingenresComponent } from './components/site/admingenres/admingenres.component';
-import { AdminloansComponent } from './components/site/adminloans/adminloans.component';
-import { AdminreservationsComponent } from './components/site/adminreservations/adminreservations.component';
-import { AdminusersComponent } from './components/site/adminusers/adminusers.component';
-import { AdminwritersComponent } from './components/site/adminwriters/adminwriters.component';
+import { pipe } from 'rxjs';
 
 const appRoutes: Routes = [
 
 { path: 'about', component: AboutComponent},
-
-{ path: 'admin', component: AdminComponent},
-
-{ path: 'adminloans', component: AdminloansComponent},
-
-{ path: 'adminreservations', component: AdminreservationsComponent},
-
-{ path: 'adminusers', component: AdminusersComponent},
-
-{ path: 'adminbooks', component: AdminbooksComponent},
-
-{ path: 'admingenres', component: AdmingenresComponent},
-
-{ path: 'adminwriters', component: AdminwritersComponent},
 
 { path: 'account', component: AccountComponent, canActivate:[AuthGaurdService]},
 
@@ -147,16 +128,9 @@ const appRoutes: Routes = [
     ShopSingleComponent,
     SuccessComponent,
     ThankyouComponent,
-    SidemenuComponent,
-    AdminComponent,
-    AdminbooksComponent,
-    AdmingenresComponent,
-    AdminloansComponent,
-    AdminreservationsComponent,
-    AdminusersComponent,
-    AdminwritersComponent,
-    ThankyouComponent,
-    MyFilterPipePipe
+    MyFilterPipePipe,
+    SearchFilterPipe,
+    ClickOutsideDirective,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -194,7 +168,9 @@ const appRoutes: Routes = [
     MatPaginatorModule,
     BrowserAnimationsModule,
   ],
-  providers: [MyFilterPipePipe],
+  providers: 
+  [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

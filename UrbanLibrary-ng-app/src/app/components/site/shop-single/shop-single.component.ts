@@ -17,11 +17,16 @@ export class ShopSingleComponent implements OnInit {
   selectedBook: Book;
   bookAuthors: Author[];
   bookCategories: Category[];
+  count = 0;
+  counter = 1;
+
+  books: Book[] = [];
 
   constructor(private route: ActivatedRoute, private apiService: ApiService) { }
 
   ngOnInit() {
-    this.route.params.subscribe(params => this.index = params['id'])
+    this.route.params.subscribe(params => this.index = params['id']);
+    this.getAllBooks();
     this.getBookById(this.index);
   }
 
@@ -37,7 +42,45 @@ export class ShopSingleComponent implements OnInit {
     );
   }
 
+  getAllBooks(){
+    this.apiService.getAllBooks().subscribe(
+      res => {
+        this.books = res;
+      },
+      err =>{
+        alert("An error has occured");
+      }
+    );
+  }
 
+  countBooks() {
+    this.count = 0;
+    for(var i = 0 ; i<this.books.length;i++)
+    {
+      if(this.index == this.books[i].bookID)
+      {
+        this.count++;
+      }
+    }
+    return this.count;
+  }
 
+  counterUp() {
+    if(this.counter < this.count)
+    {
+      this.counter++;
+    }
+    else
+    {
+      alert("Nie ma więcej dostępnych książek!");
+    }
+  }
+
+  counterDown() {
+    if(this.counter > 1)
+    {
+      this.counter--;
+    }
+  }
 
 }

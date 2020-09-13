@@ -2,47 +2,37 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../../service/authentication.service';
 import { Book } from '../../../model/book';
 import { ApiService } from '../../../shared/api.service';
-import {FormControl} from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
+import { SearchFilterPipe } from '../../../shared/filter-pipe';
 
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
+  providers: [SearchFilterPipe]
 })
+
 export class HeaderComponent implements OnInit {
-  myControl = new FormControl();
+  searchString: string;
+
+  bookForm: FormGroup;
   books: Book[] = [];
-  
-  filteredOptions: Observable<Book[]>;
-  constructor(public loginService:AuthenticationService, private apiService: ApiService ) { }
+  constructor(public loginService:AuthenticationService, private apiService: ApiService, private searchFilter: SearchFilterPipe) {
+   }
+  showDropDown = false;
 
   ngOnInit() {
     this.getAllBooks();
-    this.filteredOptions = this.myControl.valueChanges
-      .pipe(
-        startWith(''),
-        map(value => typeof value === 'string' ? value : value.title),
-        map(title => title ? this._filter(title) : this.books.slice())
-      );
-  }
-
-  displayFn(book: Book): string {
-    return book && book.title ? book.title : '';
-  }
-
-  private _filter(title: string): Book[] {
-    const filterValue = title.toLowerCase();
-
-    return this.books.filter(books => books.title.toLowerCase().indexOf(filterValue) === 0);
   }
 
   public getAllBooks(){
     this.apiService.getAllBooks().subscribe(
       res => {
         this.books = res;
+        console.log(this.books);
       },
       err =>{
         alert("An error has occured");
@@ -50,4 +40,13 @@ export class HeaderComponent implements OnInit {
     );
   }
 
+  toggleDropDown(){
+    this.showDropDown = !this.showDropDown;
+  }
+
+  closeToggle(){
+    this.showDropDown = false;
+  }
+
 }
+

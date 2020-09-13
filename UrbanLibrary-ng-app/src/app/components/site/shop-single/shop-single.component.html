@@ -1,15 +1,14 @@
-<app-header></app-header>
     <div class="bg-light py-3">
       <div class="container">
         <div class="row">
-          <div class="col-md-12 mb-0"><a href="index.html">Strona główna</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Tytuł książki</strong></div>
+          <div class="col-md-12 mb-0"><a href="index.html">Strona główna</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">{{selectedBook.title}}</strong></div>
         </div>
       </div>
     </div>  
 
     <div class="site-section">
       <div class="container">
-        <div class="row">
+        <div *ngIf="selectedBook" class="row">
           <div class="col-md-6">
             <img src="assets/images/{{selectedBook.imgName}}" alt="Image" class="img-fluid">
           </div>
@@ -19,17 +18,17 @@
             <p *ngFor="let category of bookCategories ">{{category.name}}</p>
 			      <p>Data wydania: {{selectedBook.date}}</p>
             <p class="mb-4">Opis: {{selectedBook.description}}</p>
-			<p><strong class="text-primary h6">Dostępnych sztuk: 1</strong></p>
+			<p><strong class="text-primary h6">Dostępnych sztuk: {{countBooks()}}</strong></p>
 			
 		   <br>
             <div class="mb-5 text-center">
               <div class="input-group mb-3" style="max-width: 120px;">
               <div class="input-group-prepend">
-                <button class="btn btn-outline-primary js-btn-minus" type="button">-</button>
+                <button (click)="counterDown()" class="btn btn-outline-primary js-btn-minus" type="button">-</button>
               </div>
-              <input type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+              <input type="text" class="form-control text-center" value={{counter}} placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
               <div class="input-group-append">
-                <button class="btn btn-outline-primary js-btn-plus" type="button">+</button>
+                <button (click)="counterUp()" class="btn btn-outline-primary js-btn-plus" type="button">+</button>
               </div>
             </div>
 
@@ -40,4 +39,3 @@
         </div>
       </div>
     </div>
-	<app-footer></app-footer>
