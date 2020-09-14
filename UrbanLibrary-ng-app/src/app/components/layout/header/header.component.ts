@@ -4,9 +4,12 @@ import { Book } from '../../../model/book';
 import { ApiService } from '../../../shared/api.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import {Observable} from 'rxjs';
+import { Subscription } from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import { SearchFilterPipe } from '../../../shared/filter-pipe';
-
+import { MessengerService } from 'src/app/service/messenger.service'
+import { Cart } from '../../../model/cart';
+import { Globals } from 'src/app/model/globals';
 
 @Component({
   selector: 'app-header',
@@ -20,12 +23,23 @@ export class HeaderComponent implements OnInit {
 
   bookForm: FormGroup;
   books: Book[] = [];
-  constructor(public loginService:AuthenticationService, private apiService: ApiService, private searchFilter: SearchFilterPipe) {
-   }
   showDropDown = false;
+  cartItems = [];
+  subscription: Subscription;
+  globals: Globals;
+  constructor(public loginService:AuthenticationService, private apiService: ApiService,
+    private msg: MessengerService, private searchFilter: SearchFilterPipe, globals: Globals) {
+      this.globals = globals;
+    }
+  
 
   ngOnInit() {
     this.getAllBooks();
+    this.msg.getMsg().subscribe((book: Book) => {
+      this.globals.books.push(book);
+      console.log(this.globals);
+    }
+  );
   }
 
   public getAllBooks(){
@@ -47,6 +61,11 @@ export class HeaderComponent implements OnInit {
   closeToggle(){
     this.showDropDown = false;
   }
+
+
+
+
+
 
 }
 

@@ -24,10 +24,12 @@ import { SuccessComponent } from './components/site/success/success.component';
 import { ThankyouComponent } from './components/site/thankyou/thankyou.component';
 
 import { RouterModule, Routes } from '@angular/router';
-
+import { Globals } from 'src/app/model/globals';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { AuthGaurdService } from './service/auth-gaurd.service';
+
+import { MessengerService } from './service/messenger.service';
 
 import { HttpClientModule } from '@angular/common/http';
 import { MyFilterPipePipe } from './shared/pipes/my-filter-pipe.pipe';
@@ -167,9 +169,12 @@ const appRoutes: Routes = [
     MatSortModule,
     MatPaginatorModule,
     BrowserAnimationsModule,
+    
   ],
   providers: 
   [
+    Globals,
+    MessengerService,
   ],
   bootstrap: [AppComponent]
 })

@@ -31,9 +31,9 @@
               <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="account" href="account.html"><span class="icon icon-person"></span></a></li>
               <li><a routerLink="read" href="read.html"><span class="icon icon-book"></span></a></li>
               <li>
-                <a routerLink="cart" href="cart.html" class="site-cart">
+                <a routerLink="cart" class="site-cart">
                   <span class="icon icon-shopping_cart"></span>
-                  <span class="count">2</span>
+                  <span class="count">{{globals.books.length}}</span>
                 </a>
               </li>
               <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span

@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ApiService } from "../../../shared/api.service";
 import { Author } from "../../../model/author";
 import { Category } from "../../../model/category";
+import { MessengerService } from 'src/app/service/messenger.service'
 
 @Component({
   selector: 'app-shop-single',
@@ -22,7 +23,7 @@ export class ShopSingleComponent implements OnInit {
 
   books: Book[] = [];
 
-  constructor(private route: ActivatedRoute, private apiService: ApiService) { }
+  constructor(private route: ActivatedRoute, private apiService: ApiService, private msg:MessengerService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => this.index = params['id']);
@@ -81,6 +82,14 @@ export class ShopSingleComponent implements OnInit {
     {
       this.counter--;
     }
+  }
+
+  addToCart() {
+    this.msg.sendMsg(this.selectedBook);
+  }
+
+  clearMessage():void{
+    this.msg.clearMessage();
   }
 
 }
