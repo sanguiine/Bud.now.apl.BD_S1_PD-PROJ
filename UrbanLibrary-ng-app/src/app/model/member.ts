@@ -1,3 +1,4 @@
+import { Book } from "./book";
 export interface Member{
     memberID: number;
     firstName: string;
@@ -10,4 +11,7 @@ export interface Member{
     email: string;
     password: string;
     role: string;
+    bookReadByMember: Book[];
+    bookReserved: Book[];
+    loanlist: [];
 }
