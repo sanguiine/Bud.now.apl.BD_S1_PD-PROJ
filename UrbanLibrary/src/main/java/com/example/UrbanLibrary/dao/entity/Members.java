@@ -33,10 +33,24 @@ public class Members {
     @Column(name = "role")
     private String role;
 
-    @OneToMany(mappedBy = "member")
-    private List<ReadByMember> readByMemberList;
+    @ManyToMany
+    @JoinTable(
+            name="ReadByMember",
+            joinColumns=@JoinColumn(name="memberID", referencedColumnName="memberID"),
+            inverseJoinColumns=@JoinColumn(name="bookID", referencedColumnName="bookID")
+    )
+    private List<Books> bookReadByMember;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, orphanRemoval = true, mappedBy = "member")
+    @ManyToMany
+    @JoinTable(
+            name="Reservations",
+            joinColumns=@JoinColumn(name="memberID", referencedColumnName="memberID"),
+            inverseJoinColumns=@JoinColumn(name="bookID", referencedColumnName="bookID")
+    )
+    private List<Books> bookReserved;
+
+
+    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "member")
     private List<Loans> loansList;
 
     public Members()
@@ -45,7 +59,8 @@ public class Members {
     }
 
     public Members(String firstName, String lastName, LocalDate birthDay, String city, String zipCode,
-                   String address, String phoneNumber, String email, String password, String role)
+                   String address, String phoneNumber, String email, String password, String role,
+                   List<Books> bookReserved, List<Books> bookReadByMember)
     {
         this.firstNname = firstName;
         this.lastName = lastName;
@@ -57,9 +72,25 @@ public class Members {
         this.email = email;
         this.password = password;
         this.role = role;
+        this.bookReserved = bookReserved;
+        this.bookReadByMember = bookReadByMember;
     }
 
+    public List<Books> getBookReserved() {
+        return bookReserved;
+    }
 
+    public void setBookReserved(List<Books> bookReserved) {
+        this.bookReserved = bookReserved;
+    }
+
+    public List<Books> getBookReadByMember() {
+        return bookReadByMember;
+    }
+
+    public void setBookReadByMember(List<Books> bookReadByMember) {
+        this.bookReadByMember = bookReadByMember;
+    }
 
     public long getMemberID() {
         return memberID;
@@ -139,14 +170,6 @@ public class Members {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public List<ReadByMember> getReadByMemberList() {
-        return readByMemberList;
-    }
-
-    public void setReadByMemberList(List<ReadByMember> readByMemberList) {
-        this.readByMemberList = readByMemberList;
     }
 
     public String getRole() {

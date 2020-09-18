@@ -44,13 +44,13 @@ public class BooksManager {
         //save(new Books("Potop", "Bardzo fajna książka", LocalDate.of(1959,11,11), imageFileToByte("cloth_1.jpg"), true,
         //        Arrays.asList(categoriesRepository.findById(1l).get()), Arrays.asList(authorsRepository.findById(2l).get()), null));
         save(new Books("Potop", "Bardzo fajna książka", LocalDate.of(1959,11,11), "cloth_2.jpg", true,
-                Arrays.asList(categoriesRepository.findById(1l).get()),Arrays.asList(authorsRepository.findById(2l).get()), null));
+                Arrays.asList(categoriesRepository.findById(1l).get()),Arrays.asList(authorsRepository.findById(2l).get())));
         save(new Books("Ogniem i mieczem", "Bardzo fajna książka", LocalDate.of(1959,11,11), "cloth_1.jpg", true,
-                Arrays.asList(categoriesRepository.findById(1l).get()),Arrays.asList(authorsRepository.findById(2l).get()), null));
+                Arrays.asList(categoriesRepository.findById(1l).get()),Arrays.asList(authorsRepository.findById(2l).get())));
         save(new Books("Lalka", "Bardzo fajna książka", LocalDate.of(1959,11,11), "cloth_3.jpg", true,
-                Arrays.asList(categoriesRepository.findById(2l).get()),Arrays.asList(authorsRepository.findById(4l).get()), null));
+                Arrays.asList(categoriesRepository.findById(2l).get()),Arrays.asList(authorsRepository.findById(4l).get())));
         save(new Books("Proces", "Bardzo fajna książka", LocalDate.of(1959,11,11), "shoe_1.jpg", true,
-                Arrays.asList(categoriesRepository.findById(2l).get()),Arrays.asList(authorsRepository.findById(5l).get()), null));
+                Arrays.asList(categoriesRepository.findById(2l).get()),Arrays.asList(authorsRepository.findById(5l).get())));
     }
 
     public Books save(Books book){ return booksRepository.save(book); }

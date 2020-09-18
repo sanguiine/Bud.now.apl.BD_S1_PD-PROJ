@@ -11,15 +11,27 @@ public class ReadByMember {
     private long readByMemberID;
 
     //klucz obcy z Books
-    @ManyToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "bookID")
-    private Books book;
+    private Books books;
     //klucz obcy z Members
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "memberID")
-    private Members member;
+    private Members memberRead;
     @Column(name = "rate")
     private int rate;
+
+    public ReadByMember()
+    {
+
+    }
+
+    public ReadByMember(Members member, Books book, int rate)
+    {
+        this.memberRead = member;
+        this.books = book;
+        this.rate = rate;
+    }
 
     public long getReadByMemberID() {
         return readByMemberID;
@@ -29,20 +41,16 @@ public class ReadByMember {
         this.readByMemberID = readByMemberID;
     }
 
-    public Books getBook() {
-        return book;
+    public Books getBooks() { return books; }
+
+    public void setBooks(Books books) { this.books = books; }
+
+    public Members getMemberRead() {
+        return memberRead;
     }
 
-    public void setBook(Books book) {
-        this.book = book;
-    }
-
-    public Members getMember() {
-        return member;
-    }
-
-    public void setMember(Members member) {
-        this.member = member;
+    public void setMemberRead(Members memberRead) {
+        this.memberRead = memberRead;
     }
 
     public int getRate() {
@@ -57,8 +65,7 @@ public class ReadByMember {
     public String toString() {
         return "ReadByMember{" +
                 "readByMemberID=" + readByMemberID +
-                ", bookID=" + book +
-                ", member=" + member +
+                ", member=" + memberRead +
                 ", rate=" + rate +
                 '}';
     }

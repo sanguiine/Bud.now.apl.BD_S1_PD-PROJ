@@ -1,14 +1,12 @@
 package com.example.UrbanLibrary.api;
 
-import com.example.UrbanLibrary.dao.entity.Authors;
 import com.example.UrbanLibrary.dao.entity.ReadByMember;
-import com.example.UrbanLibrary.manager.AuthorsManager;
 import com.example.UrbanLibrary.manager.ReadByMemberManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
-
+@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*", exposedHeaders = "Authorization")
 @RestController
 @RequestMapping("/api/readByMember")
 public class ReadByMemberController {

@@ -25,12 +25,10 @@ public class Books {
     private String description;
     @Column(name = "date")
     private LocalDate date;
-
     @Column(name = "available")
     private boolean isAvailable;
 
-    @OneToMany(mappedBy = "book")
-    private List<ReadByMember> booksReadByMember;
+
 
     @ManyToMany
     @JoinTable(
@@ -48,20 +46,13 @@ public class Books {
     )
     private List<Authors> authors;
 
-    @ManyToMany
-    @JoinTable(
-            name="Reservations",
-            joinColumns=@JoinColumn(name="bookID", referencedColumnName="bookID"),
-            inverseJoinColumns=@JoinColumn(name="reservationID", referencedColumnName="reservationID")
-    )
-    private List<ReservationDetails> reservations;
 
 
     public Books()
     {
 
     }
-    public Books(String title, String description, LocalDate date,String imgName, Boolean isAvailable, List<Categories> categories, List<Authors> authors, List<ReservationDetails> reservations)
+    public Books(String title, String description, LocalDate date,String imgName, Boolean isAvailable, List<Categories> categories, List<Authors> authors)
     {
         this.title = title;
         this.description = description;
@@ -70,7 +61,6 @@ public class Books {
         this.isAvailable = isAvailable;
         this.categories = categories;
         this.authors = authors;
-        this.reservations = reservations;
     }
 
 
@@ -131,14 +121,6 @@ public class Books {
         isAvailable = available;
     }
 
-    public List<ReadByMember> getBooksReadByMember() {
-        return booksReadByMember;
-    }
-
-    public void setBooksReadByMember(List<ReadByMember> booksReadByMember) {
-        this.booksReadByMember = booksReadByMember;
-    }
-
     public List<Categories> getCategories() {
         return categories;
     }
@@ -153,14 +135,6 @@ public class Books {
 
     public void setAuthors(List<Authors> authors) {
         this.authors = authors;
-    }
-
-    public List<ReservationDetails> getReservations() {
-        return reservations;
-    }
-
-    public void setReservations(List<ReservationDetails> reservations) {
-        this.reservations = reservations;
     }
 
     @Override

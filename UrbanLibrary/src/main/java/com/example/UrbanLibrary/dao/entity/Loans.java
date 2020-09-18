@@ -2,7 +2,6 @@ package com.example.UrbanLibrary.dao.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Table(name = "Loans")
@@ -13,7 +12,7 @@ public class Loans {
     private long loanID;
 
     //klucz obcy z Books
-    @OneToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="bookID")
     private Books book;
     //klucz obcy z Members
