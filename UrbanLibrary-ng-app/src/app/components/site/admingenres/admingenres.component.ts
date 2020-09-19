@@ -12,6 +12,11 @@ import { ApiService } from '../../../shared/api.service';
   ]
 })
 export class AdmingenresComponent implements OnInit {
+  model: Category = {
+    categoryID: null,
+    name: ''
+  };
+
   categories: Category[] = [];
 
   constructor(private apiService: ApiService) { }
@@ -27,6 +32,17 @@ export class AdmingenresComponent implements OnInit {
       },
       err => {
         alert('An error has occured');
+      }
+    );
+  }
+
+  addCategory(): void {
+    this.apiService.postCategory(this.model).subscribe(
+      res => {
+        location.reload();
+      },
+      err => {
+        alert('An error has occured while sending data.');
       }
     );
   }

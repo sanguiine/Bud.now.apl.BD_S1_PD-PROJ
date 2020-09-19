@@ -66,7 +66,7 @@ export class ApiService {
   }
 
   postCategory(category: Category): Observable<Category>{
-    return this.http.post<Category>(this.SAVE_UPDATE_MEMBER, category);
+    return this.http.post<Category>(this.SAVE_UPDATE_CATEGORY, category);
   }
 
   getAllAuthors(): Observable<Author[]>{
