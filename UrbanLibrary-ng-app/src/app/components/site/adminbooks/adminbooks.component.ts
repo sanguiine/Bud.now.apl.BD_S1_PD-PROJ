@@ -57,4 +57,15 @@ export class AdminbooksComponent implements OnInit {
       }
     );
   }
+
+  deleteBook(bookID : number) {
+    this.apiService.deleteBook(bookID).subscribe(
+      res => {
+        location.reload();
+      },
+      err => {
+        alert('An error has occured while deleting data.');
+      }
+    );
+  }
 }

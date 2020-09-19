@@ -41,7 +41,7 @@
                   <td><p *ngFor="let category of book.categories ">{{category.name}}</p></td>
                   <td>
                     <button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
-                    <button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button>
+                    <button type="button" class="btn btn-primary m-t-1 waves-effect" (click)="deleteBook(book.bookID)">Usuń</button>
                   </td>
                 </tr>
                 <tr>

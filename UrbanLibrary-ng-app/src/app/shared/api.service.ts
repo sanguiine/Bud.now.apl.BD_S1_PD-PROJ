@@ -19,6 +19,7 @@ export class ApiService {
   private BOOK_BY_ID = this.BASE_URL.concat('/books/byId/');
   private BOOK_COUNT_BY_CATEGORYNAME = this.BASE_URL.concat('/books/count/');
   private SAVE_UPDATE_BOOK = this.BASE_URL.concat('/books');
+  private DELETE_BOOK = this.BASE_URL.concat('/books/');
 
   // CATEGORIES
   private ALL_CATEGORIES_URL = this.BASE_URL.concat('/categories/all');
@@ -67,6 +68,10 @@ export class ApiService {
 
   postBook(book: Book): Observable<Book>{
     return this.http.post<Book>(this.SAVE_UPDATE_BOOK, book);
+  }
+
+  deleteBook(id: number): Observable<any>{
+    return this.http.delete(this.DELETE_BOOK + id);
   }
 
   getAllCategories(): Observable<Category[]> {
