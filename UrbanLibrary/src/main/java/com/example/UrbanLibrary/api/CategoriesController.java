@@ -33,17 +33,17 @@ public class CategoriesController {
     }
 
     @PostMapping
-    public Categories addMember(@RequestBody Categories category){
+    public Categories addCategory(@RequestBody Categories category){
         return categoriesManager.save(category);
     }
 
     @PutMapping
-    public Categories updateMember(@RequestBody Categories category){
+    public Categories updateCategory(@RequestBody Categories category){
         return categoriesManager.save(category);
     }
 
     @DeleteMapping ("/{index}")
-    public void deleteMember(@PathVariable Long index)
+    public void deleteCategory(@PathVariable Long index)
     {
         categoriesManager.deleteById(index);
     }
