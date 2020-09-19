@@ -18,6 +18,7 @@ export class ApiService {
   private ALL_BOOKS_URL = this.BASE_URL.concat('/books/all');
   private BOOK_BY_ID = this.BASE_URL.concat('/books/byId/');
   private BOOK_COUNT_BY_CATEGORYNAME = this.BASE_URL.concat('/books/count/');
+  private SAVE_UPDATE_BOOK = this.BASE_URL.concat('/books');
 
   // CATEGORIES
   private ALL_CATEGORIES_URL = this.BASE_URL.concat('/categories/all');
@@ -60,6 +61,10 @@ export class ApiService {
 
   getCountBook(categoryName: string): Observable<number> {
     return this.http.get<number>(this.BOOK_COUNT_BY_CATEGORYNAME + categoryName);
+  }
+
+  postBook(book: Book): Observable<Book>{
+    return this.http.post<Book>(this.SAVE_UPDATE_BOOK, book);
   }
 
   getAllCategories(): Observable<Category[]> {
