@@ -23,101 +23,21 @@
                                 <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                     <thead>
                                         <tr>
-											<th>ID użytkownika</th>
+											                      <th>ID użytkownika</th>
                                             <th>Email</th>
                                             <th>Imię</th>
                                             <th>Nazwisko</th>
                                             <th>Akcje</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody *ngFor="let member of members">
                                         <tr>
-                                            <td>1</td>
-                                            <td>abc@g.com</td>
-                                            <td>Edinburgh</td>
-                                            <td>SDAdfsafa</td>
+                                            <td>{{member.memberID}}</td>
+                                            <td>{{member.email}}</td>
+                                            <td>{{member.firstNname}}</td>
+                                            <td>{{member.lastName}}</td>
                                             <td><button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
-											<button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>abc@g.com</td>
-                                            <td>Edinburgh</td>
-                                            <td>SDAdfsafa</td>
-                                            <td><button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
-											<button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>abc@g.com</td>
-                                            <td>Edinburgh</td>
-                                            <td>SDAdfsafa</td>
-                                            <td><button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
-											<button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>abc@g.com</td>
-                                            <td>Edinburgh</td>
-                                            <td>SDAdfsafa</td>
-                                            <td><button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
-											<button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>abc@g.com</td>
-                                            <td>Edinburgh</td>
-                                            <td>SDAdfsafa</td>
-                                            <td><button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
-											<button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>abc@g.com</td>
-                                            <td>Edinburgh</td>
-                                            <td>SDAdfsafa</td>
-                                            <td><button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
-											<button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>abc@g.com</td>
-                                            <td>Edinburgh</td>
-                                            <td>SDAdfsafa</td>
-                                            <td><button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
-											<button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>abc@g.com</td>
-                                            <td>Edinburgh</td>
-                                            <td>SDAdfsafa</td>
-                                            <td><button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
-											<button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>abc@g.com</td>
-                                            <td>Edinburgh</td>
-                                            <td>SDAdfsafa</td>
-                                            <td><button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
-											<button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>abc@g.com</td>
-                                            <td>Edinburgh</td>
-                                            <td>SDAdfsafa</td>
-                                            <td><button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
-											<button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button></td>
-                                        </tr>
-										<tr>
-                                            <td>1</td>
-                                            <td>abc@g.com</td>
-                                            <td>Edinburgh</td>
-                                            <td>SDAdfsafa</td>
-                                            <td><button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
-											<button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button></td>
+											                      <button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button></td>
                                         </tr>
                                     </tbody>
                                 </table>

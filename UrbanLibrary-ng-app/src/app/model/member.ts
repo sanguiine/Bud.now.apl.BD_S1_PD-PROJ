@@ -1,7 +1,7 @@
 import { Book } from "./book";
 export interface Member{
     memberID: number;
-    firstName: string;
+    firstNname: string;
     lastName: string;
     birthDate: Date;
     city: string;

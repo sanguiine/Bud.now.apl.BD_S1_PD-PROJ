@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Member } from '../../../model/member';
+import { ApiService } from '../../../shared/api.service';
 
 @Component({
   selector: 'app-adminusers',
@@ -10,10 +12,22 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class AdminusersComponent implements OnInit {
+  members: Member[] = [];
 
-  constructor() { }
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
+    this.getAllMembers();
   }
 
+  public getAllMembers(){
+    this.apiService.getAllMembers().subscribe(
+      res => {
+        this.members = res;
+      },
+      err => {
+        alert('An error has occured');
+      }
+    );
+  }
 }
