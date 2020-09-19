@@ -39,7 +39,7 @@
                         </div>
                       </div>
                     </td>
-                    <td><a routerLink="/cart" class="btn btn-primary btn-sm">X</a></td>
+                    <td><a (click)="deteleItemCart(book)" class="btn btn-primary btn-sm">X</a></td>
                   </tr>
                 </tbody>
               </table>
@@ -51,7 +51,7 @@
           <div class="col-md-6">
             <div class="row mb-5">
               <div class="col-md-6 mb-3 mb-md-0">
-                <button routerLink="/cart" class="btn btn-primary btn-sm btn-block">Aktualizuj koszyk</button>
+                <button (click)="aktualizuj()" class="btn btn-primary btn-sm btn-block">Aktualizuj koszyk</button>
               </div>
             </div>
           </div>

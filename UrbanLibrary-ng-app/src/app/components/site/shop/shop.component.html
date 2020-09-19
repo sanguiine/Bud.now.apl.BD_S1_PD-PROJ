@@ -42,8 +42,10 @@
               <div class="block-4-text p-4">
                 <h3><a routerLink="/shop-single" href="shop-single.html"></a>{{book.title}}</h3>
                 <p class="mb-0">{{book.authors[0].firstName + " " + book.authors[0].lastName}}</p>
-                <p *ngIf="!book.isAvailable" class="text-primary font-weight-bold">Dostępna</p>
-                <p *ngIf="book.isAvailable" class="text-primary font-weight-bold">Niedostępna</p>
+                <p *ngIf="!book.isAvailable; else notAvailable" class="text-primary font-weight-bold">Dostępna</p>
+                <ng-template #notAvailable>
+                  <p class="text-primary font-weight-bold">Niedostępna</p>
+                </ng-template>
               </div>
             </div>
           </div>
