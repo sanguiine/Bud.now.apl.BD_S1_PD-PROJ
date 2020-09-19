@@ -6,6 +6,7 @@ import { Category } from '../model/category';
 import { ReadedByMember } from "../model/readed";
 import { Member } from "../model/member";
 import { Author } from "../model/author";
+import { Loan } from "../model/loan";
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,10 @@ export class ApiService {
 
   //AUTHORS
   private ALL_AUTHORS_URL = this.BASE_URL.concat("/authors/all");
+
+
+  //LOANS
+  private ALL_LOANS_URL = this.BASE_URL.concat("/loans/all");
 
 
   getAllMembers() : Observable<Member[]>{
@@ -65,4 +70,7 @@ export class ApiService {
     return this.http.get<Author[]>(this.ALL_AUTHORS_URL);
   }
 
+  getAllLoans(): Observable<Loan[]>{
+    return this.http.get<Loan[]>(this.ALL_LOANS_URL);
+  }
 }

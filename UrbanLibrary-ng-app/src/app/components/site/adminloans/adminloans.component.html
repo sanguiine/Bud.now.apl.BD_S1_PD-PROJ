@@ -23,125 +23,25 @@
                                 <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                     <thead>
                                         <tr>
-											<th>ID wypożyczenia</th>
-											<th>Data wypożyczenia</th>
-											<th>Data zwrotu</th>
+                                            <th>ID wypożyczenia</th>
+                                            <th>Data wypożyczenia</th>
+                                            <th>Data zwrotu</th>
                                             <th>Imię</th>
                                             <th>Nazwisko</th>
-											<th>Tytuł książki</th>
+                                            <th>Tytuł książki</th>
                                             <th>Akcje</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody *ngFor="let loan of loans">
                                         <tr>
-                                            <td>1</td>
-											<td>1-1-2020</td>
-											<td></td>
-                                            <td>khkghk</td>
-                                            <td>Edinburgh</td>
-                                            <td>SDAdfsafa</td>
+                                            <td>{{loan.loanID}}</td>
+                                            <td>{{loan.dateLoaned}}</td>
+                                            <td>{{loan.dateReturned}}</td>
+                                            <td>{{loan.member.firstNname}}</td>
+                                            <td>{{loan.member.lastName}}</td>
+                                            <td>{{loan.book.title}}</td>
                                             <td><button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
-											<button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-											<td>1-1-2020</td>
-											<td></td>
-                                            <td>khkghk</td>
-                                            <td>Edinburgh</td>
-                                            <td>SDAdfsafa</td>
-                                            <td><button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
-											<button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-											<td>1-1-2020</td>
-											<td></td>
-                                            <td>khkghk</td>
-                                            <td>Edinburgh</td>
-                                            <td>SDAdfsafa</td>
-                                            <td><button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
-											<button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-											<td>1-1-2020</td>
-											<td></td>
-                                            <td>khkghk</td>
-                                            <td>Edinburgh</td>
-                                            <td>SDAdfsafa</td>
-                                            <td><button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
-											<button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-											<td>1-1-2020</td>
-											<td></td>
-                                            <td>khkghk</td>
-                                            <td>Edinburgh</td>
-                                            <td>SDAdfsafa</td>
-                                            <td><button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
-											<button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-											<td>1-1-2020</td>
-											<td></td>
-                                            <td>khkghk</td>
-                                            <td>Edinburgh</td>
-                                            <td>SDAdfsafa</td>
-                                            <td><button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
-											<button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-											<td>1-1-2020</td>
-											<td></td>
-                                            <td>khkghk</td>
-                                            <td>Edinburgh</td>
-                                            <td>SDAdfsafa</td>
-                                            <td><button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
-											<button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-											<td>1-1-2020</td>
-											<td></td>
-                                            <td>khkghk</td>
-                                            <td>Edinburgh</td>
-                                            <td>SDAdfsafa</td>
-                                            <td><button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
-											<button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-											<td>1-1-2020</td>
-											<td></td>
-                                            <td>khkghk</td>
-                                            <td>Edinburgh</td>
-                                            <td>SDAdfsafa</td>
-                                            <td><button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
-											<button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-											<td>1-1-2020</td>
-											<td></td>
-                                            <td>khkghk</td>
-                                            <td>Edinburgh</td>
-                                            <td>SDAdfsafa</td>
-                                            <td><button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
-											<button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button></td>
-                                        </tr>
-										<tr>
-                                            <td>1</td>
-											<td>1-1-2020</td>
-											<td></td>
-                                            <td>khkghk</td>
-                                            <td>Edinburgh</td>
-                                            <td>SDAdfsafa</td>
-                                            <td><button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
-											<button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button></td>
+                                            <button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button></td>
                                         </tr>
                                     </tbody>
                                 </table>

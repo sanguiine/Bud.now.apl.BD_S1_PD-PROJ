@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Loan } from '../../../model/loan';
+import { ApiService } from '../../../shared/api.service';
 
 @Component({
   selector: 'app-adminloans',
@@ -10,10 +12,22 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class AdminloansComponent implements OnInit {
+  loans: Loan[] = [];
 
-  constructor() { }
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
+    this.getAllLoans();
   }
 
+  public getAllLoans(){
+    this.apiService.getAllLoans().subscribe(
+      res => {
+        this.loans = res;
+      },
+      err => {
+        alert('An error has occured');
+      }
+    );
+  }
 }
