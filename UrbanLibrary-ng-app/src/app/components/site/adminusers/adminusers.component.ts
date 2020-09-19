@@ -58,4 +58,15 @@ export class AdminusersComponent implements OnInit {
       }
     );
   }
+
+  deleteMember(memberID : number) {
+    this.apiService.deleteMember(memberID).subscribe(
+      res => {
+        location.reload();
+      },
+      err => {
+        alert('An error has occured while deleting data.');
+      }
+    );
+  }
 }

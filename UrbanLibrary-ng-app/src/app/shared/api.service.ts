@@ -32,6 +32,7 @@ export class ApiService {
   // MEMBERS
   private ALL_MEMBERS_URL = this.BASE_URL.concat('/members/all');
   private SAVE_UPDATE_MEMBER = this.BASE_URL.concat('/members');
+  private DELETE_MEMBER = this.BASE_URL.concat('/members/');
 
   // AUTHORS
   private ALL_AUTHORS_URL = this.BASE_URL.concat('/authors/all');
@@ -48,6 +49,10 @@ export class ApiService {
 
   postMember(member: Member): Observable<Member>{
     return this.http.post<Member>(this.SAVE_UPDATE_MEMBER, member);
+  }
+
+  deleteMember(id: number): Observable<any>{
+    return this.http.delete(this.DELETE_MEMBER + id);
   }
 
   constructor(private http: HttpClient) {
