@@ -1,5 +1,5 @@
-import {Book} from "./book";
-import {Member} from "./member";
+import {Book} from './book';
+import {Member} from './member';
 
 export interface Loan {
     loanID: number;
