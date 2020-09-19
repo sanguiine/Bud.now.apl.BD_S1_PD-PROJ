@@ -29,30 +29,13 @@ export class HeaderComponent implements OnInit {
   globals: Globals;
   constructor(public loginService:AuthenticationService, private apiService: ApiService,
     private msg: MessengerService, private searchFilter: SearchFilterPipe, globals: Globals) {
-      this.globals = globals;
     }
   
 
   ngOnInit() {
-    this.getAllBooks();
-    this.msg.getMsg().subscribe((book: Book) => {
-      this.globals.books.push(book);
-      console.log(this.globals);
-    }
-  );
+    this.cartItems = JSON.parse(localStorage.getItem("cart"));
   }
 
-  public getAllBooks(){
-    this.apiService.getAllBooks().subscribe(
-      res => {
-        this.books = res;
-        console.log(this.books);
-      },
-      err =>{
-        alert("An error has occured");
-      }
-    );
-  }
 
   toggleDropDown(){
     this.showDropDown = !this.showDropDown;

@@ -85,7 +85,19 @@ export class ShopSingleComponent implements OnInit {
   }
 
   addToCart() {
-    this.msg.sendMsg(this.selectedBook);
+    
+    if(localStorage.getItem("cart"))
+    {
+      var cart = JSON.parse(localStorage.getItem("cart"));
+      cart.push(this.selectedBook);
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+    else
+    {
+      var cartt = [];
+      cartt.push(this.selectedBook);
+      localStorage.setItem("cart", JSON.stringify(cartt));
+    }
   }
 
   clearMessage():void{

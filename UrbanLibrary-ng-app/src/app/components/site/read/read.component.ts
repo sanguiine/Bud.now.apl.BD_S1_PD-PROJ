@@ -24,13 +24,9 @@ export class ReadComponent implements OnInit {
     {
       if(this.member.bookReadByMember[i].bookID == bookID)
       {
-        console.log(this.member.bookReadByMember[i]);
         this.member.bookReadByMember.splice(i,1);
-        console.log(this.member.bookReadByMember);
       }
     }
-    console.log(this.member);
-    localStorage.clear();
     localStorage.setItem("loggedMember", JSON.stringify(this.member));
     this.updateMember(this.member);
     

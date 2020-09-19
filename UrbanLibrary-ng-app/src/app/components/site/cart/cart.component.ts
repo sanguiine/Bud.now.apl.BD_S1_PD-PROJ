@@ -17,7 +17,23 @@ export class CartComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.cartItems = this.globals.books;
+    this.cartItems = JSON.parse(localStorage.getItem("cart"));
   }
   
+
+  deteleItemCart(book){
+    for(var i =0; i<this.cartItems.length;i++)
+    {
+      if(this.cartItems[i].bookID == book.bookID)
+      {
+        this.cartItems.splice(i,1);
+      }
+    }
+    localStorage.setItem("cart", JSON.stringify(this.cartItems));
+  }
+
+  aktualizuj(){
+    location.reload();
+  }
+
 }

@@ -33,7 +33,10 @@
               <li>
                 <a routerLink="/cart" class="site-cart">
                   <span class="icon icon-shopping_cart"></span>
-                  <span class="count">{{globals.books.length}}</span>
+                  <span *ngIf="cartItems; else notCartItems" class="count">{{cartItems.length}}</span>
+                  <ng-template #notCartItems>
+                    <span class="count">0</span>
+                  </ng-template>
                 </a>
               </li>
               <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span
