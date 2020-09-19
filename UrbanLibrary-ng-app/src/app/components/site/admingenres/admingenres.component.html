@@ -10,7 +10,7 @@
                     GATUNKI KSIĄŻEK
                 </h2>
             </div>
-			
+
 			<div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
@@ -24,25 +24,18 @@
                                 <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                     <thead>
                                         <tr>
-											<th>ID gatunku</th>
-											<th>Nazwa</th>
-											<th>Akcje</th>
+                                          <th>ID gatunku</th>
+                                          <th>Nazwa</th>
+                                          <th>Akcje</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody *ngFor="let category of categories">
                                         <tr>
-                                            <td>1</td>
-											<td>hgfhfg</td>
+                                            <td>{{category.categoryID}}</td>
+                                            <td>{{category.name}}</td>
                                             <td><button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
-											<button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button>
-											</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-											<td>hgfhfg</td>
-                                            <td><button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
-											<button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button>
-											</td>
+                                            <button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -51,7 +44,7 @@
                     </div>
                 </div>
             </div>
-			
+
 			<div class="row clearfix">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                     <div class="card">

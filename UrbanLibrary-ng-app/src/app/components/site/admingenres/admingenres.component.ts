@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Category } from '../../../model/category';
+import { ApiService } from '../../../shared/api.service';
 
 @Component({
   selector: 'app-admingenres',
@@ -10,10 +12,22 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class AdmingenresComponent implements OnInit {
+  categories: Category[] = [];
 
-  constructor() { }
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
+    this.getAllCategories();
   }
 
+  public getAllCategories(){
+    this.apiService.getAllCategories().subscribe(
+      res => {
+        this.categories = res;
+      },
+      err => {
+        alert('An error has occured');
+      }
+    );
+  }
 }
