@@ -23,75 +23,26 @@
                                 <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                     <thead>
                                         <tr>
-											<th>ID książki</th>
-											<th>Data wydania</th>
-											<th>Tytuł</th>
+                                            <th>ID książki</th>
+                                            <th>Data wydania</th>
+                                            <th>Tytuł</th>
                                             <th>Autorzy</th>
                                             <th>Gatunki</th>
                                             <th>Akcje</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody *ngFor="let book of books">
                                         <tr>
-                                            <td>1</td>
-											<td>1-1-2020</td>
-											<td>fsafsa</td>
-                                            <td>khkghk, dsa</td>
-                                            <td>fsa, fsaf, fsafs</td>
+                                            <td>{{book.bookID}}</td>
+                                            <td>{{book.date}}</td>
+                                            <td>{{book.title}}</td>
+                                            <td><p *ngFor="let author of book.authors ">{{author.firstName.concat(" ", author.lastName)}}</p></td>
+                                            <td><p *ngFor="let category of book.categories ">{{category.name}}</p></td>
                                             <td><button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
-											<button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button>
-											</td>
+                                            <button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button>
+                                            </td>
                                         </tr>
                                         <tr>
-                                            <td>1</td>
-											<td>1-1-2020</td>
-											<td>fsafsa</td>
-                                            <td>khkghk, dsa</td>
-                                            <td>fsa, fsaf, fsafs</td>
-                                            <td><button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
-											<button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button>
-											</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-											<td>1-1-2020</td>
-											<td>fsafsa</td>
-                                            <td>khkghk, dsa</td>
-                                            <td>fsa, fsaf, fsafs</td>
-                                            <td><button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
-											<button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button>
-											</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-											<td>1-1-2020</td>
-											<td>fsafsa</td>
-                                            <td>khkghk, dsa</td>
-                                            <td>fsa, fsaf, fsafs</td>
-                                            <td><button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
-											<button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button>
-											</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-											<td>1-1-2020</td>
-											<td>fsafsa</td>
-                                            <td>khkghk, dsa</td>
-                                            <td>fsa, fsaf, fsafs</td>
-                                            <td><button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
-											<button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button>
-											</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-											<td>1-1-2020</td>
-											<td>fsafsa</td>
-                                            <td>khkghk, dsa</td>
-                                            <td>fsa, fsaf, fsafs</td>
-                                            <td><button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
-											<button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button>
-											</td>
-                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -187,7 +138,7 @@
                     </div>
                 </div>
             </div>
-			
+
 			<div class="row clearfix">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                     <div class="card">
@@ -221,7 +172,7 @@
                         </div>
                     </div>
                 </div>
-				
+
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                     <div class="card">
                         <div class="header">
@@ -255,7 +206,7 @@
                     </div>
                 </div>
 			</div>
-			
+
 			<div class="row clearfix">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                     <div class="card">
@@ -289,7 +240,7 @@
                         </div>
                     </div>
                 </div>
-				
+
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                     <div class="card">
                         <div class="header">

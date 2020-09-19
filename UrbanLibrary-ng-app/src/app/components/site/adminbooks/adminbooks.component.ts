@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Book } from '../../../model/book';
+import { ApiService } from '../../../shared/api.service';
 
 @Component({
   selector: 'app-adminbooks',
@@ -10,10 +12,22 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class AdminbooksComponent implements OnInit {
+  books: Book[] = [];
 
-  constructor() { }
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
+    this.getAllBooks();
   }
 
+  public getAllBooks(){
+    this.apiService.getAllBooks().subscribe(
+      res => {
+        this.books = res;
+      },
+      err => {
+        alert('An error has occured');
+      }
+    );
+  }
 }
