@@ -5,6 +5,7 @@ import { Book } from "../model/book";
 import { Category } from '../model/category';
 import { ReadedByMember } from "../model/readed";
 import { Member } from "../model/member";
+import { Author } from "../model/author";
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,11 @@ export class ApiService {
   private ALL_MEMBERS_URL = this.BASE_URL.concat("/members/all");
   private SAVE_UPDATE_MEMBER = this.BASE_URL.concat("/members");
 
+
+  //AUTHORS
+  private ALL_AUTHORS_URL = this.BASE_URL.concat("/authors/all");
+
+
   getAllMembers() : Observable<Member[]>{
     return this.http.get<Member[]>(this.ALL_MEMBERS_URL);
   }
@@ -35,7 +41,7 @@ export class ApiService {
     return this.http.post<Member>(this.SAVE_UPDATE_MEMBER, member);
   }
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
 
   }
 
@@ -55,7 +61,8 @@ export class ApiService {
     return this.http.get<Category[]>(this.ALL_CATEGORIES_URL);
   }
 
-  
-
+  getAllAuthors(): Observable<Author[]>{
+    return this.http.get<Author[]>(this.ALL_AUTHORS_URL);
+  }
 
 }

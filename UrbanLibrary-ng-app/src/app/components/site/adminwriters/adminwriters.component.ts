@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Author } from '../../../model/author';
+import { ApiService } from '../../../shared/api.service';
 
 @Component({
   selector: 'app-adminwriters',
@@ -10,10 +12,22 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class AdminwritersComponent implements OnInit {
+  authors: Author[] = [];
 
-  constructor() { }
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
+    this.getAllAuthors();
   }
 
+  public getAllAuthors(){
+    this.apiService.getAllAuthors().subscribe(
+      res => {
+        this.authors = res;
+      },
+      err => {
+        alert('An error has occured');
+      }
+    );
+  }
 }
