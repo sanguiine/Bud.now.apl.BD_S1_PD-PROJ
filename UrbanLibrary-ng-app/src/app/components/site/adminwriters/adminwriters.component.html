@@ -36,7 +36,7 @@
                   <td>{{author.firstName}}</td>
                   <td>{{author.lastName}}</td>
                   <td><button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
-                    <button type="button" class="btn btn-primary m-t-1 waves-effect">Usuń</button>
+                    <button type="button" class="btn btn-primary m-t-1 waves-effect" (click)="deleteAuthor(author.authorID)">Usuń</button>
                   </td>
                 </tr>
                 </tbody>

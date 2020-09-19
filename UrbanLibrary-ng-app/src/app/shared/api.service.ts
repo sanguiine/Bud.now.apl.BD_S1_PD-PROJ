@@ -35,6 +35,7 @@ export class ApiService {
   // AUTHORS
   private ALL_AUTHORS_URL = this.BASE_URL.concat('/authors/all');
   private SAVE_UPDATE_AUTHOR = this.BASE_URL.concat('/authors');
+  private DELETE_AUTHOR = this.BASE_URL.concat('/authors/');
 
   // LOANS
   private ALL_LOANS_URL = this.BASE_URL.concat('/loans/all');
@@ -86,6 +87,10 @@ export class ApiService {
 
   postAuthor(author: Author): Observable<Author>{
     return this.http.post<Author>(this.SAVE_UPDATE_AUTHOR, author);
+  }
+
+  deleteAuthor(id: number): Observable<any>{
+    return this.http.delete(this.DELETE_AUTHOR + id);
   }
 
   getAllLoans(): Observable<Loan[]>{

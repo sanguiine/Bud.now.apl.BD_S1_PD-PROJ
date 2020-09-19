@@ -48,4 +48,15 @@ export class AdminwritersComponent implements OnInit {
       }
     );
   }
+
+  deleteAuthor(authorID : number) {
+    this.apiService.deleteAuthor(authorID).subscribe(
+      res => {
+        location.reload();
+      },
+      err => {
+        alert('An error has occured while deleting data.');
+      }
+    );
+  }
 }
