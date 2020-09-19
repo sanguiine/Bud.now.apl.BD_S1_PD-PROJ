@@ -32,6 +32,7 @@ export class ApiService {
 
   // AUTHORS
   private ALL_AUTHORS_URL = this.BASE_URL.concat('/authors/all');
+  private SAVE_UPDATE_AUTHOR = this.BASE_URL.concat('/authors');
 
   // LOANS
   private ALL_LOANS_URL = this.BASE_URL.concat('/loans/all');
@@ -71,6 +72,10 @@ export class ApiService {
 
   getAllAuthors(): Observable<Author[]>{
     return this.http.get<Author[]>(this.ALL_AUTHORS_URL);
+  }
+
+  postAuthor(author: Author): Observable<Author>{
+    return this.http.post<Author>(this.SAVE_UPDATE_AUTHOR, author);
   }
 
   getAllLoans(): Observable<Loan[]>{
