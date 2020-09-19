@@ -46,4 +46,15 @@ export class AdmingenresComponent implements OnInit {
       }
     );
   }
+
+  deleteCategory(categoryID : number) {
+    this.apiService.deleteCategory(categoryID).subscribe(
+      res => {
+        location.reload();
+      },
+      err => {
+        alert('An error has occured while deleting data.');
+      }
+    );
+  }
 }

@@ -23,6 +23,7 @@ export class ApiService {
   // CATEGORIES
   private ALL_CATEGORIES_URL = this.BASE_URL.concat('/categories/all');
   private SAVE_UPDATE_CATEGORY = this.BASE_URL.concat('/categories');
+  private DELETE_CATEGORY = this.BASE_URL.concat('/categories/');
 
   // READBYMEMBER
   private ALL_READED_URL = this.BASE_URL.concat('/readByMember/all');
@@ -73,6 +74,10 @@ export class ApiService {
 
   postCategory(category: Category): Observable<Category>{
     return this.http.post<Category>(this.SAVE_UPDATE_CATEGORY, category);
+  }
+
+  deleteCategory(id: number): Observable<any>{
+    return this.http.delete(this.DELETE_CATEGORY + id);
   }
 
   getAllAuthors(): Observable<Author[]>{
