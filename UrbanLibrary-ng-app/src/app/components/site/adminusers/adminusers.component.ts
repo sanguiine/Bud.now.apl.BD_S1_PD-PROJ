@@ -12,6 +12,23 @@ import { ApiService } from '../../../shared/api.service';
   ]
 })
 export class AdminusersComponent implements OnInit {
+  model: Member = {
+    memberID: null,
+    firstNname: '',
+    lastName: '',
+    birthDate: new Date(2000, 1, 1),
+    city: '',
+    zipCode: '',
+    address: '',
+    phoneNumber: '',
+    email: '',
+    password: '123',
+    role: 'user',
+    bookReadByMember: null,
+    bookReserved: null,
+    loanlist: null
+  };
+
   members: Member[] = [];
 
   constructor(private apiService: ApiService) { }
@@ -27,6 +44,17 @@ export class AdminusersComponent implements OnInit {
       },
       err => {
         alert('An error has occured');
+      }
+    );
+  }
+
+  addMember(): void {
+    this.apiService.postMember(this.model).subscribe(
+      res => {
+        location.reload();
+      },
+      err => {
+        alert('An error has occured while sending data.');
       }
     );
   }
