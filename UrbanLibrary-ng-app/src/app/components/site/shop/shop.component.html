@@ -24,8 +24,8 @@
                 <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuReference"
                   data-toggle="dropdown">Sortuj</button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
-                  <a routerLink="shop" class="dropdown-item" href="#">wg nazwy rosnąco</a>
-                  <a routerLink="shop" class="dropdown-item" href="#">wg nazwy malejąco</a>
+                  <a (click)="changeSortUp()"  class="dropdown-item" style="cursor:pointer;">wg nazwy rosnąco</a>
+                  <a (click)="changeSortDown()"  class="dropdown-item" style="cursor:pointer;">wg nazwy malejąco</a>
                 </div>
               </div>
             </div>
@@ -33,7 +33,11 @@
         </div>
         <div class="row mb-5">
 
-          <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up" *ngFor="let book of books | myFilterPipe:searchTextAuthor; let i = index">
+          <ng-container *ngIf="this.selectedCategory;else allBooks">
+            
+            <ng-container *ngFor="let book of books | myFilterPipe:searchTextAuthor | sortTitle,; let i = index">
+              <ng-container *ngIf="book.categories[0].categoryID ==this.selectedCategory.categoryID">
+              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up" >
             <div class="block-4 text-center border">
               <figure class="block-4-image">
                 <a (click)="selectBook(book)" [routerLink]="['shop-single', i+1]" href="shop-single.html"><img
@@ -49,7 +53,27 @@
               </div>
             </div>
           </div>
-
+        </ng-container>
+        </ng-container>
+        </ng-container>
+        <ng-template #allBooks>
+          <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up" *ngFor="let book of books | myFilterPipe:searchTextAuthor | sortTitle,; let i = index">
+            <div class="block-4 text-center border">
+              <figure class="block-4-image">
+                <a (click)="selectBook(book)" [routerLink]="['shop-single', i+1]" href="shop-single.html"><img
+                    src="assets/images/{{book.imgName}}" alt="Image placeholder" class="img-fluid"></a>
+              </figure>
+              <div class="block-4-text p-4">
+                <h3><a routerLink="/shop-single" href="shop-single.html"></a>{{book.title}}</h3>
+                <p class="mb-0">{{book.authors[0].firstName + " " + book.authors[0].lastName}}</p>
+                <p *ngIf="!book.isAvailable; else notAvailable" class="text-primary font-weight-bold">Dostępna</p>
+                <ng-template #notAvailable>
+                  <p class="text-primary font-weight-bold">Niedostępna</p>
+                </ng-template>
+              </div>
+            </div>
+          </div>
+        </ng-template>
 
         </div>
         <!-- <div class="row" data-aos="fade-up">
@@ -71,10 +95,11 @@
 
       <div class="col-md-3 order-1 mb-5 mb-md-0">
         <div class="border p-4 rounded mb-4">
-          <h3 class="mb-3 h6 text-uppercase text-black d-block">Kategorie</h3>
+          <h5 class="text-black h6 d-block" (click)="clearCategory()" style="cursor:pointer;">Wyczyść filtr kategorii</h5>
+          <h3 class="mb-3  text-uppercase text-black d-block">Kategorie</h3>
           <ul class="list-unstyled mb-0">
-            <li *ngFor="let category of categories" class="mb-1"><a routerLink="shop" href="#" class="d-flex"><span>{{category.name}}</span> 
-              </a></li>
+            <li (click)="categorySelected(category)" *ngFor="let category of categories" class="mb-1" style="cursor: pointer;"> 
+              <span>{{category.name}}</span> </li>
           </ul>
         </div>
 
