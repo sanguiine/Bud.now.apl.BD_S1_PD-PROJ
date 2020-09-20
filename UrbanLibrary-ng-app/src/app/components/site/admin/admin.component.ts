@@ -4,6 +4,7 @@ import {Member} from "../../../model/member";
 import {Loan} from "../../../model/loan";
 import {Reservation} from "../../../model/reservation";
 import {Book} from "../../../model/book";
+import {ReservationItems} from "../../../model/reservationItems";
 
 @Component({
   selector: 'app-admin',
@@ -17,7 +18,7 @@ import {Book} from "../../../model/book";
 export class AdminComponent implements OnInit {
   members: Member[] = [];
   loans: Loan[] = [];
-  reservations: Reservation[] = [];
+  reservations: ReservationItems[] = [];
   books: Book[] = [];
 
   constructor(private apiService: ApiService) { }
@@ -52,7 +53,7 @@ export class AdminComponent implements OnInit {
   }
 
   public getAllReservations(){
-    this.apiService.getAllReservations().subscribe(
+    this.apiService.getAllReservationsItems().subscribe(
       res => {
         this.reservations = res;
       },
