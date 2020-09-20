@@ -46,6 +46,7 @@ export class ApiService {
   private ALL_RESERVATIONSITEMS_URL = this.BASE_URL.concat('/reservationsitems/all');
   private SAVE_UPDATE_RESERVATION = this.BASE_URL.concat('/reservations');
   private SAVE_UPDATE_RESERVATION_ITEM = this.BASE_URL.concat('/reservationsitems')
+  private DELETE_RESERVATIONSITEM = this.BASE_URL.concat('/reservationsitems/');
 
   getAllReservations(): Observable<Reservation[]>{
     return this.http.get<Reservation[]>(this.ALL_RESERVATIONS_URL);
@@ -61,6 +62,10 @@ export class ApiService {
 
   getAllReservationsItems(): Observable<ReservationItems[]>{
     return this.http.get<ReservationItems[]>(this.ALL_RESERVATIONSITEMS_URL);
+  }
+
+  deleteReservationsItem(id: number): Observable<any>{
+    return this.http.delete(this.DELETE_RESERVATIONSITEM + id);
   }
 
 
