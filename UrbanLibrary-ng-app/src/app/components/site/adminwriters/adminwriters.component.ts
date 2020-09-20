@@ -19,6 +19,16 @@ export class AdminwritersComponent implements OnInit {
     lastName: ''
   };
 
+  model2: Author = {
+    authorID: null,
+    firstName: '',
+    lastName: ''
+  };
+
+  editID = null;
+  editFirstName = '';
+  editLastName = '';
+
   authors: Author[] = [];
 
   constructor(private apiService: ApiService) { }
@@ -56,6 +66,27 @@ export class AdminwritersComponent implements OnInit {
       },
       err => {
         alert('An error has occured while deleting data.');
+      }
+    );
+  }
+
+  update(author: Author) {
+    this.editID = author.authorID;
+    this.editFirstName = author.firstName;
+    this.editLastName = author.lastName;
+  }
+
+  editAuthor(): void {
+    this.model2.authorID = this.editID;
+    this.model2.firstName = this.editFirstName;
+    this.model2.lastName = this.editLastName;
+
+    this.apiService.postAuthor(this.model2).subscribe(
+      res => {
+        location.reload();
+      },
+      err => {
+        alert('An error has occured while sending data.');
       }
     );
   }

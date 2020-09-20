@@ -22,8 +22,8 @@ export class AdmingenresComponent implements OnInit {
     name: ''
   };
 
-  editName = '';
   editID = null;
+  editName = '';
 
   categories: Category[] = [];
 
