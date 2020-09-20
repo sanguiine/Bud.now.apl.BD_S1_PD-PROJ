@@ -7,6 +7,8 @@ import { ReadedByMember } from '../model/readed';
 import { Member } from '../model/member';
 import { Author } from '../model/author';
 import { Loan } from '../model/loan';
+import { Reservation } from '../model/reservation';
+import { ReservationItems } from '../model/reservationItems';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +34,35 @@ export class ApiService {
   // MEMBERS
   private ALL_MEMBERS_URL = this.BASE_URL.concat('/members/all');
   private SAVE_UPDATE_MEMBER = this.BASE_URL.concat('/members');
+  private MEMBER_BY_ID = this.BASE_URL.concat('/members/byId/')
   private DELETE_MEMBER = this.BASE_URL.concat('/members/');
+
+  getMember(memberID: number): Observable<Member>{
+    return this.http.get<Member>(this.MEMBER_BY_ID + memberID);
+  }
+
+  //CART / RESERVATION
+  private ALL_RESERVATIONS_URL = this.BASE_URL.concat('/reservations/all');
+  private ALL_RESERVATIONSITEMS_URL = this.BASE_URL.concat('/reservationsitems/all');
+  private SAVE_UPDATE_RESERVATION = this.BASE_URL.concat('/reservations');
+  private SAVE_UPDATE_RESERVATION_ITEM = this.BASE_URL.concat('/reservationsitems')
+
+  getAllReservations(): Observable<Reservation[]>{
+    return this.http.get<Reservation[]>(this.ALL_RESERVATIONS_URL);
+  }
+
+  postReservation(reservation: Reservation): Observable<Reservation>{
+    return this.http.post<Reservation>(this.SAVE_UPDATE_RESERVATION, reservation);
+  }
+
+  postReservationItem(reservationItem: ReservationItems): Observable<ReservationItems>{
+    return this.http.post<ReservationItems>(this.SAVE_UPDATE_RESERVATION_ITEM, JSON.parse(JSON.stringify(reservationItem)));
+  }
+
+  getAllReservationsItems(): Observable<ReservationItems[]>{
+    return this.http.get<ReservationItems[]>(this.ALL_RESERVATIONSITEMS_URL);
+  }
+
 
   // AUTHORS
   private ALL_AUTHORS_URL = this.BASE_URL.concat('/authors/all');

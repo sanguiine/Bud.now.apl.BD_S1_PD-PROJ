@@ -10,7 +10,7 @@
             <div  *ngIf="showDropDown" class="state-container-dropdown"> 
               <div>
                 <div (click)="closeToggle()" class="state" *ngFor="let book of books | searchFilter:searchString"
-                [routerLink]="['/shop/shop-single', book.bookID]" href="shop-single.html">
+                [routerLink]="['/shop/shop-single', book.bookID]">
                   {{book.title}}
                 </div>
               </div>

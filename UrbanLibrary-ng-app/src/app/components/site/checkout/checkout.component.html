@@ -18,14 +18,10 @@
                       <th>Tytuł</th>
                       <th>Liczba sztuk</th>
                     </thead>
-                    <tbody>
+                    <tbody *ngFor="let item of this.reservationItems">
                       <tr>
-                        <td>Ogniem i mieczem</td>
-                        <td>1</td>
-                      </tr>
-                      <tr>
-                        <td>Potop</td>
-                        <td>1</td>
+                        <td>{{item.book.title}}</td>
+                        <td>{{item.orderItemQuantity}}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -45,7 +41,7 @@
               <div class="col-md-7">
                 <div class="row">
                   <div class="col-md-12">
-                    <button routerLink="/thankyou" class="btn btn-primary btn-lg py-3 btn-block">Potwierdź</button>
+                    <button (click)="confirmReservation()" routerLink="/thankyou" class="btn btn-primary btn-lg py-3 btn-block">Potwierdź</button>
                   </div>
                 </div>
               </div>

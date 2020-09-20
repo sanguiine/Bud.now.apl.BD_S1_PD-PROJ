@@ -17,6 +17,17 @@ export class ReadComponent implements OnInit {
 
   ngOnInit(): void {
     this.member = JSON.parse(localStorage.getItem("loggedMember"));
+
+    this.getMember();
+  }
+
+  getMember(){
+    this.apiService.getMember(this.member.memberID).subscribe(
+      res =>{
+        this.member = res;
+        localStorage.setItem("loggedMember", JSON.stringify(res));
+      }
+    )
   }
 
   deleteReaded(bookID){

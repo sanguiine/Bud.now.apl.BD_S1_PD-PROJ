@@ -100,6 +100,15 @@ export class ShopSingleComponent implements OnInit {
     }
   }
 
+  addToReaded(){
+    var member = JSON.parse(localStorage.getItem("loggedMember"));
+    member.bookReadByMember.push(this.selectedBook);
+
+    console.log(member);
+    this.apiService.postMember(member).subscribe();
+  }
+
+
   clearMessage():void{
     this.msg.clearMessage();
   }

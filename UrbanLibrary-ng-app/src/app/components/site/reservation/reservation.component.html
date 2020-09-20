@@ -10,56 +10,31 @@
     <div class="site-section">
       <div class="container">
 	  <h2 class="h3 mb-3 text-black">Twoje rezerwacje</h2>
-        <div class="border p-3 mb-1">
-           <h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse" href="#collapse1" role="button" aria-expanded="false" aria-controls="collapse1">04.04.2020 / Rezerwacja #23</a></h3>
-
-            <div class="collapse" id="collapse1">
-                <div class="py-2">
-                <div class="p-1 p-lg-5">
-                  <table class="table site-block-order-table mb-1">
-                    <thead>
-                      <th>Tytuł</th>
-                      <th>Liczba sztuk</th>
-                    </thead>
-                    <tbody>
+        <div class="border p-3 mb-1" *ngFor="let reservation of this.reservations">
+          <h3 class="h6 mb-0"><a class="d-block" >{{reservation.dateStartReservation}} / Rezerwacja #{{reservation.reservationID}}</a></h3>
+          <div>
+            <div class="py-2">
+              <div class="p-1 p-lg-5">
+                <table class="table site-block-order-table mb-1">
+                  <thead>
+                    <th>Tytuł</th>
+                    <th>Ilość sztuk</th>
+                  </thead>
+                  <tbody>
+                            <ng-container *ngFor="let items of this.reservationsItems">
+                            <ng-template [ngIf]="items.reservationGUID === reservation.reservationID"> 
                       <tr>
-                        <td>Ogniem i mieczem</td>
-                        <td>1</td>
+                        <td>{{items.book.title}}</td>
+                        <td>{{items.orderItemQuantity}}</td>
                       </tr>
-                      <tr>
-                        <td>Potop</td>
-                        <td>1</td>
-                      </tr>
+                    </ng-template>
+                    </ng-container>
                     </tbody>
                   </table>
                 </div>
               </div>
             </div>
         </div>
-		
-		<div class="border p-3 mb-1">
-           <h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse" href="#collapse2" role="button" aria-expanded="false" aria-controls="collapse2">05.06.2020 / Rezerwacja #105</a></h3>
-
-            <div class="collapse" id="collapse2">
-                <div class="py-2">
-                <div class="p-1 p-lg-5">
-                  <table class="table site-block-order-table mb-1">
-                    <thead>
-                      <th>Tytuł</th>
-                      <th>Liczba sztuk</th>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Lalka</td>
-                        <td>1</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-        </div>
-		
       </div>
     </div>
 <app-footer></app-footer>

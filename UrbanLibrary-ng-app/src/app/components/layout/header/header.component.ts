@@ -33,7 +33,20 @@ export class HeaderComponent implements OnInit {
   
 
   ngOnInit() {
+    this.getAllBooks();
     this.cartItems = JSON.parse(localStorage.getItem("cart"));
+  }
+
+  public getAllBooks(){
+    this.apiService.getAllBooks().subscribe(
+      res => {
+        this.books = res;
+        console.log(this.books);
+      },
+      err =>{
+        alert("An error has occured");
+      }
+    );
   }
 
 
