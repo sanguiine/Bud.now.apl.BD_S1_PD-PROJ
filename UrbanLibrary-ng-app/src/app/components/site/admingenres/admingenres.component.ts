@@ -17,6 +17,14 @@ export class AdmingenresComponent implements OnInit {
     name: ''
   };
 
+  model2: Category = {
+    categoryID: null,
+    name: ''
+  };
+
+  editName = '';
+  editID = null;
+
   categories: Category[] = [];
 
   constructor(private apiService: ApiService) { }
@@ -54,6 +62,25 @@ export class AdmingenresComponent implements OnInit {
       },
       err => {
         alert('An error has occured while deleting data.');
+      }
+    );
+  }
+
+  update(category: Category) {
+    this.editID = category.categoryID;
+    this.editName = category.name;
+  }
+
+  editCategory(): void {
+    this.model2.categoryID = this.editID;
+    this.model2.name = this.editName;
+
+    this.apiService.postCategory(this.model2).subscribe(
+      res => {
+        location.reload();
+      },
+      err => {
+        alert('An error has occured while sending data.');
       }
     );
   }
