@@ -19,11 +19,7 @@ export class AdminwritersComponent implements OnInit {
     lastName: ''
   };
 
-  model2: Author = {
-    authorID: null,
-    firstName: '',
-    lastName: ''
-  };
+  model2: Author;
 
   editID = null;
   editFirstName = '';
@@ -71,13 +67,13 @@ export class AdminwritersComponent implements OnInit {
   }
 
   update(author: Author) {
+    this.model2 = author;
     this.editID = author.authorID;
     this.editFirstName = author.firstName;
     this.editLastName = author.lastName;
   }
 
   editAuthor(): void {
-    this.model2.authorID = this.editID;
     this.model2.firstName = this.editFirstName;
     this.model2.lastName = this.editLastName;
 

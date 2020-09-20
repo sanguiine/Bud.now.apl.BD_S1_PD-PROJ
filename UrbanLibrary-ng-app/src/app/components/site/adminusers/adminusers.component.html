@@ -38,7 +38,7 @@
                   <td>{{member.firstNname}}</td>
                   <td>{{member.lastName}}</td>
                   <td>
-                    <button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
+                    <button type="button" class="btn btn-primary m-t-1 waves-effect" (click)="update(member)">Edytuj</button>
                     <button type="button" class="btn btn-primary m-t-1 waves-effect" (click)="deleteMember(member.memberID)">Usuń</button>
                   </td>
                 </tr>
@@ -59,53 +59,53 @@
             </h2>
           </div>
           <div class="body">
-            <form id="form_validation" method="POST">
+            <form id="form_validation" method="POST" (submit)="editMember()">
               <div class="form-group form-float">
                 <div class="form-line">
                   <label>ID użytkownika</label>
-                  <input type="number" class="form-control" name="id" required disabled>
+                  <input type="number" class="form-control" name="id" [(ngModel)]="editID" required disabled>
                 </div>
               </div>
               <div class="form-group form-float">
                 <div class="form-line">
                   <label>Imię</label>
-                  <input type="text" class="form-control" name="name" required>
+                  <input type="text" class="form-control" name="name" [(ngModel)]="editFirstName" required>
                 </div>
               </div>
               <div class="form-group form-float">
                 <div class="form-line">
                   <label>Nazwisko</label>
-                  <input type="text" class="form-control" name="surname" required>
+                  <input type="text" class="form-control" name="surname" [(ngModel)]="editLastName" required>
                 </div>
               </div>
               <div class="form-group form-float">
                 <div class="form-line">
                   <label>Email</label>
-                  <input type="email" class="form-control" name="email" required>
+                  <input type="email" class="form-control" name="email" [(ngModel)]="editEmail" required>
                 </div>
               </div>
               <div class="form-group form-float">
                 <div class="form-line">
                   <label>Adres</label>
-                  <input type="text" class="form-control" name="address" required>
+                  <input type="text" class="form-control" name="address" [(ngModel)]="editAddress" required>
                 </div>
               </div>
               <div class="form-group form-float">
                 <div class="form-line">
                   <label>Miasto</label>
-                  <input type="text" class="form-control" name="city" required>
+                  <input type="text" class="form-control" name="city" [(ngModel)]="editCity" required>
                 </div>
               </div>
               <div class="form-group form-float">
                 <div class="form-line">
                   <label>Kod pocztowy</label>
-                  <input type="text" class="form-control" name="zip" required>
+                  <input type="text" class="form-control" name="zip" [(ngModel)]="editZIP" required>
                 </div>
               </div>
               <div class="form-group form-float">
                 <div class="form-line">
                   <label>Numer telefonu</label>
-                  <input type="number" class="form-control" name="phone" required>
+                  <input type="number" class="form-control" name="phone" [(ngModel)]="editPhone" required>
                 </div>
               </div>
               <button class="btn btn-primary waves-effect" type="submit">Edytuj</button>

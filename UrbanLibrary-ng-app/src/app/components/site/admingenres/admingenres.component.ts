@@ -17,10 +17,7 @@ export class AdmingenresComponent implements OnInit {
     name: ''
   };
 
-  model2: Category = {
-    categoryID: null,
-    name: ''
-  };
+  model2: Category;
 
   editID = null;
   editName = '';
@@ -67,12 +64,12 @@ export class AdmingenresComponent implements OnInit {
   }
 
   update(category: Category) {
+    this.model2 = category;
     this.editID = category.categoryID;
     this.editName = category.name;
   }
 
   editCategory(): void {
-    this.model2.categoryID = this.editID;
     this.model2.name = this.editName;
 
     this.apiService.postCategory(this.model2).subscribe(

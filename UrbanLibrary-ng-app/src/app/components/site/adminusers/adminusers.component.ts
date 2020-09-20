@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Member } from '../../../model/member';
 import { ApiService } from '../../../shared/api.service';
+import {Category} from "../../../model/category";
 
 @Component({
   selector: 'app-adminusers',
@@ -28,6 +29,17 @@ export class AdminusersComponent implements OnInit {
     bookReserved: null,
     loanlist: null
   };
+
+  model2: Member;
+
+  editID = null;
+  editFirstName = '';
+  editLastName = '';
+  editEmail = '';
+  editAddress = '';
+  editCity = '';
+  editZIP = '';
+  editPhone = '';
 
   members: Member[] = [];
 
@@ -66,6 +78,37 @@ export class AdminusersComponent implements OnInit {
       },
       err => {
         alert('An error has occured while deleting data.');
+      }
+    );
+  }
+
+  update(member: Member) {
+    this.model2 = member;
+    this.editID = member.memberID;
+    this.editFirstName = member.firstNname;
+    this.editLastName = member.lastName;
+    this.editEmail = member.email;
+    this.editAddress = member.address;
+    this.editCity = member.city;
+    this.editZIP = member.zipCode;
+    this.editPhone = member.phoneNumber;
+  }
+
+  editMember(): void {
+    this.model2.firstNname = this.editFirstName;
+    this.model2.lastName = this.editLastName;
+    this.model2.email = this.editEmail;
+    this.model2.address = this.editAddress;
+    this.model2.city = this.editCity;
+    this.model2.zipCode = this.editZIP;
+    this.model2.phoneNumber = this.editPhone;
+
+    this.apiService.postMember(this.model2).subscribe(
+      res => {
+        location.reload();
+      },
+      err => {
+        alert('An error has occured while sending data.');
       }
     );
   }
