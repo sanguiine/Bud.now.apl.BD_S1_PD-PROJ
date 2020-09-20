@@ -7,5 +7,6 @@ export class Globals {
    books = [];
    member: Member;
    rosnaco = true;
+   mode = "";
 
 }

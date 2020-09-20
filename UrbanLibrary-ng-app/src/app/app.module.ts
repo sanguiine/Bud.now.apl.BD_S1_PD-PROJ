@@ -200,8 +200,7 @@ const appRoutes: Routes = [
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    BrowserAnimationsModule,
-    
+    BrowserAnimationsModule,                                
   ],
   providers: 
   [
