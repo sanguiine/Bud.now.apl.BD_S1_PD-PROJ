@@ -8,6 +8,11 @@ import { Component, OnInit } from '@angular/core';
   '../../../../assets/css/admin/theme-black.css']
 })
 export class SidemenuComponent implements OnInit {
+  member = JSON.parse(localStorage.getItem("loggedMember"))
+
+  firstName = this.member.firstNname;
+  lastName = this.member.lastName;
+  email = this.member.email;
 
   constructor() { }
 
