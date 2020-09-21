@@ -1,39 +1,30 @@
 <app-header></app-header>
-    <div class="bg-light py-3">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 mb-0"><a href="index.html">Strona główna</a> <span class="mx-2 mb-0">/</span> <a routerLink="/account" href="account.html">Konto</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Wypożyczenia</strong></div>
+<div class="bg-light py-3">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 mb-0"><a href="index.html">Strona główna</a> <span class="mx-2 mb-0">/</span> <a
+        routerLink="/account" href="account.html">Konto</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Wypożyczenia</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="site-section">
+  <div class="container">
+    <h2 class="h3 mb-3 text-black">Twoje wypożyczenia</h2>
+
+    <div class="border p-3 mb-1" *ngFor="let loan of loans">
+      <h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse" href="#collapse1" role="button"
+                             aria-expanded="false" aria-controls="collapse1">{{loan.dateLoaned}} / Wypożyczenie #{{loan.loanID}}</a></h3>
+      <div>
+        <div class="py-2">
+          <p></p>
+          <p>Data zwrotu: {{loan.dateReturned}} </p>
+          <p>Tytuł książki: {{loan.book.title}}</p>
         </div>
       </div>
     </div>
 
-    <div class="site-section">
-      <div class="container">
-	  <h2 class="h3 mb-3 text-black">Twoje wypożyczenia</h2>
-	  
-        <div class="border p-3 mb-1">
-           <h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse" href="#collapse1" role="button" aria-expanded="false" aria-controls="collapse1">Wypożyczenie #23</a></h3>
-            <div class="collapse" id="collapse1">
-              <div class="py-2">
-				<p></p>
-				<p>Data wypożyczenia: 05.05.2020</p>
-				<p>Data zwrotu: </p>
-                <p>Tytuł książki: Ogniem i mieczem</p>
-			  </div> 
-			</div>
-        </div>
-		
-		<div class="border p-3 mb-1">
-           <h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse" href="#collapse2" role="button" aria-expanded="false" aria-controls="collapse2">Wypożyczenie #105</a></h3>
-            <div class="collapse" id="collapse2">
-              <div class="py-2">
-				<p></p>
-				<p>Data wypożyczenia: 05.05.2020</p>
-				<p>Data zwrotu: 07.04.2020</p>
-                <p>Tytuł książki: Lalka</p>
-			  </div> 
-			</div>
-        </div>
-      </div>
-    </div>
+  </div>
+</div>
 <app-footer></app-footer>
