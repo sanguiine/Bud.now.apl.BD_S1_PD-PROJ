@@ -5,7 +5,7 @@
           <div *ngIf="selectedBook" class="col-md-12 mb-0"><a href="index.html">Strona główna</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">{{selectedBook.title}}</strong></div>
         </div>
       </div>
-    </div>  
+    </div>
 
     <div class="site-section">
       <div class="container">
@@ -20,7 +20,7 @@
 			      <p>Data wydania: {{selectedBook.date}}</p>
             <p class="mb-4">Opis: {{selectedBook.description}}</p>
 			<p><strong class="text-primary h6">Dostępnych sztuk: {{countBooks()}}</strong></p>
-			
+
 		   <br>
             <div class="mb-5 text-center">
               <div class="input-group mb-3" style="max-width: 120px;">
@@ -34,10 +34,10 @@
             </div>
 
             </div>
-            <p><a (click)="addToCart()" class="btn btn-outline-primary btn-sm">Dodaj do koszyka</a></p>
-			      <p><a (click)="addToReaded()" class="btn btn-outline-primary btn-sm">Dodaj do przeczytanych</a></p>
+            <p id="new"><a (click)="addToCart()" class="buy-now btn btn-sm btn-primary">Dodaj do koszyka</a></p>
+			      <p id="new2"><a (click)="addToReaded()" class="btn btn-outline-primary btn-sm">Dodaj do przeczytanych</a></p>
           </div>
         </div>
       </div>
     </div>
-	<app-footer></app-footer> 
+	<app-footer></app-footer>

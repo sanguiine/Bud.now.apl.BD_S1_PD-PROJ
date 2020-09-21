@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 mb-0"><a href="index.html">Strona główna</a> <span class="mx-2 mb-0">/</span> <strong
-          class="text-black">Katalog</strong></div>
+        class="text-black">Katalog</strong></div>
     </div>
   </div>
 </div>
@@ -22,10 +22,11 @@
             <div class="d-flex">
               <div class="dropdown mr-1 ml-md-auto">
                 <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuReference"
-                  data-toggle="dropdown">Sortuj</button>
+                        data-toggle="dropdown">Sortuj
+                </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
-                  <a (click)="changeSortUp()"  class="dropdown-item" style="cursor:pointer;">wg nazwy rosnąco</a>
-                  <a (click)="changeSortDown()"  class="dropdown-item" style="cursor:pointer;">wg nazwy malejąco</a>
+                  <a (click)="changeSortUp()" class="dropdown-item" style="cursor:pointer;">wg nazwy rosnąco</a>
+                  <a (click)="changeSortDown()" class="dropdown-item" style="cursor:pointer;">wg nazwy malejąco</a>
                 </div>
               </div>
             </div>
@@ -35,45 +36,46 @@
 
           <ng-container *ngIf="this.selectedCategory;else allBooks">
 
-            <ng-container *ngFor="let book of books | myFilterPipe:searchTextAuthor | sortTitle,; let i = index">
+            <ng-container *ngFor="let book of books | myFilterPipe:searchTextAuthor | sortTitle; let i = index">
               <ng-container *ngIf="book.categories[0].categoryID ==this.selectedCategory.categoryID">
-              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up" >
-            <div class="block-4 text-center border">
-              <figure class="block-4-image">
-                <a (click)="selectBook(book)" [routerLink]="['shop-single', i+1]" href="shop-single.html"><img
+                <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
+                  <div class="block-4 text-center border">
+                    <figure class="block-4-image">
+                      <a (click)="selectBook(book)" [routerLink]="['shop-single', book.bookID]" href="shop-single.html"><img
+                        src="assets/images/{{book.imgName}}" alt="Image placeholder" class="img-fluid"></a>
+                    </figure>
+                    <div class="block-4-text p-4">
+                      <h3><a routerLink="/shop-single" href="shop-single.html"></a>{{book.title}}</h3>
+                      <p class="mb-0">{{book.authors[0].firstName + " " + book.authors[0].lastName}}</p>
+                      <p *ngIf="!book.isAvailable; else notAvailable" class="text-primary font-weight-bold">Dostępna</p>
+                      <ng-template #notAvailable>
+                        <p class="text-primary font-weight-bold">Niedostępna</p>
+                      </ng-template>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+          <ng-template #allBooks>
+            <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up"
+                 *ngFor="let book of books | myFilterPipe:searchTextAuthor | sortTitle; let i = index">
+              <div class="block-4 text-center border">
+                <figure class="block-4-image">
+                  <a (click)="selectBook(book)" [routerLink]="['shop-single', book.bookID]" href="shop-single.html"><img
                     src="assets/images/{{book.imgName}}" alt="Image placeholder" class="img-fluid"></a>
-              </figure>
-              <div class="block-4-text p-4">
-                <h3><a routerLink="/shop-single" href="shop-single.html"></a>{{book.title}}</h3>
-                <p class="mb-0">{{book.authors[0].firstName + " " + book.authors[0].lastName}}</p>
-                <p *ngIf="!book.isAvailable; else notAvailable" class="text-primary font-weight-bold">Dostępna</p>
-                <ng-template #notAvailable>
-                  <p class="text-primary font-weight-bold">Niedostępna</p>
-                </ng-template>
+                </figure>
+                <div class="block-4-text p-4">
+                  <h3><a routerLink="/shop-single" href="shop-single.html"></a>{{book.title}}</h3>
+                  <p class="mb-0">{{book.authors[0]?.firstName + " " + book.authors[0]?.lastName}}</p>
+                  <p *ngIf="!book.isAvailable; else notAvailable" class="text-primary font-weight-bold">Dostępna</p>
+                  <ng-template #notAvailable>
+                    <p class="text-primary font-weight-bold">Niedostępna</p>
+                  </ng-template>
+                </div>
               </div>
             </div>
-          </div>
-        </ng-container>
-        </ng-container>
-        </ng-container>
-        <ng-template #allBooks>
-          <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up" *ngFor="let book of books | myFilterPipe:searchTextAuthor | sortTitle,; let i = index">
-            <div class="block-4 text-center border">
-              <figure class="block-4-image">
-                <a (click)="selectBook(book)" [routerLink]="['shop-single', book.bookID]" href="shop-single.html"><img
-                    src="assets/images/{{book.imgName}}" alt="Image placeholder" class="img-fluid"></a>
-              </figure>
-              <div class="block-4-text p-4">
-                <h3><a routerLink="/shop-single" href="shop-single.html"></a>{{book.title}}</h3>
-                <p class="mb-0">{{book.authors[0].firstName + " " + book.authors[0].lastName}}</p>
-                <p *ngIf="!book.isAvailable; else notAvailable" class="text-primary font-weight-bold">Dostępna</p>
-                <ng-template #notAvailable>
-                  <p class="text-primary font-weight-bold">Niedostępna</p>
-                </ng-template>
-              </div>
-            </div>
-          </div>
-        </ng-template>
+          </ng-template>
 
         </div>
         <!-- <div class="row" data-aos="fade-up">
@@ -97,18 +99,21 @@
         <div class="border p-4 rounded mb-4">
           <h3 class="mb-3 h6 text-uppercase text-black d-block text-center">Kategorie</h3>
           <ul class="list-unstyled mb-0">
-            <li (click)="categorySelected(category)" *ngFor="let category of categories" class="mb-1" style="cursor: pointer;">
-              <span>{{category.name}}</span> </li>
+            <li (click)="categorySelected(category)" *ngFor="let category of categories" class="mb-1"
+                style="cursor: pointer;">
+              <span>{{category.name}}</span></li>
           </ul>
           <br>
-          <button type="button" class="btn btn-secondary btn-sm" (click)="clearCategory()">Wyczyść filtr kategorii</button>
+          <button type="button" class="btn btn-secondary btn-sm" (click)="clearCategory()">Wyczyść filtr kategorii
+          </button>
         </div>
 
         <div class="border p-4 rounded mb-4 text-center">
           <h3 class="mb-3 h6 text-uppercase text-black d-block">Autor</h3>
           <form action="" class="site-block-top-search">
             <span class="icon icon-search2"></span>
-            <input id="autor" type="text" class="form-control border-0" [(ngModel)]="searchTextAuthor" name="something" placeholder="Podaj autora">
+            <input id="autor" type="text" class="form-control border-0" [(ngModel)]="searchTextAuthor" name="something"
+                   placeholder="Podaj autora">
           </form>
           <br>
         </div>
