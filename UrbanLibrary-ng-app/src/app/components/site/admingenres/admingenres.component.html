@@ -35,8 +35,11 @@
                   <td>{{category.categoryID}}</td>
                   <td>{{category.name}}</td>
                   <td>
-                    <button type="button" class="btn btn-primary m-t-1 waves-effect" (click)="update(category)">Edytuj</button>
-                    <button type="button" class="btn btn-primary m-t-1 waves-effect" (click)="deleteCategory(category.categoryID)">Usuń</button>
+                    <button type="button" class="btn btn-primary m-t-1 waves-effect" (click)="update(category)">Edytuj
+                    </button>
+                    <button type="button" class="btn btn-primary m-t-1 waves-effect"
+                            (click)="deleteCategory(category.categoryID)">Usuń
+                    </button>
                   </td>
                 </tr>
                 </tbody>
@@ -56,20 +59,27 @@
             </h2>
           </div>
           <div class="body">
-            <form id="form_validation" method="POST" (submit)="editCategory()">
+            <form id="form_validation" method="POST" (submit)="editCategory()" [formGroup]="form2">
               <div class="form-group form-float">
                 <div class="form-line">
                   <label>ID gatunku</label>
-                  <input type="number" class="form-control" name="id" [(ngModel)]="editID" required disabled>
+                  <input type="number" class="form-control" name="id" [(ngModel)]="editID"
+                         formControlName="fid"
+                         [ngClass]="{'is-invalid': form2.get('fid').touched && form2.get('fid').invalid}" required disabled>
                 </div>
               </div>
               <div class="form-group form-float">
                 <div class="form-line">
                   <label>Gatunek</label>
-                  <input type="text" class="form-control" name="genre" [(ngModel)]="editName" required>
+                  <input type="text" class="form-control" name="genre" [(ngModel)]="editName"
+                         formControlName="fname"
+                         [ngClass]="{'is-invalid': form2.get('fname').touched && form2.get('fname').invalid}" required>
+                  <div class="invalid-feedback">
+                    <div>Nazwa jest wymagana.</div>
+                  </div>
                 </div>
               </div>
-              <button class="btn btn-primary waves-effect" type="submit">Edytuj</button>
+              <button class="btn btn-primary waves-effect" type="submit" [disabled]="!form2.valid">Edytuj</button>
             </form>
           </div>
         </div>
@@ -82,14 +92,19 @@
             </h2>
           </div>
           <div class="body">
-            <form id="form_validation2" method="POST" (submit)="addCategory()">
+            <form id="form_validation2" method="POST" (submit)="addCategory()" [formGroup]="form">
               <div class="form-group form-float">
                 <div class="form-line">
                   <label>Gatunek</label>
-                  <input type="text" class="form-control" name="genre" [(ngModel)]="model.name" required>
+                  <input type="text" class="form-control" name="genre" [(ngModel)]="model.name"
+                         formControlName="fname"
+                         [ngClass]="{'is-invalid': form.get('fname').touched && form.get('fname').invalid}" required>
+                  <div class="invalid-feedback">
+                    <div>Nazwa jest wymagana.</div>
+                  </div>
                 </div>
               </div>
-              <button class="btn btn-primary waves-effect" type="submit">Dodaj</button>
+              <button class="btn btn-primary waves-effect" type="submit" [disabled]="!form.valid">Dodaj</button>
             </form>
           </div>
         </div>

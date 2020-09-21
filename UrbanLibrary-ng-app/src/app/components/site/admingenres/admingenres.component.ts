@@ -1,17 +1,27 @@
-import { Component, OnInit } from '@angular/core';
-import { Category } from '../../../model/category';
-import { ApiService } from '../../../shared/api.service';
+import {Component, OnInit} from '@angular/core';
+import {Category} from '../../../model/category';
+import {ApiService} from '../../../shared/api.service';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-admingenres',
   templateUrl: './admingenres.component.html',
   styleUrls: ['./admingenres.component.css',
-  '../../../../assets/plugins/bootstrap/css/bootstrap.css',
-  '../../../../assets/css/admin/style.css',
-  '../../../../assets/css/admin/theme-black.css',
+    '../../../../assets/plugins/bootstrap/css/bootstrap.css',
+    '../../../../assets/css/admin/style.css',
+    '../../../../assets/css/admin/theme-black.css',
   ]
 })
 export class AdmingenresComponent implements OnInit {
+  form = new FormGroup({
+    fname: new FormControl('', Validators.required)
+  });
+
+  form2 = new FormGroup({
+    fid: new FormControl('', Validators.required),
+    fname: new FormControl('', Validators.required)
+  });
+
   model: Category = {
     categoryID: null,
     name: ''
@@ -24,13 +34,14 @@ export class AdmingenresComponent implements OnInit {
 
   categories: Category[] = [];
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService) {
+  }
 
   ngOnInit(): void {
     this.getAllCategories();
   }
 
-  public getAllCategories(){
+  public getAllCategories() {
     this.apiService.getAllCategories().subscribe(
       res => {
         this.categories = res;
@@ -52,7 +63,7 @@ export class AdmingenresComponent implements OnInit {
     );
   }
 
-  deleteCategory(categoryID : number) {
+  deleteCategory(categoryID: number) {
     this.apiService.deleteCategory(categoryID).subscribe(
       res => {
         location.reload();
