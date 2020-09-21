@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Author } from '../../../model/author';
 import { ApiService } from '../../../shared/api.service';
 import {Category} from "../../../model/category";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-adminwriters',
@@ -13,6 +14,17 @@ import {Category} from "../../../model/category";
   ]
 })
 export class AdminwritersComponent implements OnInit {
+  form = new FormGroup({
+    ffirstName: new FormControl('', Validators.required),
+    flastName: new FormControl('', Validators.required)
+  });
+
+  form2 = new FormGroup({
+    fid: new FormControl('', Validators.required),
+    ffirstName: new FormControl('', Validators.required),
+    flastName: new FormControl('', Validators.required)
+  });
+
   model: Author = {
     authorID: null,
     firstName: '',
