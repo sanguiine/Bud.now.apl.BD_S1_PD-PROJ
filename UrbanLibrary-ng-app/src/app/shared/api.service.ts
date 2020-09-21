@@ -76,7 +76,16 @@ export class ApiService {
 
   // LOANS
   private ALL_LOANS_URL = this.BASE_URL.concat('/loans/all');
+  private SAVE_UPDATE_LOAN = this.BASE_URL.concat('/loans');
+  private DELETE_LOAN = this.BASE_URL.concat('/loans/');
 
+  postLoan(loan: Loan): Observable<Loan>{
+    return this.http.post<Loan>(this.SAVE_UPDATE_LOAN, loan);
+  }
+
+  deleteLoan(id: number): Observable<any>{
+    return this.http.delete(this.DELETE_LOAN + id);
+  }
 
   getAllMembers(): Observable<Member[]>{
     return this.http.get<Member[]>(this.ALL_MEMBERS_URL);

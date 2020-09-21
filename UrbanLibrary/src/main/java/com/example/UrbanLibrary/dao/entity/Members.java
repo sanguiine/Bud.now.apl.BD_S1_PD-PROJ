@@ -164,14 +164,6 @@ public class Members {
         this.role = role;
     }
 
-    public List<Loans> getLoansList() {
-        return loansList;
-    }
-
-    public void setLoansList(List<Loans> loansList) {
-        this.loansList = loansList;
-    }
-
     @Override
     public String toString() {
         return "Members{" +

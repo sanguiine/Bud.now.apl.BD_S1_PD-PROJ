@@ -12,7 +12,7 @@ public class Loans {
     private long loanID;
 
     //klucz obcy z Books
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name="bookID")
     private Books book;
     //klucz obcy z Members
