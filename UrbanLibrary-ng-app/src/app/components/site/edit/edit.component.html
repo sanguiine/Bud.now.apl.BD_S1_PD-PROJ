@@ -22,7 +22,7 @@
               <div class="col-md-12">
                 <label for="email" class="text-black">Email<span class="text-danger">*</span> </label>
                 <input type="email" class="form-control" id="email" name="email" [(ngModel)]="editEmail"
-                formControlName="editEmail" >
+                formControlName="editEmail" ngModel [email]="true">
 
                 <div *ngIf="angForm.controls['editEmail'].invalid && (angForm.controls['editEmail'].dirty || angForm.controls['editEmail'].touched)" class="alert alert-danger">
                   <div *ngIf="angForm.controls['editEmail'].errors.required">
@@ -132,7 +132,8 @@
             <div class="form-group row">
               <div class="col-md-12">
                 <label for="password" class="text-black">Nowe hasło</label>
-                <input type="password" class="form-control" id="password" name="password" [(ngModel)]="newPassword"formControlName="newPassword" >
+                <input type="password" class="form-control" id="password" name="password" [(ngModel)]="newPassword" formControlName="newPassword" >
+                <div class="alert alert-danger" *ngIf="f.newPassword.errors && f.newPassword.errors.minlength">Hasło musi mieć conajmniej 6 znaków</div>
 
 
               </div>
@@ -142,7 +143,10 @@
               <div class="col-md-12">
                 <label for="password2" class="text-black">Powtórz nowe hasło</label>
                 <input type="password" class="form-control" id="password2" name="password2" formControlName="repeatNewPassword" >
-
+                <div *ngIf="this.submitted && f.repeatNewPassword.errors" class="alert alert-danger">
+                  <div *ngIf="f.repeatNewPassword.errors.required">Pole jest wymagane</div>
+                  <div *ngIf="f.repeatNewPassword.errors.mustMatch">Hasła muszą być takie same</div>
+              </div>
               </div>
             </div>
           </div>
@@ -152,7 +156,7 @@
         <div class="col-md-3 mb-5 mb-md-0">
         </div>
         <div class="col-md-6 mb-5 mb-md-0">
-          <button [disabled]="angForm.pristine || angForm.invalid" class="btn btn-primary btn-lg py-3 btn-block" type="submit">Zapisz</button>
+          <button class="btn btn-primary btn-lg py-3 btn-block" type="submit">Zapisz</button>
         </div>
       </div>
     </div>
