@@ -28,9 +28,6 @@ public class Books {
     @Column(name = "available")
     private boolean isAvailable;
 
-    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "book")
-    private List<ReservationsItems> reservationsItemsList;
-
     @ManyToMany
     @JoinTable(
             name="BookCategories",

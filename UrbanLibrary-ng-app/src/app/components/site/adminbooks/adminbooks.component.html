@@ -40,7 +40,7 @@
                   <td><p *ngFor="let author of book.authors ">{{author.firstName.concat(" ", author.lastName)}}</p></td>
                   <td><p *ngFor="let category of book.categories ">{{category.name}}</p></td>
                   <td>
-                    <button type="button" class="btn btn-primary m-t-1 waves-effect">Edytuj</button>
+                    <button type="button" class="btn btn-primary m-t-1 waves-effect" (click)="update(book)">Edytuj</button>
                     <button type="button" class="btn btn-primary m-t-1 waves-effect" (click)="deleteBook(book.bookID)">Usuń</button>
                   </td>
                 </tr>
@@ -62,35 +62,29 @@
             </h2>
           </div>
           <div class="body">
-            <form id="form_validation" method="POST">
+            <form id="form_validation" method="POST" (submit)="editBook()">
               <div class="form-group form-float">
                 <div class="form-line">
                   <label>ID książki</label>
-                  <input type="number" class="form-control" name="id" required disabled>
+                  <input type="number" class="form-control" name="id" [(ngModel)]="editID" required disabled>
                 </div>
               </div>
               <div class="form-group form-float">
                 <div class="form-line">
                   <label>Data wydania</label>
-                  <input type="date" class="form-control" name="date" required>
+                  <input type="date" class="form-control" name="date" [(ngModel)]="editDate" required>
                 </div>
               </div>
               <div class="form-group form-float">
                 <div class="form-line">
                   <label>Tytuł</label>
-                  <input type="text" class="form-control" name="title" required>
+                  <input type="text" class="form-control" name="title" [(ngModel)]="editTitle" required>
                 </div>
               </div>
               <div class="form-group form-float">
                 <div class="form-line">
                   <label>Opis</label>
-                  <textarea rows="3" class="form-control no-resize" placeholder="..." required></textarea>
-                </div>
-              </div>
-              <div class="form-group form-float">
-                <div class="form-line">
-                  <label>Okładka</label>
-                  <input type="file" id="myFile" name="filename">
+                  <textarea rows="3" class="form-control no-resize" placeholder="..." name="message" [(ngModel)]="editDescription" required></textarea>
                 </div>
               </div>
               <button class="btn btn-primary waves-effect" type="submit">Edytuj</button>
@@ -125,152 +119,10 @@
                   <textarea rows="3" class="form-control no-resize" placeholder="..." name="message" [(ngModel)]="model.description" required></textarea>
                 </div>
               </div>
-              <div class="form-group form-float">
-                <div class="form-line">
-                  <label>Okładka</label>
-                  <input type="file" id="myFilee" name="filename" [(ngModel)]="model.imgName">
-                </div>
-              </div>
               <button class="btn btn-primary waves-effect" type="submit">Dodaj</button>
               <div class="form-line">
                 <br><br><br><br>
               </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row clearfix">
-      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-        <div class="card">
-          <div class="header">
-            <h2>
-              Dodaj gatunki
-            </h2>
-          </div>
-          <div class="body">
-            <form id="form_validation" method="POST">
-              <div class="form-group">
-                <label for="sel1">Wybierz książkę</label>
-                <select class="form-control" id="sel1" required>
-                  <option>fsaf</option>
-                  <option>afs</option>
-                  <option>fsaf</option>
-                  <option>fsa</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="sel2">Wybierz gatunki</label>
-                <select class="form-control" id="sel2" multiple required>
-                  <option>fsaf</option>
-                  <option>fsafsa</option>
-                  <option>fsafas</option>
-                  <option>gdds</option>
-                </select>
-              </div>
-              <button class="btn btn-primary waves-effect" type="submit">Dodaj</button>
-            </form>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-        <div class="card">
-          <div class="header">
-            <h2>
-              Usuń gatunki
-            </h2>
-          </div>
-          <div class="body">
-            <form id="form_validation" method="POST">
-              <div class="form-group">
-                <label for="sel1">Wybierz książkę</label>
-                <select class="form-control" id="sel1" required>
-                  <option>fsaf</option>
-                  <option>afs</option>
-                  <option>fsaf</option>
-                  <option>fsa</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="sel2">Wybierz gatunki</label>
-                <select class="form-control" id="sel2" multiple required>
-                  <option>fsaf</option>
-                  <option>fsafsa</option>
-                  <option>fsafas</option>
-                  <option>gdds</option>
-                </select>
-              </div>
-              <button class="btn btn-primary waves-effect" type="submit">Usuń</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row clearfix">
-      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-        <div class="card">
-          <div class="header">
-            <h2>
-              Dodaj autorów
-            </h2>
-          </div>
-          <div class="body">
-            <form id="form_validation" method="POST">
-              <div class="form-group">
-                <label for="sel1">Wybierz książkę</label>
-                <select class="form-control" id="sel1" required>
-                  <option>fsaf</option>
-                  <option>afs</option>
-                  <option>fsaf</option>
-                  <option>fsa</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="sel2">Wybierz autorów</label>
-                <select class="form-control" id="sel2" multiple required>
-                  <option>fsaf</option>
-                  <option>fsafsa</option>
-                  <option>fsafas</option>
-                  <option>gdds</option>
-                </select>
-              </div>
-              <button class="btn btn-primary waves-effect" type="submit">Dodaj</button>
-            </form>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-        <div class="card">
-          <div class="header">
-            <h2>
-              Usuń autorów
-            </h2>
-          </div>
-          <div class="body">
-            <form id="form_validation" method="POST">
-              <div class="form-group">
-                <label for="sel1">Wybierz książkę</label>
-                <select class="form-control" id="sel1" required>
-                  <option>fsaf</option>
-                  <option>afs</option>
-                  <option>fsaf</option>
-                  <option>fsa</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="sel2">Wybierz autorów</label>
-                <select class="form-control" id="sel2" multiple required>
-                  <option>fsaf</option>
-                  <option>fsafsa</option>
-                  <option>fsafas</option>
-                  <option>gdds</option>
-                </select>
-              </div>
-              <button class="btn btn-primary waves-effect" type="submit">Usuń</button>
             </form>
           </div>
         </div>

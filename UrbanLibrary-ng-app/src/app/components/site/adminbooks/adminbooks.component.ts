@@ -20,7 +20,7 @@ export class AdminbooksComponent implements OnInit {
     cover: '',
     imgName: 'no_img.jpg',
     description: '',
-    date: new Date(2000, 1, 1),
+    date: null,
     booksReadByMember: null,
     categories: null,
     authors: null,
@@ -28,7 +28,17 @@ export class AdminbooksComponent implements OnInit {
     isAvailable: true
   };
 
+  model2: Book;
+
+  editID = null;
+  editDate = null;
+  editTitle = '';
+  editDescription = '';
+  editImg = '';
+
   books: Book[] = [];
+  categories: Category[] = [];
+  authors: Author[] = [];
 
   constructor(private apiService: ApiService) { }
 
@@ -65,6 +75,29 @@ export class AdminbooksComponent implements OnInit {
       },
       err => {
         alert('An error has occured while deleting data.');
+      }
+    );
+  }
+
+  update(book: Book) {
+    this.model2 = book;
+    this.editID = book.bookID;
+    this.editDate = book.date;
+    this.editTitle = book.title;
+    this.editDescription = book.description;
+  }
+
+  editBook(): void {
+    this.model2.date = this.editDate;
+    this.model2.title = this.editTitle;
+    this.model2.description = this.editDescription;
+
+    this.apiService.postBook(this.model2).subscribe(
+      res => {
+        location.reload();
+      },
+      err => {
+        alert('An error has occured while sending data.');
       }
     );
   }
