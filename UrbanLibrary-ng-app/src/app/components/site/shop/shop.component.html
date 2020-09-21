@@ -34,7 +34,7 @@
         <div class="row mb-5">
 
           <ng-container *ngIf="this.selectedCategory;else allBooks">
-            
+
             <ng-container *ngFor="let book of books | myFilterPipe:searchTextAuthor | sortTitle,; let i = index">
               <ng-container *ngIf="book.categories[0].categoryID ==this.selectedCategory.categoryID">
               <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up" >
@@ -60,7 +60,7 @@
           <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up" *ngFor="let book of books | myFilterPipe:searchTextAuthor | sortTitle,; let i = index">
             <div class="block-4 text-center border">
               <figure class="block-4-image">
-                <a (click)="selectBook(book)" [routerLink]="['shop-single', i+1]" href="shop-single.html"><img
+                <a (click)="selectBook(book)" [routerLink]="['shop-single', book.bookID]" href="shop-single.html"><img
                     src="assets/images/{{book.imgName}}" alt="Image placeholder" class="img-fluid"></a>
               </figure>
               <div class="block-4-text p-4">
@@ -95,12 +95,13 @@
 
       <div class="col-md-3 order-1 mb-5 mb-md-0">
         <div class="border p-4 rounded mb-4">
-          <h5 class="text-black h6 d-block" (click)="clearCategory()" style="cursor:pointer;">Wyczyść filtr kategorii</h5>
-          <h3 class="mb-3  text-uppercase text-black d-block">Kategorie</h3>
+          <h3 class="mb-3 h6 text-uppercase text-black d-block text-center">Kategorie</h3>
           <ul class="list-unstyled mb-0">
-            <li (click)="categorySelected(category)" *ngFor="let category of categories" class="mb-1" style="cursor: pointer;"> 
+            <li (click)="categorySelected(category)" *ngFor="let category of categories" class="mb-1" style="cursor: pointer;">
               <span>{{category.name}}</span> </li>
           </ul>
+          <br>
+          <button type="button" class="btn btn-secondary btn-sm" (click)="clearCategory()">Wyczyść filtr kategorii</button>
         </div>
 
         <div class="border p-4 rounded mb-4 text-center">
@@ -116,4 +117,4 @@
 
   </div>
 </div>
-<app-footer></app-footer> 
+<app-footer></app-footer>
