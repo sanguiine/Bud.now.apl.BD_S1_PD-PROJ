@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Member} from "../../../model/member";
 import {ApiService} from "../../../shared/api.service";
 import {Router} from "@angular/router";
-
+import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
@@ -21,9 +21,25 @@ export class EditComponent implements OnInit {
   editDate = this.member.birthDate;
   newPassword = null;
 
-  constructor(private router: Router, private apiService: ApiService) { }
+  angForm: FormGroup;
+
+  constructor(private router: Router, private apiService: ApiService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.createForm()
+  }
+
+  createForm() {
+    this.angForm = this.fb.group({
+      editFirstName: ['', Validators.required ],
+      editLastName: ['', Validators.required ],
+      editEmail: ['', Validators.required ],
+      editAddress: ['', Validators.required ],
+      editCity: ['', Validators.required ],
+      editZIP: ['', Validators.required ],
+      editPhone: ['', Validators.required ],
+      editDate: ['', Validators.required ],
+    });
   }
 
   editMember(): void {
