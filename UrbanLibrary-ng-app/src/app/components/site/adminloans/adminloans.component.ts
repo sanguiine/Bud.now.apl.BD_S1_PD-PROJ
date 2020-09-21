@@ -4,6 +4,7 @@ import { ApiService } from '../../../shared/api.service';
 import {Book} from "../../../model/book";
 import {Member} from "../../../model/member";
 import {Category} from "../../../model/category";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-adminloans',
@@ -15,18 +16,22 @@ import {Category} from "../../../model/category";
   ]
 })
 export class AdminloansComponent implements OnInit {
+  form = new FormGroup({
+    fmember: new FormControl('', Validators.required),
+    fbook: new FormControl('', Validators.required)
+  });
+
   model: Loan = {
     loanID: null,
     book: null,
     member: null,
-    dateLoaned: new Date(2020, 1, 1),
+    dateLoaned: new Date(Date.now()),
     dateReturned: null
   };
 
   model2: Loan;
 
   editID = null;
-  editDateLoaned = null;
   editDateReturned = null;
   editMember = null;
   editBook = null;
@@ -101,14 +106,12 @@ export class AdminloansComponent implements OnInit {
   update(loan: Loan) {
     this.model2 = loan;
     this.editID = loan.loanID;
-    this.editDateLoaned = loan.dateLoaned;
     this.editDateReturned = loan.dateReturned;
     this.editBook = loan.book;
     this.editMember = loan.member;
   }
 
   editLoan(): void {
-    this.model2.dateLoaned = this.editDateLoaned;
     this.model2.dateReturned = this.editDateReturned;
     this.model2.book = this.editBook;
     this.model2.member = this.editMember

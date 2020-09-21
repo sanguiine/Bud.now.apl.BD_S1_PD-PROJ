@@ -75,18 +75,12 @@
               </div>
               <div class="form-group form-float">
                 <div class="form-line">
-                  <label>Data wypożyczenia</label>
-                  <input type="date" class="form-control" name="date" [(ngModel)]="editDateLoaned" required>
-                </div>
-              </div>
-              <div class="form-group form-float">
-                <div class="form-line">
                   <label>Data zwrotu</label>
                   <input type="date" class="form-control" name="date2" [(ngModel)]="editDateReturned">
                 </div>
               </div>
               <div class="form-group">
-                <label for="sel1">Wybierz użytkownika</label>
+                <label for="sel1">Wybierz innego użytkownika</label>
                 <select class="form-control" id="sel1" name="member" [(ngModel)]="editMember">
                   <option *ngFor="let member of members" [ngValue]="member">{{member.firstNname}} {{member.lastName}}
                     ({{member.email}})
@@ -94,7 +88,7 @@
                 </select>
               </div>
               <div class="form-group">
-                <label for="sel1">Wybierz książkę</label>
+                <label for="sel1">Wybierz inną książkę</label>
                 <select class="form-control" id="sel2" name="book" [(ngModel)]="editBook">
                   <option *ngFor="let book of books" [ngValue]="book">
                     ({{book.authors[0]?.firstName}} {{book.authors[0]?.lastName}}) {{book.title}}</option>
@@ -113,29 +107,33 @@
             </h2>
           </div>
           <div class="body">
-            <form id="form_validation2" method="POST" (submit)="addLoan()">
-              <div class="form-group form-float">
-                <div class="form-line">
-                  <label>Data wypożyczenia</label>
-                  <input type="date" class="form-control" name="date" [(ngModel)]="model.dateLoaned" required>
-                </div>
-              </div>
+            <form id="form_validation2" method="POST" (submit)="addLoan()" [formGroup]="form">
               <div class="form-group">
                 <label for="sel1">Wybierz użytkownika</label>
-                <select class="form-control" id="sel3" name="member" [(ngModel)]="model.member">
+                <select class="form-control" id="sel3" name="member" [(ngModel)]="model.member"
+                        formControlName="fmember"
+                        [ngClass]="{'is-invalid': form.get('fmember').touched && form.get('fmember').invalid}">
                   <option *ngFor="let member of members" [ngValue]="member">{{member.firstNname}} {{member.lastName}}
                     ({{member.email}})
                   </option>
                 </select>
+                <div class="invalid-feedback">
+                  <div>Wybór jest wymagany.</div>
+                </div>
               </div>
               <div class="form-group">
                 <label for="sel1">Wybierz książkę</label>
-                <select class="form-control" id="sel4" name="book" [(ngModel)]="model.book">
+                <select class="form-control" id="sel4" name="book" [(ngModel)]="model.book"
+                        formControlName="fbook"
+                        [ngClass]="{'is-invalid': form.get('fbook').touched && form.get('fbook').invalid}">
                   <option *ngFor="let book of books" [ngValue]="book">
                     ({{book.authors[0]?.firstName}} {{book.authors[0]?.lastName}}) {{book.title}}</option>
                 </select>
+                <div class="invalid-feedback">
+                  <div>Wybór jest wymagany.</div>
+                </div>
               </div>
-              <button class="btn btn-primary waves-effect" type="submit">Dodaj</button>
+              <button class="btn btn-primary waves-effect" type="submit" [disabled]="!form.valid">Dodaj</button>
             </form>
           </div>
         </div>
