@@ -29,6 +29,9 @@
                   <div *ngIf="angForm.controls['email'].errors.required">
                     Email jest wymagany.
                   </div>
+                  <div *ngIf="angForm.controls['email'].errors.email">
+                    Email jest niepoprawny.
+                  </div>
                 </div>
               </div>
             </div>

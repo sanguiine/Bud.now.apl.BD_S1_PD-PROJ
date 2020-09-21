@@ -28,6 +28,9 @@
                   <div *ngIf="angForm.controls['editEmail'].errors.required">
                     Email jest wymagany.
                   </div>
+                  <div *ngIf="angForm.controls['editEmail'].errors.email">
+                    Email jest niepoprawny.
+                  </div>
               </div>
 
               </div>
@@ -94,7 +97,7 @@
 
                 <div *ngIf="angForm.controls['editZIP'].invalid && (angForm.controls['editZIP'].dirty || angForm.controls['editZIP'].touched)" class="alert alert-danger">
                   <div *ngIf="angForm.controls['editZIP'].errors.required">
-                    Pole jest wymagane..
+                    Pole jest wymagane.
                   </div>
               </div>
 

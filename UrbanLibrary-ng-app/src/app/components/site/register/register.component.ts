@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
 
   createForm() {
     this.angForm = this.fb.group({
-      email: ['', Validators.required ],
+      email: ['', [Validators.required, Validators.email] ],
       firstNname: ['', Validators.required ],
       lastName: ['', Validators.required ],
       address: ['', Validators.required ],

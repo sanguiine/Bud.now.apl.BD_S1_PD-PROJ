@@ -33,7 +33,7 @@ export class EditComponent implements OnInit {
     this.angForm = this.fb.group({
       editFirstName: ['', Validators.required ],
       editLastName: ['', Validators.required ],
-      editEmail: ['', Validators.required ],
+      editEmail: ['', [Validators.required, Validators.email] ],
       editAddress: ['', Validators.required ],
       editCity: ['', Validators.required ],
       editZIP: ['', Validators.required ],
