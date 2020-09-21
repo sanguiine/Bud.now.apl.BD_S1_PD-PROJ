@@ -41,10 +41,6 @@ public class Members {
     )
     private List<Books> bookReadByMember;
 
-
-    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "member")
-    private List<Loans> loansList;
-
     public Members()
     {
 
