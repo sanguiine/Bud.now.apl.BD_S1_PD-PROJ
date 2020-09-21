@@ -3,6 +3,7 @@ import { Book } from '../../../model/book';
 import { ApiService } from '../../../shared/api.service';
 import {Category} from "../../../model/category";
 import {Author} from "../../../model/author";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-adminbooks',
@@ -14,6 +15,19 @@ import {Author} from "../../../model/author";
   ]
 })
 export class AdminbooksComponent implements OnInit {
+  form = new FormGroup({
+    fdate: new FormControl('', Validators.required),
+    ftitle: new FormControl('', Validators.required),
+    fdesc: new FormControl('', Validators.required)
+  });
+
+  form2 = new FormGroup({
+    fid: new FormControl('', Validators.required),
+    fdate: new FormControl('', Validators.required),
+    ftitle: new FormControl('', Validators.required),
+    fdesc: new FormControl('', Validators.required)
+  });
+
   model: Book = {
     bookID: null,
     title: '',
