@@ -29,6 +29,7 @@ import { AdminloansComponent } from './components/site/adminloans/adminloans.com
 import { AdminreservationsComponent } from './components/site/adminreservations/adminreservations.component';
 import { AdminusersComponent } from './components/site/adminusers/adminusers.component';
 import { AdminwritersComponent } from './components/site/adminwriters/adminwriters.component';
+import { AdmineditbooksComponent } from './components/site/admineditbooks/admineditbooks.component';
 
 
 import { HttpClientModule } from '@angular/common/http';
@@ -59,6 +60,7 @@ const routes: Routes = [
   { path: 'adminbooks', component: AdminbooksComponent},
   { path: 'admingenres', component: AdmingenresComponent},
   { path: 'adminwriters', component: AdminwritersComponent},
+  { path: 'admineditbooks', component: AdmineditbooksComponent},
 ];
 
 @NgModule({

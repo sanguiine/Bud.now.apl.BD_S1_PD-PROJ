@@ -30,6 +30,7 @@ import { AdminloansComponent } from './components/site/adminloans/adminloans.com
 import { AdminreservationsComponent } from './components/site/adminreservations/adminreservations.component';
 import { AdminusersComponent } from './components/site/adminusers/adminusers.component';
 import { AdminwritersComponent } from './components/site/adminwriters/adminwriters.component';
+import { AdmineditbooksComponent } from './components/site/admineditbooks/admineditbooks.component';
 
 import { RouterModule, Routes } from '@angular/router';
 import { Globals } from 'src/app/model/globals';
@@ -122,6 +123,8 @@ const appRoutes: Routes = [
 
 { path: 'adminbooks', component: AdminbooksComponent},
 
+{ path: 'admineditbooks', component: AdmineditbooksComponent},
+
 { path: 'admingenres', component: AdmingenresComponent},
 
 { path: 'adminwriters', component: AdminwritersComponent},
@@ -165,6 +168,7 @@ const appRoutes: Routes = [
     SearchFilterPipe,
     ClickOutsideDirective,
     SortTitlePipe,
+    AdmineditbooksComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -200,9 +204,9 @@ const appRoutes: Routes = [
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    BrowserAnimationsModule,                                
+    BrowserAnimationsModule,
   ],
-  providers: 
+  providers:
   [
     Globals,
     MessengerService,
