@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Member } from '../../../model/member';
 import { ApiService } from '../../../shared/api.service';
 import {Category} from "../../../model/category";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-adminusers',
@@ -13,6 +14,27 @@ import {Category} from "../../../model/category";
   ]
 })
 export class AdminusersComponent implements OnInit {
+  form = new FormGroup({
+    ffirstName: new FormControl('', Validators.required),
+    flastName: new FormControl('', Validators.required),
+    femail: new FormControl('', [Validators.required, Validators.email]),
+    faddress: new FormControl('', Validators.required),
+    fcity: new FormControl('', Validators.required),
+    fzip: new FormControl('', Validators.required),
+    fphone: new FormControl('', Validators.required)
+  });
+
+  form2 = new FormGroup({
+    fid: new FormControl('', Validators.required),
+    ffirstName: new FormControl('', Validators.required),
+    flastName: new FormControl('', Validators.required),
+    femail: new FormControl('', [Validators.required, Validators.email]),
+    faddress: new FormControl('', Validators.required),
+    fcity: new FormControl('', Validators.required),
+    fzip: new FormControl('', Validators.required),
+    fphone: new FormControl('', Validators.required)
+  });
+
   model: Member = {
     memberID: null,
     firstNname: '',

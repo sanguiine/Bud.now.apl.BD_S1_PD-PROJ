@@ -28,6 +28,7 @@
                   <th>Email</th>
                   <th>Imię</th>
                   <th>Nazwisko</th>
+                  <th>Numer</th>
                   <th>Akcje</th>
                 </tr>
                 </thead>
@@ -37,9 +38,13 @@
                   <td>{{member.email}}</td>
                   <td>{{member.firstNname}}</td>
                   <td>{{member.lastName}}</td>
+                  <td>{{member.phoneNumber}}</td>
                   <td>
-                    <button type="button" class="btn btn-primary m-t-1 waves-effect" (click)="update(member)">Edytuj</button>
-                    <button type="button" class="btn btn-primary m-t-1 waves-effect" (click)="deleteMember(member.memberID)">Usuń</button>
+                    <button type="button" class="btn btn-primary m-t-1 waves-effect" (click)="update(member)">Edytuj
+                    </button>
+                    <button type="button" class="btn btn-primary m-t-1 waves-effect"
+                            (click)="deleteMember(member.memberID)">Usuń
+                    </button>
                   </td>
                 </tr>
                 </tbody>
@@ -59,56 +64,97 @@
             </h2>
           </div>
           <div class="body">
-            <form id="form_validation" method="POST" (submit)="editMember()">
+            <form id="form_validation" method="POST" (submit)="editMember()" [formGroup]="form2">
               <div class="form-group form-float">
                 <div class="form-line">
                   <label>ID użytkownika</label>
-                  <input type="number" class="form-control" name="id" [(ngModel)]="editID" required disabled>
+                  <input type="number" class="form-control" name="id" [(ngModel)]="editID"
+                         formControlName="fid"
+                         [ngClass]="{'is-invalid': form2.get('fid').touched && form2.get('fid').invalid}" required disabled>
                 </div>
               </div>
               <div class="form-group form-float">
                 <div class="form-line">
                   <label>Imię</label>
-                  <input type="text" class="form-control" name="name" [(ngModel)]="editFirstName" required>
+                  <input type="text" class="form-control" name="name" [(ngModel)]="editFirstName"
+                         formControlName="ffirstName"
+                         [ngClass]="{'is-invalid': form2.get('ffirstName').touched && form2.get('ffirstName').invalid}"
+                         required>
+                  <div class="invalid-feedback">
+                    <div>Imię jest wymagane.</div>
+                  </div>
                 </div>
               </div>
               <div class="form-group form-float">
                 <div class="form-line">
                   <label>Nazwisko</label>
-                  <input type="text" class="form-control" name="surname" [(ngModel)]="editLastName" required>
+                  <input type="text" class="form-control" name="surname" [(ngModel)]="editLastName"
+                         formControlName="flastName"
+                         [ngClass]="{'is-invalid': form2.get('flastName').touched && form2.get('flastName').invalid}"
+                         required>
+                  <div class="invalid-feedback">
+                    <div>Nazwisko jest wymagane.</div>
+                  </div>
                 </div>
               </div>
               <div class="form-group form-float">
                 <div class="form-line">
                   <label>Email</label>
-                  <input type="email" class="form-control" name="email" [(ngModel)]="editEmail" required>
+                  <input type="email" class="form-control" name="email" [(ngModel)]="editEmail"
+                         formControlName="femail"
+                         [ngClass]="{'is-invalid': form2.get('femail').touched && form2.get('femail').invalid}" required>
+                  <div *ngIf="form2.get('femail').touched && form2.get('femail').invalid"  class="invalid-feedback">
+                    <div *ngIf="form2.get('femail').errors.required">Email jest wymagany.</div>
+                    <div *ngIf="form2.get('femail').errors.email">Email musi być poprawny.</div>
+                  </div>
                 </div>
               </div>
               <div class="form-group form-float">
                 <div class="form-line">
                   <label>Adres</label>
-                  <input type="text" class="form-control" name="address" [(ngModel)]="editAddress" required>
+                  <input type="text" class="form-control" name="address" [(ngModel)]="editAddress"
+                         formControlName="faddress"
+                         [ngClass]="{'is-invalid': form2.get('faddress').touched && form2.get('faddress').invalid}"
+                         required>
+                  <div class="invalid-feedback">
+                    <div>Adres jest wymagany.</div>
+                  </div>
                 </div>
               </div>
               <div class="form-group form-float">
                 <div class="form-line">
                   <label>Miasto</label>
-                  <input type="text" class="form-control" name="city" [(ngModel)]="editCity" required>
+                  <input type="text" class="form-control" name="city" [(ngModel)]="editCity"
+                         formControlName="fcity"
+                         [ngClass]="{'is-invalid': form2.get('fcity').touched && form2.get('fcity').invalid}" required>
+                  <div class="invalid-feedback">
+                    <div>Miasto jest wymagane.</div>
+                  </div>
                 </div>
               </div>
               <div class="form-group form-float">
                 <div class="form-line">
                   <label>Kod pocztowy</label>
-                  <input type="text" class="form-control" name="zip" [(ngModel)]="editZIP" required>
+                  <input type="text" class="form-control" name="zip" [(ngModel)]="editZIP"
+                         formControlName="fzip"
+                         [ngClass]="{'is-invalid': form2.get('fzip').touched && form2.get('fzip').invalid}" required>
+                  <div class="invalid-feedback">
+                    <div>Kod jest wymagany.</div>
+                  </div>
                 </div>
               </div>
               <div class="form-group form-float">
                 <div class="form-line">
                   <label>Numer telefonu</label>
-                  <input type="number" class="form-control" name="phone" [(ngModel)]="editPhone" required>
+                  <input type="number" class="form-control" name="phone" [(ngModel)]="editPhone"
+                         formControlName="fphone"
+                         [ngClass]="{'is-invalid': form2.get('fphone').touched && form2.get('fphone').invalid}" required>
+                  <div class="invalid-feedback">
+                    <div>Telefon jest wymagany.</div>
+                  </div>
                 </div>
               </div>
-              <button class="btn btn-primary waves-effect" type="submit">Edytuj</button>
+              <button class="btn btn-primary waves-effect" type="submit" [disabled]="!form2.valid">Edytuj</button>
             </form>
           </div>
         </div>
@@ -121,50 +167,89 @@
             </h2>
           </div>
           <div class="body">
-            <form id="form_validation2" method="POST" (submit)="addMember()">
+            <form id="form_validation2" method="POST" (submit)="addMember()" [formGroup]="form">
               <div class="form-group form-float">
                 <div class="form-line">
                   <label>Imię</label>
-                  <input type="text" class="form-control" name="name" [(ngModel)]="model.firstNname" required>
+                  <input type="text" class="form-control" name="name" [(ngModel)]="model.firstNname"
+                         formControlName="ffirstName"
+                         [ngClass]="{'is-invalid': form.get('ffirstName').touched && form.get('ffirstName').invalid}"
+                         required>
+                  <div class="invalid-feedback">
+                    <div>Imię jest wymagane.</div>
+                  </div>
                 </div>
               </div>
               <div class="form-group form-float">
                 <div class="form-line">
                   <label>Nazwisko</label>
-                  <input type="text" class="form-control" name="surname" [(ngModel)]="model.lastName" required>
+                  <input type="text" class="form-control" name="surname" [(ngModel)]="model.lastName"
+                         formControlName="flastName"
+                         [ngClass]="{'is-invalid': form.get('flastName').touched && form.get('flastName').invalid}"
+                         required>
+                  <div class="invalid-feedback">
+                    <div>Nazwisko jest wymagane.</div>
+                  </div>
                 </div>
               </div>
               <div class="form-group form-float">
                 <div class="form-line">
                   <label>Email</label>
-                  <input type="email" class="form-control" name="email" [(ngModel)]="model.email" required>
+                  <input type="email" class="form-control" name="email" [(ngModel)]="model.email"
+                         formControlName="femail"
+                         [ngClass]="{'is-invalid': form.get('femail').touched && form.get('femail').invalid}" required>
+                  <div *ngIf="form.get('femail').touched && form.get('femail').invalid"  class="invalid-feedback">
+                    <div *ngIf="form.get('femail').errors.required">Email jest wymagany.</div>
+                    <div *ngIf="form.get('femail').errors.email">Email musi być poprawny.</div>
+                  </div>
                 </div>
               </div>
               <div class="form-group form-float">
                 <div class="form-line">
                   <label>Adres</label>
-                  <input type="text" class="form-control" name="address" [(ngModel)]="model.address" required>
+                  <input type="text" class="form-control" name="address" [(ngModel)]="model.address"
+                         formControlName="faddress"
+                         [ngClass]="{'is-invalid': form.get('faddress').touched && form.get('faddress').invalid}"
+                         required>
+                  <div class="invalid-feedback">
+                    <div>Adres jest wymagany.</div>
+                  </div>
                 </div>
               </div>
               <div class="form-group form-float">
                 <div class="form-line">
                   <label>Miasto</label>
-                  <input type="text" class="form-control" name="city" [(ngModel)]="model.city" required>
+                  <input type="text" class="form-control" name="city" [(ngModel)]="model.city"
+                         formControlName="fcity"
+                         [ngClass]="{'is-invalid': form.get('fcity').touched && form.get('fcity').invalid}" required>
+                  <div class="invalid-feedback">
+                    <div>Miasto jest wymagane.</div>
+                  </div>
                 </div>
               </div>
               <div class="form-group form-float">
                 <div class="form-line">
                   <label>Kod pocztowy</label>
-                  <input type="text" class="form-control" name="zip" [(ngModel)]="model.zipCode" required>
+                  <input type="text" class="form-control" name="zip" [(ngModel)]="model.zipCode"
+                         formControlName="fzip"
+                         [ngClass]="{'is-invalid': form.get('fzip').touched && form.get('fzip').invalid}" required>
+                  <div class="invalid-feedback">
+                    <div>Kod jest wymagany.</div>
+                  </div>
                 </div>
               </div>
               <div class="form-group form-float">
                 <div class="form-line">
                   <label>Numer telefonu</label>
-                  <input type="text" class="form-control" name="phone" [(ngModel)]="model.phoneNumber" required>
+                  <input type="number" class="form-control" name="phone" [(ngModel)]="model.phoneNumber"
+                         formControlName="fphone"
+                         [ngClass]="{'is-invalid': form.get('fphone').touched && form.get('fphone').invalid}" required>
+                  <div class="invalid-feedback">
+                    <div>Telefon jest wymagany.</div>
+                  </div>
                 </div>
               </div>
-              <button class="btn btn-primary waves-effect" type="submit">Dodaj</button>
+              <button class="btn btn-primary waves-effect" type="submit" [disabled]="!form.valid">Dodaj</button>
             </form>
           </div>
         </div>
