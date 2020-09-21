@@ -74,6 +74,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { pipe } from 'rxjs';
+import { SortTitlePipe } from './shared/sort-title.pipe';
 
 const appRoutes: Routes = [
 
@@ -163,6 +164,7 @@ const appRoutes: Routes = [
     MyFilterPipePipe,
     SearchFilterPipe,
     ClickOutsideDirective,
+    SortTitlePipe,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -198,8 +200,7 @@ const appRoutes: Routes = [
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    BrowserAnimationsModule,
-    
+    BrowserAnimationsModule,                                
   ],
   providers: 
   [

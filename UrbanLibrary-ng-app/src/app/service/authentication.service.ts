@@ -34,6 +34,7 @@ export class AuthenticationService {
       if (username === this.members[i].email && password === this.members[i].password) {
         sessionStorage.setItem('username', username)
         this.globals.member = this.members[i];
+        this.globals.mode = this.members[i].role;
         localStorage.setItem("loggedMember", JSON.stringify(this.members[i]));
         console.log(this.globals.member.memberID);
         return true;

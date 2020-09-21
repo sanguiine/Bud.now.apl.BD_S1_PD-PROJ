@@ -4,12 +4,16 @@ import { Book } from "../../../model/book";
 import { ApiService } from "../../../shared/api.service"
 import { MyFilterPipePipe } from '../../../shared/pipes/my-filter-pipe.pipe';
 import { Category } from 'src/app/model/category';
+import { SortTitlePipe } from 'src/app/shared/sort-title.pipe';
+import { Globals } from 'src/app/model/globals';
 
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
   styleUrls: ['./shop.component.css'],
-  providers: [MyFilterPipePipe]
+  providers: [MyFilterPipePipe,
+  SortTitlePipe,
+  ]
 })
 export class ShopComponent implements OnInit {
   searchTextAuthor: string;
@@ -18,11 +22,11 @@ export class ShopComponent implements OnInit {
   selectedBook: Book;
   
   categories: Category[] = [];
-  selectedCategory: Category;
+  selectedCategory: Category = null;
 
   
 
-  constructor(private apiService: ApiService, private myFilterPipe: MyFilterPipePipe) { }
+  constructor(private apiService: ApiService, private myFilterPipe: MyFilterPipePipe, public globals: Globals) { }
 
   ngOnInit() {
     this.getAllBooks();
@@ -61,5 +65,22 @@ export class ShopComponent implements OnInit {
     );
   }
 
+
+  categorySelected(category){
+    this.selectedCategory = category;
+    console.log(this.selectedCategory)
+  }
+
+  clearCategory(){
+    this.selectedCategory = null;
+  }
+
+  changeSortUp(){
+    this.globals.rosnaco = true;
+    
+  }
+  changeSortDown(){
+    this.globals.rosnaco = false;
+  }
 
 }
