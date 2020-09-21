@@ -26,7 +26,11 @@ export class RegisterComponent implements OnInit {
     loanlist: null
   };
 
+  repeatNewPassword = '';
+
   angForm: FormGroup;
+
+  submitted = false;
 
   constructor(private router: Router, private apiService: ApiService, private fb: FormBuilder) { }
 
@@ -44,13 +48,25 @@ export class RegisterComponent implements OnInit {
       zipCode: ['', Validators.required ],
       birthDate: ['', Validators.required ],
       phoneNumber: ['', Validators.required ],
-      newPassword: ['', Validators.required],
-      repeatPassword: ['', Validators.required]
-    });
+      newPassword: ['', [Validators.required, Validators.minLength(6)]],
+      repeatNewPassword: ['',[ Validators.required, Validators.minLength(6)]],
+    },
+    {
+      validator: MustMatch('newPassword', 'repeatNewPassword')
+    }
+    );
   }
 
+  get f() { return this.angForm.controls; }
 
   addMember(): void {
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.angForm.invalid) {
+      console.log('aaa');
+        return;
+    }
     this.apiService.postMember(this.model).subscribe(
       res => {
         this.router.navigate(["success"])
@@ -59,5 +75,25 @@ export class RegisterComponent implements OnInit {
         alert('An error has occured while sending data.');
       }
     );
+  }
+}
+
+
+export function MustMatch(controlName: string, matchingControlName: string) {
+  return (formGroup: FormGroup) => {
+      const control = formGroup.controls[controlName];
+      const matchingControl = formGroup.controls[matchingControlName];
+
+      if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+          // return if another validator has already found an error on the matchingControl
+          return;
+      }
+
+      // set error on matchingControl if validation fails
+      if (control.value !== matchingControl.value) {
+          matchingControl.setErrors({ mustMatch: true });
+      } else {
+          matchingControl.setErrors(null);
+      }
   }
 }

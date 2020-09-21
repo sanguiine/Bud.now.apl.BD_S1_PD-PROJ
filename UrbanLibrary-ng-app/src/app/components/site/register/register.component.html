@@ -22,7 +22,9 @@
                 <label for="email" class="text-black">Email<span class="text-danger">*</span> </label>
                 <input type="email" class="form-control" id="email" name="email" [(ngModel)]="model.email"
                   formControlName="email">
-
+                  <div *ngIf="this.submitted && f.email.errors" class="alert alert-danger">
+                    Email jest wymagany.
+                  </div>
                 <div
                   *ngIf="angForm.controls['email'].invalid && (angForm.controls['email'].dirty || angForm.controls['email'].touched)"
                   class="alert alert-danger">
@@ -41,7 +43,9 @@
                 <label for="fname" class="text-black">Imię<span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="fname" name="fname" [(ngModel)]="model.firstNname"
                   formControlName="firstNname">
-
+                  <div *ngIf="this.submitted && f.firstNname.errors" class="alert alert-danger">
+                    Pole jest wymagane.
+                  </div>
                 <div
                   *ngIf="angForm.controls['firstNname'].invalid && (angForm.controls['firstNname'].dirty || angForm.controls['firstNname'].touched)"
                   class="alert alert-danger">
@@ -54,7 +58,9 @@
                 <label for="lname" class="text-black">Nazwisko<span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="lname" name="lname" [(ngModel)]="model.lastName"
                   formControlName="lastName">
-
+                  <div *ngIf="this.submitted && f.lastName.errors" class="alert alert-danger">
+                    Pole jest wymagane.
+                  </div>
                 <div
                   *ngIf="angForm.controls['lastName'].invalid && (angForm.controls['lastName'].dirty || angForm.controls['lastName'].touched)"
                   class="alert alert-danger">
@@ -71,7 +77,9 @@
                 <label for="address" class="text-black">Adres<span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="address" name="address" [(ngModel)]="model.address"
                   formControlName="address">
-
+                  <div *ngIf="this.submitted && f.address.errors" class="alert alert-danger">
+                    Pole jest wymagane.
+                  </div>
                 <div
                   *ngIf="angForm.controls['address'].invalid && (angForm.controls['address'].dirty || angForm.controls['address'].touched)"
                   class="alert alert-danger">
@@ -87,7 +95,9 @@
                 <label for="city" class="text-black">Miasto<span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="city" name="city" [(ngModel)]="model.city"
                   formControlName="city">
-
+                  <div *ngIf="this.submitted && f.city.errors" class="alert alert-danger">
+                    Pole jest wymagane.
+                  </div>
                 <div
                   *ngIf="angForm.controls['city'].invalid && (angForm.controls['city'].dirty || angForm.controls['city'].touched)"
                   class="alert alert-danger">
@@ -100,7 +110,9 @@
                 <label for="zip" class="text-black">Kod pocztowy<span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="zip" name="zip" [(ngModel)]="model.zipCode"
                   formControlName="zipCode">
-
+                  <div *ngIf="this.submitted && f.zipCode.errors" class="alert alert-danger">
+                    Pole jest wymagane.
+                  </div>
                 <div
                   *ngIf="angForm.controls['zipCode'].invalid && (angForm.controls['zipCode'].dirty || angForm.controls['zipCode'].touched)"
                   class="alert alert-danger">
@@ -116,7 +128,9 @@
                 <label for="bdate" class="text-black">Data urodzenia<span class="text-danger">*</span></label>
                 <input type="date" class="form-control" id="bdate" name="bdate" [(ngModel)]="model.birthDate"
                   formControlName="birthDate">
-
+                  <div *ngIf="this.submitted && f.birthDate.errors" class="alert alert-danger">
+                    Pole jest wymagane.
+                  </div>
                 <div
                   *ngIf="angForm.controls['birthDate'].invalid && (angForm.controls['birthDate'].dirty || angForm.controls['birthDate'].touched)"
                   class="alert alert-danger">
@@ -129,13 +143,16 @@
                 <label for="phone" class="text-black">Numer telefonu<span class="text-danger">*</span></label>
                 <input type="number" class="form-control" id="phone" name="phone" [(ngModel)]="model.phoneNumber"
                   formControlName="phoneNumber">
-
+                  <div *ngIf="this.submitted && f.phoneNumber.errors" class="alert alert-danger">
+                    Pole jest wymagane.
+                  </div>
                 <div
                   *ngIf="angForm.controls['phoneNumber'].invalid && (angForm.controls['phoneNumber'].dirty || angForm.controls['phoneNumber'].touched)"
                   class="alert alert-danger">
                   <div *ngIf="angForm.controls['phoneNumber'].errors.required">
                     Pole jest wymagane.
                   </div>
+                  
                 </div>
               </div>
             </div>
@@ -145,29 +162,23 @@
                 <label for="password" class="text-black">Hasło<span class="text-danger">*</span></label>
                 <input type="password" class="form-control" id="password" name="password" [(ngModel)]="model.password"
                   formControlName="newPassword">
-
-                <div
-                  *ngIf="angForm.controls['newPassword'].invalid && (angForm.controls['newPassword'].dirty || angForm.controls['newPassword'].touched)"
-                  class="alert alert-danger">
-                  <div *ngIf="angForm.controls['newPassword'].errors.required">
+                  <div *ngIf="this.submitted && f.newPassword.errors" class="alert alert-danger">
                     Pole jest wymagane.
                   </div>
-                </div>
+                  <div class="alert alert-danger" *ngIf="f.newPassword.errors && f.newPassword.errors.minlength">Hasło musi mieć conajmniej 6 znaków</div>
               </div>
             </div>
 
             <div class="form-group row">
               <div class="col-md-12">
                 <label for="password2" class="text-black">Powtórz hasło<span class="text-danger">*</span></label>
-                <input type="password" class="form-control" id="password2" name="password2" formControlName="repeatPassword">
-
-                <div
-                  *ngIf="angForm.controls['repeatPassword'].invalid && (angForm.controls['repeatPassword'].dirty || angForm.controls['repeatPassword'].touched)"
-                  class="alert alert-danger">
-                  <div *ngIf="angForm.controls['repeatPassword'].errors.required">
-                    Pole jest wymagane.
-                  </div>
-                </div>
+                <input type="password" class="form-control" id="password2" name="password2" [(ngModel)]="this.repeatNewPassword" formControlName="repeatNewPassword">
+                <div *ngIf="this.submitted && f.repeatNewPassword.errors" class="alert alert-danger">
+                  <div *ngIf="f.repeatNewPassword.errors.mustMatch">Hasła muszą być takie same</div>
+                  <div *ngIf="f.repeatNewPassword.errors.minlength">Hasło musi mieć conajmniej 6 znaków</div>
+                  
+                  <div *ngIf="f.repeatNewPassword.errors.required">Pole jest wymagane</div>
+              </div>
               </div>
             </div>
           </div>
@@ -177,7 +188,7 @@
         <div class="col-md-3 mb-5 mb-md-0">
         </div>
         <div class="col-md-6 mb-5 mb-md-0">
-          <button [disabled]="angForm.pristine || angForm.invalid" class="btn btn-primary btn-lg py-3 btn-block"
+          <button class="btn btn-primary btn-lg py-3 btn-block"
             type="submit">Załóż konto</button>
         </div>
       </div>
