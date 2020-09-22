@@ -25,7 +25,7 @@ export class CheckoutComponent implements OnInit {
 
 
 
-  reservationID: number = Math.floor(Math.random() * 100000) + 1;;
+  reservationID: number = Math.floor(Math.random() * 100000) + 1;
 
   constructor(private apiService: ApiService) { }
 

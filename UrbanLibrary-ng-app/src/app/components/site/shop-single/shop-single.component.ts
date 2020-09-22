@@ -18,7 +18,7 @@ export class ShopSingleComponent implements OnInit {
   selectedBook: Book;
   bookAuthors: Author[];
   bookCategories: Category[];
-  count = 0;
+  count = 5;
   counter = 1;
 
   books: Book[] = [];
@@ -73,7 +73,7 @@ export class ShopSingleComponent implements OnInit {
     }
     else
     {
-      alert("Nie ma więcej dostępnych książek!");
+      alert("Możesz zarezerwować tylko 5 książek!");
     }
   }
 
@@ -85,7 +85,7 @@ export class ShopSingleComponent implements OnInit {
   }
 
   addToCart() {
-    
+
     if(localStorage.getItem("cart"))
     {
       var cart = JSON.parse(localStorage.getItem("cart"));
