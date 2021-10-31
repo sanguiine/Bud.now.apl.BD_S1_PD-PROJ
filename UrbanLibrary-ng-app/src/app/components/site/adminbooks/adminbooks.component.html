@@ -1,0 +1,165 @@
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
+      type="text/css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+<body class="theme-black">
+<app-sidemenu></app-sidemenu>
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <h2>
+        KSIĄŻKI
+      </h2>
+    </div>
+    <div class="row clearfix">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+          <div class="header">
+            <h2>
+              Szukaj książek
+            </h2>
+          </div>
+          <div class="body">
+            <div class="table-responsive">
+              <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                <thead>
+                <tr>
+                  <th>ID książki</th>
+                  <th>Data wydania</th>
+                  <th>Tytuł</th>
+                  <th>Autorzy</th>
+                  <th>Gatunki</th>
+                  <th>Akcje</th>
+                </tr>
+                </thead>
+                <tbody *ngFor="let book of books">
+                <tr>
+                  <td>{{book.bookID}}</td>
+                  <td>{{book.date}}</td>
+                  <td>{{book.title}}</td>
+                  <td><p *ngFor="let author of book.authors ">{{author.firstName.concat(" ", author.lastName)}}</p></td>
+                  <td><p *ngFor="let category of book.categories ">{{category.name}}</p></td>
+                  <td>
+                    <button type="button" class="btn btn-primary m-t-1 waves-effect" (click)="update(book)">Edytuj</button>
+                    <button type="button" class="btn btn-primary m-t-1 waves-effect" (click)="deleteBook(book.bookID)">Usuń</button>
+                  </td>
+                </tr>
+                <tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row clearfix">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="card">
+          <div class="header">
+            <h2>
+              Edytuj książkę
+            </h2>
+          </div>
+          <div class="body">
+            <form id="form_validation" method="POST" (submit)="editBook()" [formGroup]="form2">
+              <div class="form-group form-float">
+                <div class="form-line">
+                  <label>ID książki</label>
+                  <input type="number" class="form-control" name="id" [(ngModel)]="editID"
+                         formControlName="fid"
+                         [ngClass]="{'is-invalid': form2.get('fid').touched && form2.get('fid').invalid}" required disabled>
+                </div>
+              </div>
+              <div class="form-group form-float">
+                <div class="form-line">
+                  <label>Data wydania</label>
+                  <input type="date" class="form-control" name="date" [(ngModel)]="editDate"
+                         formControlName="fdate"
+                         [ngClass]="{'is-invalid': form2.get('fdate').touched && form2.get('fdate').invalid}" required>
+                  <div class="invalid-feedback">
+                    <div>Data jest wymagana.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group form-float">
+                <div class="form-line">
+                  <label>Tytuł</label>
+                  <input type="text" class="form-control" name="title" [(ngModel)]="editTitle"
+                         formControlName="ftitle"
+                         [ngClass]="{'is-invalid': form2.get('ftitle').touched && form2.get('ftitle').invalid}" required>
+                  <div class="invalid-feedback">
+                    <div>Tytuł jest wymagany.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group form-float">
+                <div class="form-line">
+                  <label>Opis</label>
+                  <textarea rows="3" class="form-control no-resize" placeholder="..." name="message" [(ngModel)]="editDescription"
+                            formControlName="fdesc"
+                            [ngClass]="{'is-invalid': form2.get('fdesc').touched && form2.get('fdesc').invalid}" required></textarea>
+                  <div class="invalid-feedback">
+                    <div>Opis jest wymagany.</div>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-primary waves-effect" type="submit" [disabled]="!form2.valid">Edytuj</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="card">
+          <div class="header">
+            <h2>
+              Dodaj książkę
+            </h2>
+          </div>
+          <div class="body">
+            <form id="form_validation2" method="POST" (submit)="addBook()" [formGroup]="form">
+              <div class="form-group form-float">
+                <div class="form-line">
+                  <label>Data wydania</label>
+                  <input type="date" class="form-control" name="date" [(ngModel)]="model.date"
+                         formControlName="fdate"
+                         [ngClass]="{'is-invalid': form.get('fdate').touched && form.get('fdate').invalid}" required>
+                  <div class="invalid-feedback">
+                    <div>Data jest wymagana.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group form-float">
+                <div class="form-line">
+                  <label>Tytuł</label>
+                  <input type="text" class="form-control" name="title" [(ngModel)]="model.title"
+                         formControlName="ftitle"
+                         [ngClass]="{'is-invalid': form.get('ftitle').touched && form.get('ftitle').invalid}" required>
+                  <div class="invalid-feedback">
+                    <div>Tytuł jest wymagany.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group form-float">
+                <div class="form-line">
+                  <label>Opis</label>
+                  <textarea rows="3" class="form-control no-resize" placeholder="..." name="message" [(ngModel)]="model.description"
+                            formControlName="fdesc"
+                            [ngClass]="{'is-invalid': form.get('fdesc').touched && form.get('fdesc').invalid}" required></textarea>
+                  <div class="invalid-feedback">
+                    <div>Opis jest wymagany.</div>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-primary waves-effect" type="submit" [disabled]="!form.valid">Dodaj</button>
+              <div class="form-line">
+                <br><br><br><br>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>

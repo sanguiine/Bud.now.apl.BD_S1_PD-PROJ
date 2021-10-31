@@ -1,0 +1,115 @@
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
+      type="text/css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+<body class="theme-black">
+<app-sidemenu></app-sidemenu>
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <h2>
+        GATUNKI KSIĄŻEK
+      </h2>
+    </div>
+
+    <div class="row clearfix">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+          <div class="header">
+            <h2>
+              Szukaj gatunków
+            </h2>
+          </div>
+          <div class="body">
+            <div class="table-responsive">
+              <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                <thead>
+                <tr>
+                  <th>ID gatunku</th>
+                  <th>Nazwa</th>
+                  <th>Akcje</th>
+                </tr>
+                </thead>
+                <tbody *ngFor="let category of categories">
+                <tr>
+                  <td>{{category.categoryID}}</td>
+                  <td>{{category.name}}</td>
+                  <td>
+                    <button type="button" class="btn btn-primary m-t-1 waves-effect" (click)="update(category)">Edytuj
+                    </button>
+                    <button type="button" class="btn btn-primary m-t-1 waves-effect"
+                            (click)="deleteCategory(category.categoryID)">Usuń
+                    </button>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row clearfix">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="card">
+          <div class="header">
+            <h2>
+              Edytuj gatunek
+            </h2>
+          </div>
+          <div class="body">
+            <form id="form_validation" method="POST" (submit)="editCategory()" [formGroup]="form2">
+              <div class="form-group form-float">
+                <div class="form-line">
+                  <label>ID gatunku</label>
+                  <input type="number" class="form-control" name="id" [(ngModel)]="editID"
+                         formControlName="fid"
+                         [ngClass]="{'is-invalid': form2.get('fid').touched && form2.get('fid').invalid}" required disabled>
+                </div>
+              </div>
+              <div class="form-group form-float">
+                <div class="form-line">
+                  <label>Gatunek</label>
+                  <input type="text" class="form-control" name="genre" [(ngModel)]="editName"
+                         formControlName="fname"
+                         [ngClass]="{'is-invalid': form2.get('fname').touched && form2.get('fname').invalid}" required>
+                  <div class="invalid-feedback">
+                    <div>Nazwa jest wymagana.</div>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-primary waves-effect" type="submit" [disabled]="!form2.valid">Edytuj</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="card">
+          <div class="header">
+            <h2>
+              Dodaj gatunek
+            </h2>
+          </div>
+          <div class="body">
+            <form id="form_validation2" method="POST" (submit)="addCategory()" [formGroup]="form">
+              <div class="form-group form-float">
+                <div class="form-line">
+                  <label>Gatunek</label>
+                  <input type="text" class="form-control" name="genre" [(ngModel)]="model.name"
+                         formControlName="fname"
+                         [ngClass]="{'is-invalid': form.get('fname').touched && form.get('fname').invalid}" required>
+                  <div class="invalid-feedback">
+                    <div>Nazwa jest wymagana.</div>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-primary waves-effect" type="submit" [disabled]="!form.valid">Dodaj</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>

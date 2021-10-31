@@ -1,0 +1,74 @@
+<app-header></app-header>
+    <div class="bg-light py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mb-0"><a href="index.html">Strona główna</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Logowanie</strong></div>
+        </div>
+      </div>
+    </div>
+    <form [formGroup]="angForm" novalidate>
+    <div class="site-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-12">
+            <div class="border p-4 rounded" role="alert">
+              Nie masz konta? <a routerLink="/register" href="register.html">Naciśnij tutaj</a>, aby się zarejestrować
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          
+		  <div class="col-md-3 mb-5 mb-md-0">
+       </div>
+          <div class="col-md-6 mb-5 mb-md-0">
+            <h2 class="h3 mb-3 text-black">Logowanie</h2>
+            <div class="p-3 p-lg-5 border">
+              <div class="text-center" *ngIf="this.invalidLogin">
+                <p class="text-danger">Nieprawidłowy Email lub Hasło.</p>
+              </div >
+              <div class="form-group row">
+                <div class="col-md-12">
+                  <label for="email" class="text-black">Email </label>
+                  <input id="email" name="email" class="form-control"
+                            required minlength="4" appForbiddenName="bob"
+                            [(ngModel)]="this.email" formControlName="email" >
+
+                            <div *ngIf="angForm.controls['email'].invalid && (angForm.controls['email'].dirty || angForm.controls['email'].touched)" class="alert alert-danger">
+                              <div *ngIf="angForm.controls['email'].errors.required">
+                                Email jest wymagany.
+                              </div>
+                              <div *ngIf="angForm.controls['email'].errors.email">Email jest niepoprawny.</div>
+                          </div>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-md-12">
+                  <label for="password" class="text-black">Hasło</label>
+                  <input type="password" class="form-control" id="password" name="password" [(ngModel)] = "password" required
+                  formControlName="password">
+
+                  <div *ngIf="angForm.controls['password'].invalid && (angForm.controls['password'].dirty || angForm.controls['password'].touched)" class="alert alert-danger">
+                    <div *ngIf="angForm.controls['password'].errors.required">
+                      Hasło jest wymagane.
+                    </div>
+                </div>
+                  
+
+                </div>
+              </div>
+            </div>
+           </div>
+        </div>
+		<div class="row">
+		   <div class="col-md-3 mb-5 mb-md-0">
+		   </div>
+		   <div class="col-md-6 mb-5 mb-md-0">
+       <button (click)=checkLogin() routerLink="/account" 
+       [disabled]="angForm.pristine || angForm.invalid" class="btn btn-primary btn-lg py-3 btn-block" onclick="">Zaloguj</button>
+		   </div>
+		</div>
+      </div>
+    </div>
+    </form>
+<app-footer></app-footer>

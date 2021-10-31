@@ -1,0 +1,165 @@
+<app-header></app-header>
+<div class="bg-light py-3">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 mb-0"><a href="index.html">Strona główna</a> <span class="mx-2 mb-0">/</span> <a
+        routerLink="/account" href="account.html">Konto</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Twoje
+        dane</strong></div>
+    </div>
+  </div>
+</div>
+
+<div class="site-section">
+  <form id="form_validation" method="POST" (submit)="editMember()" [formGroup]="angForm" novalidate>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 mb-5 mb-md-0">
+        </div>
+        <div class="col-md-6 mb-5 mb-md-0">
+          <h2 class="h3 mb-3 text-black">Twoje dane</h2>
+          <div class="p-3 p-lg-5 border">
+            <div class="form-group row">
+              <div class="col-md-12">
+                <label for="email" class="text-black">Email<span class="text-danger">*</span> </label>
+                <input type="email" class="form-control" id="email" name="email" [(ngModel)]="editEmail"
+                formControlName="editEmail" ngModel [email]="true">
+
+                <div *ngIf="angForm.controls['editEmail'].invalid && (angForm.controls['editEmail'].dirty || angForm.controls['editEmail'].touched)" class="alert alert-danger">
+                  <div *ngIf="angForm.controls['editEmail'].errors.required">
+                    Email jest wymagany.
+                  </div>
+                  <div *ngIf="angForm.controls['editEmail'].errors.email">
+                    Email jest niepoprawny.
+                  </div>
+              </div>
+
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-md-6">
+                <label for="fname" class="text-black">Imię<span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="fname" name="fname" [(ngModel)]="editFirstName" formControlName="editFirstName" >
+
+                <div *ngIf="angForm.controls['editFirstName'].invalid && (angForm.controls['editFirstName'].dirty || angForm.controls['editFirstName'].touched)" class="alert alert-danger">
+                  <div *ngIf="angForm.controls['editFirstName'].errors.required">
+                    Pole jest wymagane.
+                  </div>
+              </div>
+
+              </div>
+
+
+
+              <div class="col-md-6">
+                <label for="lname" class="text-black">Nazwisko<span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="lname" name="lname" [(ngModel)]="editLastName" formControlName="editLastName" >
+
+                <div *ngIf="angForm.controls['editLastName'].invalid && (angForm.controls['editLastName'].dirty || angForm.controls['editLastName'].touched)" class="alert alert-danger">
+                  <div *ngIf="angForm.controls['editLastName'].errors.required">
+                    Pole jest wymagane.
+                  </div>
+              </div>
+
+              </div>
+            </div>
+
+
+            <div class="form-group row">
+              <div class="col-md-12">
+                <label for="address" class="text-black">Adres<span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="address" name="address" [(ngModel)]="editAddress" formControlName="editAddress" >
+
+                <div *ngIf="angForm.controls['editAddress'].invalid && (angForm.controls['editAddress'].dirty || angForm.controls['editAddress'].touched)" class="alert alert-danger">
+                  <div *ngIf="angForm.controls['editAddress'].errors.required">
+                    Pole jest wymagane.
+                  </div>
+              </div>
+
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-md-6">
+                <label for="city" class="text-black">Miasto<span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="city" name="city" [(ngModel)]="editCity" formControlName="editCity" >
+
+                <div *ngIf="angForm.controls['editCity'].invalid && (angForm.controls['editCity'].dirty || angForm.controls['editCity'].touched)" class="alert alert-danger">
+                  <div *ngIf="angForm.controls['editCity'].errors.required">
+                    Pole jest wymagane.
+                  </div>
+              </div>
+
+              </div>
+              <div class="col-md-6">
+                <label for="zip" class="text-black">Kod pocztowy<span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="zip" name="zip" [(ngModel)]="editZIP" formControlName="editZIP" >
+
+                <div *ngIf="angForm.controls['editZIP'].invalid && (angForm.controls['editZIP'].dirty || angForm.controls['editZIP'].touched)" class="alert alert-danger">
+                  <div *ngIf="angForm.controls['editZIP'].errors.required">
+                    Pole jest wymagane.
+                  </div>
+              </div>
+
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-md-6">
+                <label for="bdate" class="text-black">Data urodzenia<span class="text-danger">*</span></label>
+                <input type="date" class="form-control" id="bdate" name="bdate" [(ngModel)]="editDate" formControlName="editDate" >
+
+                <div *ngIf="angForm.controls['editDate'].invalid && (angForm.controls['editDate'].dirty || angForm.controls['editDate'].touched)" class="alert alert-danger">
+                  <div *ngIf="angForm.controls['editDate'].errors.required">
+                    Pole jest wymagane.
+                  </div>
+              </div>
+
+              </div>
+              <div class="col-md-6">
+                <label for="phone" class="text-black">Numer telefonu<span class="text-danger">*</span></label>
+                <input type="number" class="form-control" id="phone" name="phone" [(ngModel)]="editPhone" formControlName="editPhone" >
+
+                <div *ngIf="angForm.controls['editPhone'].invalid && (angForm.controls['editPhone'].dirty || angForm.controls['editPhone'].touched)" class="alert alert-danger">
+                  <div *ngIf="angForm.controls['editPhone'].errors.required">
+                    Pole jest wymagane.
+                  </div>
+              </div>
+
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-md-12">
+                <label for="password" class="text-black">Nowe hasło</label>
+                <input type="password" class="form-control" id="password" name="password" [(ngModel)]="newPassword" formControlName="newPassword" >
+                <div class="alert alert-danger" *ngIf="f.newPassword.errors && f.newPassword.errors.minlength">Hasło musi mieć conajmniej 6 znaków</div>
+
+
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-md-12">
+                <label for="password2" class="text-black">Powtórz nowe hasło</label>
+                <input type="password" class="form-control" id="password2" name="password2" formControlName="repeatNewPassword" >
+                <div *ngIf="this.submitted && f.repeatNewPassword.errors" class="alert alert-danger">
+                  <div *ngIf="f.repeatNewPassword.errors.required">Pole jest wymagane</div>
+                  <div *ngIf="f.repeatNewPassword.errors.mustMatch">Hasła muszą być takie same</div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 mb-5 mb-md-0">
+        </div>
+        <div class="col-md-6 mb-5 mb-md-0">
+          <button class="btn btn-primary btn-lg py-3 btn-block" type="submit">Zapisz</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<app-footer></app-footer>

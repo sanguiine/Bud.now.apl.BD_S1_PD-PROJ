@@ -1,0 +1,60 @@
+<app-header></app-header>
+    <div class="bg-light py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mb-0"><a href="index.html">Strona główna</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Koszyk</strong></div>
+        </div>
+      </div>
+    </div>
+    <div class="site-section">
+      <div class="container">
+        <div class="row mb-5">
+          <form class="col-md-12" method="post">
+            <div class="site-blocks-table">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th class="product-thumbnail">Okładka</th>
+                    <th class="product-name">Tytuł</th>
+                    <th class="product-remove">Usuń</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let book of cartItems">
+                  <tr >
+                    <td class="product-thumbnail">
+                      <img src="assets/images/{{book.imgName}}" alt="Image" class="img-fluid">
+                    </td>
+                    <td class="product-name">
+                      <h2 class="h5 text-black">{{book.title}}</h2>
+                    </td>
+                    <td><a (click)="deteleItemCart(book)" class="btn btn-primary btn-sm">X</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </form>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row mb-5">
+              <div class="col-md-6 mb-3 mb-md-0">
+                <button (click)="aktualizuj()" class="btn btn-primary btn-sm btn-block">Aktualizuj koszyk</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 pl-5">
+            <div class="row justify-content-end">
+              <div class="col-md-7">
+                <div class="row">
+                  <div class="col-md-12">
+                    <a routerLink="/checkout"><button class="btn btn-primary btn-lg py-3 btn-block">Rezerwuj</button></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<app-footer></app-footer>

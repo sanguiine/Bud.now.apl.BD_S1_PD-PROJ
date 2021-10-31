@@ -1,0 +1,134 @@
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
+      type="text/css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+<body class="theme-black">
+<app-sidemenu></app-sidemenu>
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <h2>
+        EDYTUJ KSIĄŻKI
+      </h2>
+    </div>
+
+    <div class="row clearfix">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="card">
+          <div class="header">
+            <h2>
+              Dodaj gatunki
+            </h2>
+          </div>
+          <div class="body">
+            <form id="form_validation3" method="POST" (submit)="addCategoriesToBook()">
+              <div class="form-group">
+                <label for="sel1">Wybierz książkę</label>
+                <select class="form-control" id="sel1" name="book" [(ngModel)]="selectedBook">
+                  <option *ngFor="let book of books" [ngValue]="book">{{book.title}}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="sel2">Wybierz gatunek</label>
+                <select class="form-control" id="sel2" name="category" [(ngModel)]="selectedCategory">
+                  <option *ngFor="let category of categories" [ngValue]="category">{{category.name}}</option>
+                </select>
+              </div>
+              <button class="btn btn-primary waves-effect" type="submit">Dodaj</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="card">
+          <div class="header">
+            <h2>
+              Usuń gatunki
+            </h2>
+          </div>
+          <div class="body">
+            <form id="form_validation4" method="POST" (submit)="deleteCategoriesFromBook(selectedCategory2.categoryID)">
+              <div class="form-group">
+                <label for="sel1">Wybierz książkę</label>
+                <select class="form-control" id="sel3" name="book2" [(ngModel)]="selectedBook2">
+                  <option *ngFor="let book of books" [ngValue]="book">{{book.title}}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="sel2">Wybierz gatunek</label>
+                <ng-template [ngIf]="selectedBook2">
+                  <select class="form-control" id="sel4" name="category2" [(ngModel)]="selectedCategory2">
+                    <option *ngFor="let category of selectedBook2.categories"
+                            [ngValue]="category">{{category.name}}</option>
+                  </select>
+                </ng-template>
+              </div>
+              <button class="btn btn-primary waves-effect" type="submit">Usuń</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row clearfix">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="card">
+          <div class="header">
+            <h2>
+              Dodaj autorów
+            </h2>
+          </div>
+          <div class="body">
+            <form id="form_validation5" method="POST" (submit)="addAuthorsToBook()">
+              <div class="form-group">
+                <label for="sel1">Wybierz książkę</label>
+                <select class="form-control" id="sel5" name="book3" [(ngModel)]="selectedBook3">
+                  <option *ngFor="let book of books" [ngValue]="book">{{book.title}}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="sel2">Wybierz autora</label>
+                <select class="form-control" id="sel6" name="author3" [(ngModel)]="selectedAuthor3">
+                  <option *ngFor="let author of authors"
+                          [ngValue]="author">{{author.firstName}} {{author.lastName}}</option>
+                </select>
+              </div>
+              <button class="btn btn-primary waves-effect" type="submit">Dodaj</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="card">
+          <div class="header">
+            <h2>
+              Usuń autorów
+            </h2>
+          </div>
+          <div class="body">
+            <form id="form_validation6" method="POST" (submit)="deleteAuthorsFromBook(selectedAuthor4.authorID)">
+              <div class="form-group">
+                <label for="sel1">Wybierz książkę</label>
+                <select class="form-control" id="se7" name="book4" [(ngModel)]="selectedBook4">
+                  <option *ngFor="let book of books" [ngValue]="book">{{book.title}}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="sel2">Wybierz autora</label>
+                <ng-template [ngIf]="selectedBook4">
+                  <select class="form-control" id="sel8" name="author4" [(ngModel)]="selectedAuthor4">
+                    <option *ngFor="let author of selectedBook4.authors" [ngValue]="author">{{author.firstName}} {{author.lastName}}</option>
+                  </select>
+                </ng-template>
+              </div>
+              <button class="btn btn-primary waves-effect" type="submit">Usuń</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>

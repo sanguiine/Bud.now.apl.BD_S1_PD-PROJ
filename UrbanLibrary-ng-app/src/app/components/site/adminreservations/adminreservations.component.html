@@ -1,0 +1,67 @@
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
+      type="text/css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+<body class="theme-black">
+<app-sidemenu></app-sidemenu>
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <h2>
+        REZERWACJE
+      </h2>
+    </div>
+    <div class="row clearfix">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+          <div class="header">
+            <h2>
+              Szukaj rezerwacji
+            </h2>
+          </div>
+          <div class="body">
+            <div class="table-responsive">
+              <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                <thead>
+                <tr>
+                  <th>ID rezerwacji</th>
+                  <th>Data początku rezerwacji</th>
+                  <th>Data końca rezerwacji</th>
+                  <th>Imię</th>
+                  <th>Nazwisko</th>
+                  <th>Tytuł książki</th>
+                  <th>Liczba sztuk</th>
+                  <th>Akcje</th>
+                </tr>
+                </thead>
+                <tbody *ngFor="let reservation of reservations">
+                <ng-container *ngFor="let items of reservationsItems">
+                  <ng-template [ngIf]="items.reservationGUID === reservation.reservationID">
+                    <tr>
+                      <td>{{reservation.reservationID}}</td>
+                      <td>{{reservation.dateStartReservation}}</td>
+                      <td>{{reservation.dateEndReservation}}</td>
+                      <ng-container *ngFor="let member of members">
+                        <ng-template [ngIf]="member.memberID === reservation.memberID">
+                          <td>{{member.firstNname}}</td>
+                          <td>{{member.lastName}}</td>
+                        </ng-template>
+                      </ng-container>
+                      <td>{{items.book.title}}</td>
+                      <td>{{items.orderItemQuantity}}</td>
+                      <td>
+                        <button type="button" class="btn btn-primary m-t-1 waves-effect" (click)="deleteReservationsItem(items.reservationItemsID)">Usuń</button>
+                      </td>
+                    </tr>
+                  </ng-template>
+                </ng-container>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>

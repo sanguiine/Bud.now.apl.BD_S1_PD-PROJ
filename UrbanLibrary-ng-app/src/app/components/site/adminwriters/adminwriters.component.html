@@ -1,0 +1,134 @@
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+<body class="theme-black">
+<app-sidemenu></app-sidemenu>
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <h2>
+        AUTORZY KSIĄŻEK
+      </h2>
+    </div>
+
+    <div class="row clearfix">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+          <div class="header">
+            <h2>
+              Szukaj autorów
+            </h2>
+          </div>
+          <div class="body">
+            <div class="table-responsive">
+              <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                <thead>
+                <tr>
+                  <th>ID autora</th>
+                  <th>Imię</th>
+                  <th>Nazwisko</th>
+                  <th>Akcje</th>
+                </tr>
+                </thead>
+                <tbody *ngFor="let author of authors">
+                <tr>
+                  <td>{{author.authorID}}</td>
+                  <td>{{author.firstName}}</td>
+                  <td>{{author.lastName}}</td>
+                  <td><button type="button" class="btn btn-primary m-t-1 waves-effect" (click)="update(author)">Edytuj</button>
+                    <button type="button" class="btn btn-primary m-t-1 waves-effect" (click)="deleteAuthor(author.authorID)">Usuń</button>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row clearfix">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="card">
+          <div class="header">
+            <h2>
+              Edytuj autora
+            </h2>
+          </div>
+          <div class="body">
+            <form id="form_validation" method="POST"  (submit)="editAuthor()" [formGroup]="form2">
+              <div class="form-group form-float">
+                <div class="form-line">
+                  <label>ID autora</label>
+                  <input type="number" class="form-control" name="id" [(ngModel)]="editID"
+                         formControlName="fid"
+                         [ngClass]="{'is-invalid': form2.get('fid').touched && form2.get('fid').invalid}" required disabled>
+                </div>
+              </div>
+              <div class="form-group form-float">
+                <div class="form-line">
+                  <label>Imię</label>
+                  <input type="text" class="form-control" name="name" [(ngModel)]="editFirstName"
+                         formControlName="ffirstName"
+                         [ngClass]="{'is-invalid': form2.get('ffirstName').touched && form2.get('ffirstName').invalid}" required>
+                  <div class="invalid-feedback">
+                    <div>Imię jest wymagane.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group form-float">
+                <div class="form-line">
+                  <label>Nazwisko</label>
+                  <input type="text" class="form-control" name="surname" [(ngModel)]="editLastName"
+                         formControlName="flastName"
+                         [ngClass]="{'is-invalid': form2.get('flastName').touched && form2.get('flastName').invalid}" required>
+                  <div class="invalid-feedback">
+                    <div>Nazwisko jest wymagane.</div>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-primary waves-effect" type="submit" [disabled]="!form2.valid">Edytuj</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="card">
+          <div class="header">
+            <h2>
+              Dodaj autora
+            </h2>
+          </div>
+          <div class="body">
+            <form id="form_validation2" method="POST" (submit)="addAuthor()" [formGroup]="form">
+              <div class="form-group form-float">
+                <div class="form-line">
+                  <label>Imię</label>
+                  <input type="text" class="form-control" name="name" [(ngModel)]="model.firstName"
+                         formControlName="ffirstName"
+                         [ngClass]="{'is-invalid': form.get('ffirstName').touched && form.get('ffirstName').invalid}" required>
+                  <div class="invalid-feedback">
+                    <div>Imię jest wymagane.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group form-float">
+                <div class="form-line">
+                  <label>Nazwisko</label>
+                  <input type="text" class="form-control" name="surname" [(ngModel)]="model.lastName"
+                         formControlName="flastName"
+                         [ngClass]="{'is-invalid': form.get('flastName').touched && form.get('flastName').invalid}" required>
+                  <div class="invalid-feedback">
+                    <div>Nazwisko jest wymagane.</div>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-primary waves-effect" type="submit" [disabled]="!form.valid">Dodaj</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>

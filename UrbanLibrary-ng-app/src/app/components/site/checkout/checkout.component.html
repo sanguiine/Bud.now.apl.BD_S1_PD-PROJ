@@ -1,0 +1,53 @@
+<app-header></app-header>
+    <div class="bg-light py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mb-0"><a href="index.html">Strona główna</a> <span class="mx-2 mb-0">/</span> <a routerLink="/cart" href="cart.html">Koszyk</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Potwierdzenie</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mb-5 mb-md-0">
+              <h2 class="h3 mb-3 text-black">Twoja rezerwacja</h2>
+                <div class="p-1 p-lg-5 border">
+                  <table class="table site-block-order-table mb-1">
+                    <thead>
+                      <th>Tytuł</th>
+                      <th>Liczba sztuk</th>
+                    </thead>
+                    <tbody *ngFor="let item of this.reservationItems">
+                      <tr>
+                        <td>{{item.book.title}}</td>
+                        <td>{{item.orderItemQuantity}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+		<br>
+		<div class="row">
+          <div class="col-md-6">
+            <div class="row mb-5">
+              <div class="col-md-6 mb-3 mb-md-0">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 pl-5">
+            <div class="row justify-content-end">
+              <div class="col-md-7">
+                <div class="row">
+                  <div class="col-md-12">
+                    <button (click)="confirmReservation()" routerLink="/thankyou" class="btn btn-primary btn-lg py-3 btn-block">Potwierdź</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+<app-footer></app-footer>

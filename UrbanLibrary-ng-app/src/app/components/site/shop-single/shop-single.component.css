@@ -1,0 +1,15 @@
+.buy-now {
+  background-color: #a67e6a;
+}
+
+#new {
+  color: white;
+}
+
+#new2 {
+  color: #a67e6a;
+}
+
+#new2:hover {
+  color: white;
+}
